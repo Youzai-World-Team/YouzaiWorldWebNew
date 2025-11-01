@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页 - Youzai World</title>
+    <link rel="stylesheet" href="resources/styles/style.css">
+    <link rel="stylesheet" href="resources/styles/font-awesome.css">
+    <link rel="icon" href="resources/images/logo_circle.webp">
+</head>
+<body>
+    <div class="loader">
+        <div class="loader-container">
+            <img class="loader-image" src="resources/images/loading.webp" alt="Loading...">
+        </div>
+    </div>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="resources/images/youzaiworld.webp" alt="悠哉世界">
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link">首页</a>
+                <a href="#gallery" class="nav-link">展示</a>
+                <a href="#features" class="nav-link">玩法</a>
+                <a href="#events" class="nav-link">活动</a>
+                <a href="#join" class="nav-link">加入</a>
+            </div>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页横幅 -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>欢迎来到悠哉世界</h1>
+            <p>一个充满创意与冒险的 Minecraft 基岩版服务器</p>
+            <div class="hero-buttons">
+                <button class="btn-primary">立即加入</button>
+                <button class="btn-secondary">了解更多</button>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>向下滚动</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- 图片展示区域 -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>服务器展示</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2UwZjVlMCIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMzMzk5NjYiPk1DIFNlcnZlciBJbWFnZSAxPC90ZXh0Pjwvc3ZnPg==" alt="服务器建筑展示">
+                    <div class="gallery-overlay">
+                        <h3>主城建筑</h3>
+                        <p>精心设计的主城，融合了现代与奇幻元素</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2UwZjVlMCIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMzMzk5NjYiPk1DIFNlcnZlciBJbWFnZSAyPC90ZXh0Pjwvc3ZnPg==" alt="服务器活动展示">
+                    <div class="gallery-overlay">
+                        <h3>社区活动</h3>
+                        <p>定期举办各种有趣的社区活动</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MDAgMzAwIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2UwZjVlMCIvPjx0ZXh0IHg9IjIwMCIgeT0iMTUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMzMzk5NjYiPk1DIFNlcnZlciBJbWFnZSAzPC90ZXh0Pjwvc3ZnPg==" alt="服务器玩法展示">
+                    <div class="gallery-overlay">
+                        <h3>特色玩法</h3>
+                        <p>丰富的自定义玩法，让游戏更有趣</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 玩法介绍区域 -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>服务器玩法</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚔️</div>
+                    <h3>PVP竞技场</h3>
+                    <p>挑战其他玩家，在精心设计的竞技场中展示你的战斗技巧。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏰</div>
+                    <h3>城市建设</h3>
+                    <p>创建自己的城市，发展经济，与其他玩家交易合作。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h3>解谜冒险</h3>
+                    <p>探索神秘的地下城，解开谜题，获取稀有宝藏。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎣</div>
+                    <h3>休闲生活</h3>
+                    <p>钓鱼、养殖、种植，享受Minecraft的宁静时光。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎭</div>
+                    <h3>角色扮演</h3>
+                    <p>扮演不同角色，参与服务器原创剧情故事。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>成就系统</h3>
+                    <p>完成各种挑战，解锁独特成就和奖励。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 活动列表区域 -->
+    <section id="events" class="events">
+        <div class="container">
+            <h2>近期活动</h2>
+            <div class="events-list">
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="event-day">15</span>
+                        <span class="event-month">六月</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>建筑大赛</h3>
+                        <p>主题：未来城市 | 时间：6月15日-6月30日</p>
+                        <p>展示你的建筑才华，赢取稀有材料和称号！</p>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="event-day">22</span>
+                        <span class="event-month">六月</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>BOSS挑战赛</h3>
+                        <p>时间：6月22日 20:00</p>
+                        <p>组队挑战强大的自定义BOSS，赢取专属装备！</p>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="event-day">30</span>
+                        <span class="event-month">六月</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>寻宝活动</h3>
+                        <p>时间：6月30日 全天</p>
+                        <p>在服务器各处寻找隐藏的宝箱，内含丰富奖励！</p>
+                    </div>
+                </div>
+                <div class="event-item">
+                    <div class="event-date">
+                        <span class="event-day">05</span>
+                        <span class="event-month">七月</span>
+                    </div>
+                    <div class="event-content">
+                        <h3>新版本发布会</h3>
+                        <p>时间：7月5日 19:00</p>
+                        <p>了解即将到来的服务器大更新内容！</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 加入我们区域 -->
+    <section id="join" class="join">
+        <div class="container">
+            <h2>加入我们</h2>
+            <div class="join-content">
+                <div class="join-info">
+                    <h3>服务器信息</h3>
+                    <p><strong>IP地址：</strong> play.greenworld.com</p>
+                    <p><strong>版本：</strong> 1.19.2</p>
+                    <p><strong>在线时间：</strong> 7x24小时</p>
+                    <p><strong>QQ群：</strong> 123456789</p>
+                </div>
+                <div class="join-form">
+                    <h3>订阅最新消息</h3>
+                    <form>
+                        <input type="email" placeholder="输入您的邮箱" required>
+                        <button type="submit">订阅</button>
+                    </form>
+                    <p class="form-note">订阅后，您将收到服务器活动和新版本的通知</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页底 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>绿野仙境</h3>
+                    <p>一个充满创意与冒险的Minecraft服务器，致力于为玩家提供最佳的游戏体验。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#gallery">展示</a></li>
+                        <li><a href="#features">玩法</a></li>
+                        <li><a href="#events">活动</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>联系我们</h3>
+                    <ul>
+                        <li>邮箱：admin@greenworld.com</li>
+                        <li>QQ群：123456789</li>
+                        <li>Discord：GreenWorld Server</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 绿野仙境 Minecraft服务器. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 点击特效元素 -->
+    <div class="click-effect"></div>
+
+    <script src="resources/scripts/script.js"></script>
+</body>
+</html>
