@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // 初始化轮播
+    initHeroSlider();
+
     // 导航栏切换
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
@@ -94,37 +97,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 600);
     });
 
-    // 表单提交
-    const joinForm = document.querySelector('.join-form form');
-    if (joinForm) {
-        joinForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const emailInput = this.querySelector('input[type="email"]');
-            if (emailInput.value) {
-                alert('感谢您的订阅！我们会将最新消息发送到：' + emailInput.value);
-                emailInput.value = '';
-            }
-        });
-    }
-
-    // 加入服务器按钮
-    const joinButton = document.querySelector('.btn-primary');
-    if (joinButton) {
-        joinButton.addEventListener('click', function () {
-            alert('服务器IP: play.greenworld.com\n版本: 1.19.2\n欢迎加入绿野仙境！');
-        });
-    }
-
-    // 了解更多按钮
-    const learnMoreButton = document.querySelector('.btn-secondary');
-    if (learnMoreButton) {
-        learnMoreButton.addEventListener('click', function () {
-            document.querySelector('#features').scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    }
-
     // 加载动画
     window.addEventListener('load', function () {
         const loader = document.querySelector('.loader');
@@ -146,4 +118,99 @@ document.addEventListener('DOMContentLoaded', function () {
             setTimeout(hideLoader, minimumLoadTime - elapsedTime);
         }
     });
+
+    // 复制按钮功能
+    document.querySelectorAll('.copy-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const textToCopy = this.getAttribute('data-text');
+
+            // 使用现代 Clipboard API
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                // 复制成功反馈
+                const originalText = this.textContent;
+                this.textContent = '成功';
+                this.classList.add('copied');
+
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.classList.remove('copied');
+                }, 1000);
+            }).catch(err => {
+                // 降级方案：使用传统方法
+                const textArea = document.createElement('textarea');
+                textArea.value = textToCopy;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+
+                // 反馈
+                const originalText = this.textContent;
+                this.textContent = '成功';
+                this.classList.add('copied');
+
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.classList.remove('copied');
+                }, 1000);
+            });
+        });
+    });
 });
+
+// 首页横幅轮播功能
+function initHeroSlider() {
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+
+    if (slides.length === 0) return;
+
+    function preloadImages() {
+        const imagePaths = [
+            'resources/images/background_1.webp',
+            'resources/images/background_2.webp',
+            'resources/images/background_3.webp',
+            'resources/images/background_4.webp',
+            'resources/images/background_5.webp',
+            'resources/images/background_6.webp',
+            'resources/images/background_7.webp',
+            'resources/images/background_8.webp',
+            'resources/images/background_9.webp',
+            'resources/images/background_10.webp'
+        ];
+
+        let loadedImages = 0;
+        const totalImages = imagePaths.length;
+
+        imagePaths.forEach(path => {
+            const img = new Image();
+            img.onload = function () {
+                loadedImages++;
+                // 当所有图片加载完成后开始轮播
+                if (loadedImages === totalImages) {
+                    startSlider();
+                }
+            };
+            img.onerror = function () {
+                console.warn('Failed to load image:', path);
+                loadedImages++;
+                if (loadedImages === totalImages) {
+                    startSlider();
+                }
+            };
+            img.src = path;
+        });
+    }
+
+    // 每5秒切换一次背景
+    setInterval(() => {
+        // 隐藏当前幻灯片
+        slides[currentSlide].classList.remove('active');
+
+        // 移动到下一张
+        currentSlide = (currentSlide + 1) % slides.length;
+
+        // 显示新幻灯片
+        slides[currentSlide].classList.add('active');
+    }, 3000);
+}
