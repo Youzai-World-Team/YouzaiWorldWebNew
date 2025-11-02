@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="server-status-details">
                     <div class="server-status-title">
                     <span class="status-indicator inloading"></span>
-                    ${server} - 正在获取在线玩家数量...
+                    ${server} - 正在获取...
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             <div class="server-status-details">
                                 <div class="server-status-title">
                                     <span class="status-indicator offline"></span>
-                                    ${server} - 无法获取在线玩家数量
+                                    ${server} - 获取失败
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="server-status-details">
                             <div class="server-status-title">
                                 <span class="status-indicator offline"></span>
-                                ${server} - 无法获取在线玩家数量
+                                ${server} - 获取失败
                             </div>
                         </div>
                     </div>

@@ -948,10 +948,41 @@ a.external-link:hover {
     text-decoration: none;
 }
 
+/* 内部链接样式 */
+.internal-link {
+    color: var(--accent-color) !important;
+    text-decoration: underline;
+    text-decoration-color: var(--accent-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.internal-link:hover {
+    color: var(--dark-color) !important;
+    text-decoration-color: var(--dark-color);
+}
+
+.internal-link::after {
+    content: none !important;
+}
+
+.btn-primary .internal-link,
+.btn-secondary .internal-link {
+    color: inherit !important;
+    text-decoration: none;
+}
+
+.btn-primary .internal-link:hover,
+.btn-secondary .internal-link:hover {
+    color: inherit !important;
+    text-decoration: none;
+}
+
+/* 服务器状态样式 */
 .server-status {
     background-color: #f8f9fa;
     border-radius: 8px;
-    padding: 16px;
+    padding: 24px;
     margin-top: 20px;
     border: 1px solid #e0e0e0;
 }
@@ -1027,5 +1058,99 @@ a.external-link:hover {
     .download-btn {
         width: 100%;
         padding: 12px 20px;
+    }
+}
+
+/* 友情外链卡片样式 */
+.friend-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.friend-link-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-height: 60px;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.friend-link-card:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    text-decoration: none;
+    color: inherit;
+}
+
+.friend-link-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+}
+
+/* 图片图标的样式 */
+.friend-link-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 6px;
+}
+
+.friend-link-content {
+    flex: 1;
+}
+
+.friend-link-content h4 {
+    color: var(--light-text);
+    margin-bottom: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.friend-link-content p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.8rem;
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .friend-links-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .friend-link-card {
+        padding: 10px;
+        min-height: 55px;
+    }
+    
+    .friend-link-icon {
+        font-size: 1.3rem;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .friend-link-content h4 {
+        font-size: 0.95rem;
+    }
+    
+    .friend-link-content p {
+        font-size: 0.75rem;
     }
 }
