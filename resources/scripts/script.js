@@ -119,6 +119,27 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    // 运行时间计算
+    function updateUptime() {
+        const startTime = new Date('2025-10-31T20:00:00'); // 设置开始时间
+        const now = new Date();
+        const diff = now - startTime;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        const uptimeElement = document.getElementById('uptime-counter');
+        if (uptimeElement) {
+            uptimeElement.textContent = `${days} 天 ${hours} 时 ${minutes} 分 ${seconds} 秒`;
+        }
+    }
+    
+    // 初始更新
+    updateUptime();
+    
+    // 每秒更新一次
+    setInterval(updateUptime, 1000);
+
     // 复制按钮功能
     document.querySelectorAll('.copy-btn').forEach(button => {
         button.addEventListener('click', function () {
