@@ -2,6 +2,12 @@ document.addEventListener('DOMContentLoaded', function () {
     // 初始化轮播
     initHeroSlider();
 
+    // 初始化轮播
+    initHeroSlider();
+
+    // 初始化二级菜单
+    initDropdownMenus();
+
     // 导航栏切换
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
@@ -30,18 +36,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // 点击菜单项后关闭菜单
-    document.querySelectorAll('.nav-link').forEach(link => {
+    document.querySelectorAll('.nav-link:not(.dropdown-toggle), .dropdown-link').forEach(link => {
         link.addEventListener('click', function () {
             if (window.innerWidth <= 768) {
                 navMenu.classList.remove('active');
                 navToggle.classList.remove('active');
                 navbar.classList.remove('menu-open');
 
+                // 关闭所有下拉菜单
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.remove('active');
+                });
+                document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                    toggle.classList.remove('active');
+                });
+
                 // 关闭菜单后根据滚动位置设置背景色
                 if (window.scrollY > 50) {
                     navbar.classList.add('scrolled');
                 } else {
                     navbar.classList.remove('scrolled');
+                    navbar.classList.remove('dropdown-open');
                 }
             }
         });
@@ -67,6 +82,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 导航栏滚动效果
     window.addEventListener('scroll', function () {
+        const hasActiveDropdown = document.querySelector('.dropdown-menu.active');
+
+        // 如果下拉菜单是打开的，不处理背景色变化（由下拉菜单逻辑处理）
+        if (hasActiveDropdown) {
+            return;
+        }
+
         // 如果菜单是打开的，不处理背景色变化
         if (navMenu && navMenu.classList.contains('active')) {
             return;
@@ -133,10 +155,10 @@ document.addEventListener('DOMContentLoaded', function () {
             uptimeElement.textContent = `${days} 天 ${hours} 时 ${minutes} 分 ${seconds} 秒`;
         }
     }
-    
+
     // 初始更新
     updateUptime();
-    
+
     // 每秒更新一次
     setInterval(updateUptime, 1000);
 
@@ -234,4 +256,83 @@ function initHeroSlider() {
         // 显示新幻灯片
         slides[currentSlide].classList.add('active');
     }, 3000);
+}
+
+
+// 二级菜单功能
+function initDropdownMenus() {
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+    const navbar = document.querySelector('.navbar');
+
+    // 关闭所有下拉菜单
+    function closeAllDropdowns() {
+        dropdownMenus.forEach(menu => {
+            menu.classList.remove('active');
+        });
+        dropdownToggles.forEach(toggle => {
+            toggle.classList.remove('active');
+        });
+        // 移除下拉菜单打开状态
+        navbar.classList.remove('dropdown-open');
+    }
+
+    // 点击下拉菜单切换
+    dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function (e) {
+            // 在移动端，阻止默认行为以允许展开菜单
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+
+            const dropdownMenu = this.nextElementSibling;
+            const isActive = dropdownMenu.classList.contains('active');
+
+            // 关闭所有其他菜单
+            closeAllDropdowns();
+
+            // 切换当前菜单
+            if (!isActive) {
+                dropdownMenu.classList.add('active');
+                this.classList.add('active');
+
+                // 在桌面端且页面在顶部时，显示导航栏背景
+                if (window.innerWidth > 768 && window.scrollY <= 50) {
+                    navbar.classList.add('dropdown-open');
+                }
+            }
+        });
+    });
+
+    // 点击其他地方关闭下拉菜单
+    document.addEventListener('click', function (e) {
+        if (!e.target.closest('.nav-item.dropdown')) {
+            closeAllDropdowns();
+        }
+    });
+
+    // 窗口大小改变时重置菜单状态
+    window.addEventListener('resize', function () {
+        closeAllDropdowns();
+    });
+
+    // 滚动时检查是否需要移除下拉菜单背景
+    window.addEventListener('scroll', function () {
+        // 如果已经滚动超过50px，导航栏已经有背景，不需要额外处理
+        if (window.scrollY > 50) {
+            // 如果下拉菜单是打开的，确保导航栏有背景
+            const hasActiveDropdown = document.querySelector('.dropdown-menu.active');
+            if (hasActiveDropdown) {
+                navbar.classList.add('scrolled');
+                navbar.style.padding = '15px 0';
+            }
+        } else {
+            // 在顶部时，如果有下拉菜单打开，保持背景
+            const hasActiveDropdown = document.querySelector('.dropdown-menu.active');
+            if (!hasActiveDropdown) {
+                navbar.classList.remove('dropdown-open');
+            }
+        }
+    });
 }

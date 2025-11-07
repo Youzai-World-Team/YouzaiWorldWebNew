@@ -482,14 +482,14 @@ body {
     margin: 0 auto;
 }
 
-.join-info{
+.join-info {
     background-color: var(--light-text);
     border-radius: 10px;
     padding: 30px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-.join-info h3{
+.join-info h3 {
     margin-bottom: 20px;
     color: var(--dark-color);
 }
@@ -763,6 +763,7 @@ body {
 
 /* 滚动箭头动画 */
 @keyframes bounce {
+
     0%,
     20%,
     50%,
@@ -869,6 +870,7 @@ body {
 }
 
 @-webkit-keyframes sk-bouncedelay {
+
     0%,
     80%,
     100% {
@@ -881,6 +883,7 @@ body {
 }
 
 @keyframes sk-bouncedelay {
+
     0%,
     80%,
     100% {
@@ -1116,7 +1119,7 @@ body {
         margin: 20px 0;
         padding: 15px;
     }
-    
+
     .download-btn {
         width: 100%;
         padding: 12px 20px;
@@ -1126,23 +1129,217 @@ body {
         grid-template-columns: 1fr;
         gap: 12px;
     }
-    
+
     .friend-link-card {
         padding: 10px;
         min-height: 55px;
     }
-    
+
     .friend-link-icon {
         font-size: 1.3rem;
         width: 35px;
         height: 35px;
     }
-    
+
     .friend-link-content h4 {
         font-size: 0.95rem;
     }
-    
+
     .friend-link-content p {
         font-size: 0.75rem;
     }
+}
+
+
+
+
+
+/* ===== 二级菜单样式 ===== */
+.nav-item.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown-toggle::after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 8px;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid var(--dark-color);
+    transition: transform 0.3s ease;
+}
+
+.dropdown-toggle:hover::after {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--primary-color);
+    /* 改为主色调 */
+    min-width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(52, 94, 84, 0.15);
+    /* 调整阴影颜色 */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
+    list-style: none;
+    padding: 8px 0;
+    margin-top: 10px;
+    border: 1px solid rgba(168, 230, 207, 0.3);
+    /* 添加边框 */
+}
+
+.dropdown-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-link {
+    display: block;
+    padding: 12px 20px;
+    color: var(--dark-color);
+    /* 改为深色文字 */
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(52, 94, 84, 0.1);
+    /* 调整分割线颜色 */
+}
+
+.dropdown-link:last-child {
+    border-bottom: none;
+}
+
+.dropdown-link:hover {
+    background-color: var(--accent-color);
+    /* 使用强调色 */
+    color: var(--light-text);
+    /* 悬停时文字变白色 */
+}
+
+/* 导航栏滚动时的二级菜单样式 */
+.navbar.scrolled .dropdown-menu {
+    background-color: var(--primary-color);
+    backdrop-filter: blur(10px);
+}
+
+.navbar.scrolled .dropdown-toggle::after {
+    border-top-color: var(--dark-color);
+}
+
+.navbar.scrolled .dropdown-link {
+    color: var(--dark-color);
+}
+
+.navbar.scrolled .dropdown-link:hover {
+    background-color: var(--accent-color);
+    color: var(--light-text);
+}
+
+/* 移动端二级菜单样式 */
+@media (max-width: 768px) {
+    .nav-item.dropdown {
+        width: 100%;
+    }
+
+    .dropdown-toggle {
+        width: 100%;
+        justify-content: space-between;
+        padding: 8px 20px;
+    }
+
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+        background-color: rgba(168, 230, 207, 0.8);
+        /* 移动端使用半透明主色 */
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        margin-top: 0;
+        padding: 0;
+        border: none;
+        border-radius: 0;
+    }
+
+    .dropdown-menu.active {
+        max-height: 300px;
+        padding: 8px 0;
+    }
+
+    .dropdown-link {
+        padding: 10px 20px 10px 40px;
+        color: var(--dark-color);
+        /* 移动端也用深色文字 */
+        border-bottom: 1px solid rgba(52, 94, 84, 0.2);
+        /* 调整分割线 */
+        font-size: 1.1rem;
+    }
+
+    .dropdown-link:hover {
+        background-color: var(--accent-color);
+        color: var(--light-text);
+    }
+
+    .nav-menu.active .dropdown-toggle::after {
+        border-top-color: var(--dark-color);
+    }
+}
+
+/* 菜单打开状态下的样式调整 */
+.navbar.menu-open .dropdown-menu {
+    background-color: rgba(168, 230, 207, 0.95);
+}
+
+.navbar.menu-open .dropdown-link {
+    color: var(--dark-color);
+}
+
+.navbar.menu-open .dropdown-link:hover {
+    background-color: var(--accent-color);
+    color: var(--light-text);
+}
+
+/* 导航栏下拉菜单打开时的样式 */
+.navbar.dropdown-open {
+    background-color: rgba(168, 230, 207, 0.95) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+    padding: 15px 0 !important;
+}
+
+/* 确保下拉菜单打开时导航栏内容可见 */
+.navbar.dropdown-open .nav-logo {
+    color: var(--dark-color) !important;
+}
+
+.navbar.dropdown-open .nav-link {
+    color: var(--dark-color) !important;
+}
+
+.navbar.dropdown-open .dropdown-toggle::after {
+    border-top-color: var(--dark-color) !important;
+}
+
+.navbar.dropdown-open .bar {
+    background-color: var(--dark-color) !important;
 }
