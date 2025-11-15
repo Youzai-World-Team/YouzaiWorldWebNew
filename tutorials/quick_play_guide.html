@@ -313,7 +313,8 @@
                         <li>点击<strong>通过MICROSOFT登录</strong>，在打开的 Xbox 界面登录刚刚注册的 Microsoft
                             账号，登录完成后点击<strong>现在就开始吧</strong>返回游戏</li>
                         <li>点击左侧的 <strong>MINECRAFT:BEDROCK EDITION</strong> >
-                            <strong>安装</strong>，等待安装完成，点击<strong>开始游戏</strong>即可</li>
+                            <strong>安装</strong>，等待安装完成，点击<strong>开始游戏</strong>即可
+                        </li>
                         <img src="../resources/images/tutorial/I1-3_1.webp" alt="1.3_1" loading="lazy">
                         <center style="font-size: 0.8rem;">Microsoft Launcher 页</center>
                     </ol>
@@ -420,6 +421,108 @@
                 </section>
                 <section id="section3-2" class="tutorial-section">
                     <h3>3.2 领地系统</h3>
+                    <p>调用指令如下：</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>命令</th>
+                                <th>描述</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>/pland</code></td>
+                                <td>打开 GUI</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><code>/pland &lt;op/deop&gt; &lt;player: target&gt;</code></td>
+                                <td>添加或移除目标玩家的领地管理员权限</td>
+                                <td>领地主人</td>
+                            </tr>
+                            <tr>
+                                <td><code>/pland new [default|sub_land]</code></td>
+                                <td>创建领地<br>
+                                    <strong>default</strong> 创建普通领地<br>
+                                    <strong>sub_land</strong> 在当前领地内创建子领地
+                                </td>
+                                <td>领地主人</td>
+                            </tr>
+                            <tr>
+                                <td><code>/pland cancel</code></td>
+                                <td>取消领地创建</td>
+                                <td>需要先执行 /pland new 命令</td>
+                            </tr>
+                            <tr>
+                                <td><code>/pland set &lt;a|b&gt;</code></td>
+                                <td>设置领地位置</td>
+                                <td>需要先执行 /pland new 命令</td>
+                            </tr>
+                            <tr>
+                                <td><code>/pland buy</code></td>
+                                <td>购买领地</td>
+                                <td>需要先执行 /pland new 命令</td>
+                            </tr>
+                            <tr>
+                                <td><code>/pland mgr</code></td>
+                                <td>打开领地管理 GUI</td>
+                                <td>领地管理员</td>
+                            </tr>
+                            <tr>
+                                <td><code>/pland set teleport_pos</code></td>
+                                <td>设置脚下领地的传送点为当前位置</td>
+                                <td>领地主人、管理员</td>
+                            </tr>
+                            <tr>
+                                <td><code>/pland list op</code></td>
+                                <td>列出领地管理员列表</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><code>/pland this</code></td>
+                                <td>打开当前位置的领地管理GUI</td>
+                                <td>领地主人</td>
+                            </tr>
+                            <tr>
+                                <td><code>/pland draw &lt;disable|near_land|current_land&gt;</code></td>
+                                <td>开启绘制领地范围</td>
+                                <td><strong>disable</strong> 关闭绘制<br>
+                                    <strong>current_land</strong> 绘制当前所在的领地范围<br>
+                                    <strong>near_land</strong> 绘制附近领地范围
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>领地价格计算</p>
+                    <ol>
+                        <li>3D领地  <code>volume * random_num_range(5, 10)</code></li>
+                        <li>2D领地  <code>square * 0.5 * height * random_num_range(5, 10)</code></li>
+                    </ol>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>参数名称</th>
+                                <th>意思</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>volume</code></td>
+                                <td>领地体积（即底面积*高）</td>
+                            </tr>
+                            <tr>
+                                <td><code>square</code></td>
+                                <td>底面积</td>
+                            </tr>
+                            <tr>
+                                <td><code>random_num_range(5, 10)</code></td>
+                                <td>随机数因子</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>2D领地与3D领地的区别为2D领地拥有这片区域的所有高度（从y轴-64到320），而3D领地则允许您自定义高度范围。</p>
+                    <p>如何创建一个普通领地</p>
                 </section>
             </section>
             <!--
