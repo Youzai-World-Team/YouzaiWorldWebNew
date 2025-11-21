@@ -43,8 +43,8 @@
                 <div class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle">教程中心</div>
                     <ul class="dropdown-menu">
-                        <li><a href="tutorial.html" class="dropdown-link">教程中心主页</a></li>
-                        <li><a href="tutorials/quick_play_guide.html" class="dropdown-link">快速游玩指南</a></li>
+                        <li><a href="tutorial" class="dropdown-link">教程中心主页</a></li>
+                        <li><a href="tutorials/quick_play_guide" class="dropdown-link">快速游玩指南</a></li>
                         <li><a href="resources/wiki.pdf" class="dropdown-link">旧版教程页面<br>（不推荐）</a></li>
                     </ul>
                 </div>
@@ -80,7 +80,7 @@
             <p>一个充满创意与冒险的 Minecraft 基岩版服务器</p>
             <div class="hero-buttons">
                 <a href="#join" class="btn-primary">立即加入</a>
-                <button class="btn-secondary">查看玩法</button>
+                <!--<button class="btn-secondary">查看玩法</button>-->
             </div>
         </div>
         <br><br>
@@ -131,108 +131,75 @@
                 </span>近期没有动态~</p>
         </div>
     </section>
-    <section id="about" class="gallery">
+    <section id="about" class="gallery" style="background-color: var(--light-text);">
         <div class="container">
             <h2>关于服务器</h2>
             <p style="text-align: center;">
                 悠哉世界，一位腐竹以及管理员们共同维护着的服务器，2025年6月开服至今。<br>
-                开始，只有腐竹在服里和班上同学游玩，后面发现班上游玩国际版的同学太少，遂决定开放。<br>
+                开始，只有服主在服里和班上同学游玩，后面发现班上游玩国际版的同学太少，遂决定开放。<br>
             </p>
             <p style="text-align: right;font-weight: bold;font-style: italic;">——Youzai World Team</p>
         </div>
     </section>
 
-    <!-- 玩法介绍区域 -->
-    <!--<section id="features" class="features">
-        <div class="container">
-            <h2>服务器玩法</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">⚔️</div>
-                    <h3>PVP竞技场</h3>
-                    <p>挑战其他玩家，在精心设计的竞技场中展示你的战斗技巧。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🏰</div>
-                    <h3>城市建设</h3>
-                    <p>创建自己的城市，发展经济，与其他玩家交易合作。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🧩</div>
-                    <h3>解谜冒险</h3>
-                    <p>探索神秘的地下城，解开谜题，获取稀有宝藏。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎣</div>
-                    <h3>休闲生活</h3>
-                    <p>钓鱼、养殖、种植，享受Minecraft的宁静时光。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎭</div>
-                    <h3>角色扮演</h3>
-                    <p>扮演不同角色，参与服务器原创剧情故事。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🏆</div>
-                    <h3>成就系统</h3>
-                    <p>完成各种挑战，解锁独特成就和奖励。</p>
-                </div>
-            </div>
-        </div>
-    </section>-->
-
     <!-- 活动列表区域 -->
-    <!--<section id="events" class="events">
+    <section id="events" class="events">
         <div class="container">
             <h2>近期活动</h2>
             <div class="events-list">
                 <div class="event-item">
-                    <div class="event-date">
-                        <span class="event-day">15</span>
-                        <span class="event-month">六月</span>
+                    <div class="event-image">
+                        <img src="resources/images/event/event_1.webp" loading="lazy" alt="event_1">
                     </div>
                     <div class="event-content">
-                        <h3>建筑大赛</h3>
-                        <p>主题：未来城市 | 时间：6月15日-6月30日</p>
-                        <p>展示你的建筑才华，赢取稀有材料和称号！</p>
+                        <div class="event-header">
+                            <h3>快来领取进服奖励</h3>
+                            <span class="event-status status-ongoing">进行中</span>
+                        </div>
+                        <p>亲爱的新玩家们，欢迎来到悠哉世界！我们为各位新玩家准备了丰厚的进服奖励，快来领取吧！<a href="events/event_1" class="internal-link"
+                                style="text-decoration: none;">▷ 查看详情</a></p>
+
                     </div>
                 </div>
                 <div class="event-item">
-                    <div class="event-date">
-                        <span class="event-day">22</span>
-                        <span class="event-month">六月</span>
+                    <div class="event-image">
+                        <img src="resources/images/event/event_2.webp" loading="lazy" alt="event_2">
                     </div>
                     <div class="event-content">
-                        <h3>BOSS挑战赛</h3>
-                        <p>时间：6月22日 20:00</p>
-                        <p>组队挑战强大的自定义BOSS，赢取专属装备！</p>
-                    </div>
-                </div>
-                <div class="event-item">
-                    <div class="event-date">
-                        <span class="event-day">30</span>
-                        <span class="event-month">六月</span>
-                    </div>
-                    <div class="event-content">
-                        <h3>寻宝活动</h3>
-                        <p>时间：6月30日 全天</p>
-                        <p>在服务器各处寻找隐藏的宝箱，内含丰富奖励！</p>
-                    </div>
-                </div>
-                <div class="event-item">
-                    <div class="event-date">
-                        <span class="event-day">05</span>
-                        <span class="event-month">七月</span>
-                    </div>
-                    <div class="event-content">
-                        <h3>新版本发布会</h3>
-                        <p>时间：7月5日 19:00</p>
-                        <p>了解即将到来的服务器大更新内容！</p>
+                        <div class="event-header">
+                            <h3>砸罐子</h3>
+                            <span class="event-status status-upcoming">即将开始</span>
+                        </div>
+                        <p>砸罐子获得奖励，打败 Boss。</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>-->
+    </section>
+
+    <!-- 优势 -->
+    <section id="strength" class="strength">
+        <div class="container">
+            <h2>我们的优势</h2>
+            <div class="strength-grid">
+                <div class="strength-card">
+                    <img src="resources/images/strength_1.webp" alt="真的纯公益" loading="lazy">
+                    <h3>公益</h3>
+                    <p>没有VIP特权<br>唯一的收入只有赞助</p>
+                </div>
+                <div class="strength-card">
+                    <img src="resources/images/strength_2.webp" alt="飞起来" loading="lazy">
+                    <h3>快速</h3>
+                    <p>R9 9900x 服务器<br>让你的游戏体验飞起来</p>
+                </div>
+                <div class="strength-card">
+                    <img src="resources/images/strength_3.webp" alt="没有神权行为" loading="lazy">
+                    <h3>友善</h3>
+                    <p>友善的玩家和管理<br>没有神权行为</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- 加入服务器区域 -->
     <section id="join" class="join">
@@ -260,7 +227,7 @@
                         <span class="info-value">Minecraft BDS 1.21.111</span>
                     </div>
                     <div class="server-info-item">
-                        <span class="info-label">最佳客户端版本</span>
+                        <span class="info-label">需用客户端版本</span>
                         <span class="info-value">Minecraft BDE 1.21.114</span>
                     </div>
                     <div class="download-section">
@@ -272,8 +239,8 @@
                             <div class="external-link"></div>
                         </a>
                         <br>
-                        <a href="https://bbk.endyun.ltd/s/1-21-111-1v8" class="external-link"
-                            target="_blank">下载最低兼容版本</a>
+                        <a href="https://bbk.endyun.ltd/s/1-21-114-1v7" class="external-link" target="_blank">下载 32
+                            位兼容版本</a>
                     </div>
                     <hr class="b-border">
                     <h3>服务器状态</h3>
@@ -305,12 +272,12 @@
                     <hr class="b-border">
                     <h3>教程中心</h3>
                     <div class="download-section">
-                        <p>还没有但是不会注册账号？此处的教程可以帮助您！</p>
-                        <a href="#" class="btn-primary qq-group-btn">
-                            <i class="fa fa-qq" aria-hidden="true">如何注册 Xbox 账号</i>
+                        <p>对加入服务器有疑问？此处的教程可以帮助您！</p>
+                        <a href="tutorials/quick_play_guide" class="btn-primary qq-group-btn">
+                            <i class="fa fa-qq" aria-hidden="true">查看快速游玩指南</i>
                         </a>
                         <br><br>
-                        <p>更多教程请前往<a href="#" class="internal-link">教程中心</a></p>
+                        <p>更多教程请前往<a href="tutorial" class="internal-link">教程中心</a></p>
                     </div>
                 </div>
             </div>
@@ -330,12 +297,12 @@
                 <div class="footer-section">
                     <h3>快速链接</h3>
                     <ul>
-                        <li><a href="#home" class="internal-link">首页</a></li>
+                        <li><a href="/" class="internal-link">首页</a></li>
                         <li><a href="#trend" class="internal-link">服务器动态</a></li>
                         <li><a href="#events" class="internal-link">活动列表</a></li>
                         <li><a href="#features" class="internal-link">玩法一览</a></li>
                         <li><a href="#join" class="internal-link">加入服务器与服务器 QQ 群</a></li>
-                        <li><a href="#" class="internal-link">教程中心</a></li>
+                        <li><a href="tutorial" class="internal-link">教程中心</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
