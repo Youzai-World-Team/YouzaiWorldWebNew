@@ -421,7 +421,7 @@ body {
     border-radius: 20px;
     padding: 40px 30px 30px;
     text-align: center;
-    box-shadow: 
+    box-shadow:
         0 10px 30px rgba(52, 94, 84, 0.08),
         0 4px 12px rgba(52, 94, 84, 0.05),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
@@ -508,33 +508,34 @@ body {
     .strength {
         padding: 80px 0;
     }
-    
+
     .strength h2 {
         font-size: 2.2rem;
         margin-bottom: 40px;
     }
-    
+
     .strength-grid {
         grid-template-columns: 1fr;
         gap: 30px;
         padding: 0 15px;
     }
-    
+
     .strength-card {
         padding: 30px 20px 25px;
         margin: 0 10px;
     }
-    
+
     .strength-image-container {
         max-width: 240px;
-        height: 94px; /* 240*(268/690)≈93.5 */
+        height: 94px;
+        /* 240*(268/690)≈93.5 */
         margin-bottom: 20px;
     }
-    
+
     .strength-card h3 {
         font-size: 1.4rem;
     }
-    
+
     .strength-card p {
         font-size: 1rem;
     }
@@ -1510,7 +1511,7 @@ body {
         overflow-x: auto;
         white-space: nowrap;
     }
-    
+
     .tutorial-section th,
     .tutorial-section td {
         padding: 10px 8px;
@@ -1526,44 +1527,58 @@ body {
     align-items: center;
     justify-content: center;
     min-width: 100px;
-    overflow: hidden; /* 确保图片不会超出容器 */
+    overflow: hidden;
+    /* 确保图片不会超出容器 */
 }
 
 .event-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* 让图片完全覆盖容器，保持比例 */
-    min-height: 100px; /* 确保最小高度与日期区域相同 */
+    object-fit: cover;
+    /* 让图片完全覆盖容器，保持比例 */
+    min-height: 100px;
+    /* 确保最小高度与日期区域相同 */
 }
 
 /* 确保事件项有固定高度，以便图片可以完全填充 */
 .event-item {
-    height: 120px; /* 设置固定高度，可根据需要调整 */
+    height: 120px;
+    /* 设置固定高度，可根据需要调整 */
 }
 
 /* 移动端适配 */
 @media (max-width: 768px) {
     .event-item {
-        flex-direction: column; /* 改为垂直布局 */
-        height: auto; /* 恢复自动高度 */
-        text-align: center; /* 文字居中 */
+        flex-direction: column;
+        /* 改为垂直布局 */
+        height: auto;
+        /* 恢复自动高度 */
+        text-align: center;
+        /* 文字居中 */
     }
-    
+
     .event-image {
-        width: 100%; /* 图片区域宽度100% */
-        min-width: auto; /* 重置最小宽度 */
-        min-height: 150px; /* 设置最小高度，确保图片区域有足够空间 */
+        width: 100%;
+        /* 图片区域宽度100% */
+        min-width: auto;
+        /* 重置最小宽度 */
+        min-height: 150px;
+        /* 设置最小高度，确保图片区域有足够空间 */
     }
-    
+
     .event-image img {
         width: 100%;
-        height: 150px; /* 固定图片高度 */
-        min-height: auto; /* 重置最小高度 */
+        height: 150px;
+        /* 固定图片高度 */
+        min-height: auto;
+        /* 重置最小高度 */
     }
-    
+
     .event-content {
-        width: 100%; /* 内容区域宽度100% */
-        padding: 15px; /* 添加内边距 */
+        width: 100%;
+        /* 内容区域宽度100% */
+        padding: 15px;
+        /* 添加内边距 */
     }
 }
 
@@ -1614,7 +1629,7 @@ body {
         align-items: flex-start;
         gap: 8px;
     }
-    
+
     .event-status {
         margin-left: 0;
         align-self: flex-start;
@@ -1622,148 +1637,148 @@ body {
 }
 
 #hero {
-  width: 100%;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
 }
 
 #hero .hero-bg-swiper {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 }
 
 #hero .hero-bg {
-  width: 100%;
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  position: relative;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
 
 #hero .hero-bg::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 #hero .hero-content-swiper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
 #hero .hero-content {
-  position: relative;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  gap: 60px;
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 60px;
 }
 
 #hero .album-cover {
-  width: 400px;
-  height: 400px;
+    width: 400px;
+    height: 400px;
 }
 
 #hero .album-cover img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 #hero .album-info {
-  color: #fff;
-  max-width: 500px;
-  user-select: none;
+    color: #fff;
+    max-width: 500px;
+    user-select: none;
 }
 
 #hero .album-info h2 {
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #fff;
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
 }
 
 #hero .album-info p {
-  font-size: 18px;
-  line-height: 1.6;
-  margin: 0;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0;
 }
 
 #hero .btn-detail {
-  display: inline-block;
-  padding: 12px 30px;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 0;
-  margin-top: 20px;
-  font-size: 16px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  border: 3px solid #fff;
+    display: inline-block;
+    padding: 12px 30px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 0;
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 3px solid #fff;
 }
 
 #hero .btn-detail:hover {
-  background: #ffffff;
-  color: #000000;
+    background: #ffffff;
+    color: #000000;
 }
 
 #hero .swiper-button-next,
 #hero .swiper-button-prev {
-  color: #fff;
+    color: #fff;
 }
 
 #hero .swiper-pagination-bullet {
-  background: #fff;
-  opacity: 0.5;
-  width: 20px;
-  height: 4px;
-  border-radius: 0px;
-  margin: 0 3px;
-  transition: 0.5s ease-in-out;
+    background: #fff;
+    opacity: 0.5;
+    width: 20px;
+    height: 4px;
+    border-radius: 0px;
+    margin: 0 3px;
+    transition: 0.5s ease-in-out;
 }
 
 #hero .swiper-pagination-bullet-active {
-  opacity: 1;
-  width: 30px;
-  height: 4px;
-  border-radius: 0px;
+    opacity: 1;
+    width: 30px;
+    height: 4px;
+    border-radius: 0px;
 }
 
 @media (max-width: 991px) {
-  #hero .hero-content {
-    flex-direction: column;
-    text-align: center;
-    padding: 0 15px;
-    gap: 40px;
-  }
+    #hero .hero-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 0 15px;
+        gap: 40px;
+    }
 
-  #hero .album-cover {
-    width: 300px;
-    height: 300px;
-  }
+    #hero .album-cover {
+        width: 300px;
+        height: 300px;
+    }
 
-  #hero .album-info h2 {
-    font-size: 36px;
-  }
+    #hero .album-info h2 {
+        font-size: 36px;
+    }
 
-  #hero .album-info p {
-    font-size: 16px;
-  }
+    #hero .album-info p {
+        font-size: 16px;
+    }
 }
 
 
@@ -1813,8 +1828,10 @@ body {
     text-align: center;
     transition: 300ms opacity;
     transform: translate3d(0, 0, 0);
-    z-index: 1000; /* 提高 z-index */
-    bottom: 30px !important; /* 调整位置 */
+    z-index: 1000;
+    /* 提高 z-index */
+    bottom: 30px !important;
+    /* 调整位置 */
     left: 0;
     width: 100%;
     display: block !important;
@@ -1847,7 +1864,8 @@ body {
 
 #hero {
     position: relative;
-    height: 100vh; /* 或者 500px，根据你的需求调整 */
+    height: 100vh;
+    /* 或者 500px，根据你的需求调整 */
     overflow: hidden;
     margin-bottom: 60px;
 }
@@ -1880,7 +1898,7 @@ body {
 
 /* 移除文字背景，改为透明 */
 .album-info {
-    background: transparent; 
+    background: transparent;
     padding: 30px;
     max-width: 600px;
     text-align: center;
@@ -1924,40 +1942,221 @@ body {
 
 /* 移动端适配 */
 @media (max-width: 768px) {
+
     .swiper-button-next,
     .swiper-button-prev {
         width: 40px;
         height: 40px;
         margin-top: -20px;
     }
-    
+
     .swiper-button-next:after,
     .swiper-button-prev:after {
         font-size: 18px;
     }
-    
+
     .swiper-button-next {
         right: 10px;
     }
-    
+
     .swiper-button-prev {
         left: 10px;
     }
-    
+
     .album-info {
         padding: 20px 15px;
         margin: 0 15px;
     }
-    
+
     .album-info h2 {
         font-size: 2rem;
     }
-    
+
     .album-info p {
         font-size: 1.1rem;
     }
-    
+
     #hero {
         height: 100vh;
     }
+}
+
+
+
+/* 团队板块样式 */
+.team {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f9fdfb 0%, #e8f7f1 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.team h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.8rem;
+    color: var(--dark-color);
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.team-intro {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-color);
+    max-width: 600px;
+    margin: 0 auto 50px;
+    line-height: 1.6;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-card {
+    background: linear-gradient(145deg, #ffffff, #f8fdfa);
+    border-radius: 15px;
+    padding: 30px 25px;
+    text-align: center;
+    box-shadow:
+        0 10px 30px rgba(52, 94, 84, 0.08),
+        0 4px 12px rgba(52, 94, 84, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(168, 230, 207, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 4px solid var(--primary-color);
+    box-shadow: 0 8px 20px rgba(52, 94, 84, 0.15);
+    transition: all 0.4s ease;
+}
+
+.team-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.team-info h3 {
+    margin-bottom: 8px;
+    color: var(--dark-color);
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+.team-role {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.team-info p {
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* 移动端响应式设计 */
+@media (max-width: 768px) {
+    .team {
+        padding: 80px 0;
+    }
+
+    .team h2 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+    }
+
+    .team-intro {
+        font-size: 1.1rem;
+        margin-bottom: 40px;
+        padding: 0 15px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding: 0 15px;
+    }
+
+    .team-card {
+        padding: 25px 20px;
+        margin: 0 10px;
+    }
+
+    .team-avatar {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 18px;
+    }
+
+    .team-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .team-info p {
+        font-size: 0.95rem;
+    }
+}
+
+.bioqt {
+	width: 1.2rem;
+	height: auto;
+	margin-top: -1rem;
+	margin-right: 11rem;
+	margin-left: -0.3rem;
+	opacity:0.15;
+}
+
+.bio {
+	margin-left: 0.12rem;
+	margin-top: -0.2rem;
+    font-size: 0.9rem;
+	font-weight: 800;
+    line-height: 1.6;
+    color: #00000065;
+    margin-bottom: 0;
+}
+
+.sclinkarea {
+	margin-top: 0.8rem;
+	font-size: 0;
+	margin-left: 0.35rem;
+}
+
+.sclink {
+	width: 1.2rem;
+	opacity: 0.7;
+	transition: 0.2s;
+	margin-left: 0.4rem;
+	margin-right: 0.4rem;
+}
+
+.sclink:hover {
+	opacity: 0.2;
+	transition: 0.2s;
+	cursor: pointer;
 }
