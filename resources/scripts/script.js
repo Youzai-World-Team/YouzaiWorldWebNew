@@ -28,6 +28,44 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    const showMoreBtn = document.querySelector('.show-more-btn');
+    const trendList = document.querySelector('.trend-list');
+    const trendItems = document.querySelectorAll('.trend-item');
+
+    if (showMoreBtn && trendItems.length > 3) {
+        // 初始隐藏第4条及以后的动态
+        for (let i = 3; i < trendItems.length; i++) {
+            trendItems[i].style.display = 'none';
+        }
+
+        showMoreBtn.addEventListener('click', function () {
+            const isExpanded = this.classList.contains('expanded');
+
+            if (isExpanded) {
+                // 收起，只显示前3条
+                for (let i = 3; i < trendItems.length; i++) {
+                    trendItems[i].style.display = 'none';
+                }
+                trendList.classList.remove('expanded');
+                this.textContent = '查看更多动态';
+                this.classList.remove('expanded');
+            } else {
+                // 展开，显示所有
+                for (let i = 3; i < trendItems.length; i++) {
+                    trendItems[i].style.display = 'flex';
+                    // 添加淡入动画
+                    trendItems[i].style.animation = 'fadeIn 0.5s ease forwards';
+                }
+                trendList.classList.add('expanded');
+                this.textContent = '收起动态';
+                this.classList.add('expanded');
+            }
+        });
+    } else if (trendItems.length <= 3) {
+        // 如果动态少于等于3条，隐藏查看更多按钮
+        showMoreBtn.style.display = 'none';
+    }
+
     // 点击菜单项后关闭菜单
     document.querySelectorAll('.nav-link:not(.dropdown-toggle), .dropdown-link').forEach(link => {
         link.addEventListener('click', function () {
@@ -319,3 +357,19 @@ function updateNavbarState() {
         navbar.style.padding = '20px 0';
     }
 }
+
+// 添加淡入动画
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(style);
