@@ -2286,14 +2286,9 @@ body {
     border-radius: 10px;
     margin-bottom: 15px;
     padding: 15px 20px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     border-left: 4px solid var(--accent-color);
-}
-
-.trend-item:hover {
-    transform: translateX(5px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .trend-icon {
@@ -2390,5 +2385,23 @@ body {
     .show-more-btn {
         padding: 8px 20px;
         font-size: 0.95rem;
+    }
+}
+
+
+/* Cloudflare图片样式 */
+.footer-section .nav-logo + br + p + br + br + img[src*="cloudflare"] {
+    width: 120px;
+    height: auto;
+    margin-top: 15px;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .footer-section .nav-logo + br + p + br + br + img[src*="cloudflare"] {
+        width: 100px;
+        margin-top: 12px;
     }
 }
