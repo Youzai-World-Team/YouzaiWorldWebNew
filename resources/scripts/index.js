@@ -148,7 +148,8 @@ function initHeroSlider() {
             'resources/images/background_7.webp',
             'resources/images/background_8.webp',
             'resources/images/background_9.webp',
-            'resources/images/background_10.webp'
+            'resources/images/background_10.webp',
+            'resources/images/background_11.webp'
         ];
 
         let loadedImages = 0;
