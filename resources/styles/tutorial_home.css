@@ -16,7 +16,7 @@
     margin: 0 auto;
 }
 
-/* 搜索区域样式 */
+/* 搜索和筛选区域样式 */
 .search-section {
     max-width: 600px;
     margin: 0 auto 40px;
@@ -54,6 +54,34 @@
     pointer-events: none;
 }
 
+/* 分类筛选器样式 */
+.category-filter-container {
+    margin-bottom: 15px;
+}
+
+.category-filter {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid var(--accent-color);
+    border-radius: 50px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: var(--light-text);
+    color: var(--text-color);
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23345e54' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+}
+
+.category-filter:focus {
+    border-color: var(--dark-color);
+    box-shadow: 0 0 0 3px rgba(107, 179, 155, 0.2);
+}
+
 .search-results-info {
     color: var(--text-color);
     font-size: 0.9rem;
@@ -75,16 +103,18 @@
     display: flex;
     flex-direction: column;
     cursor: pointer;
+    position: relative;
 }
 
 .tutorial-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .tutorial-image {
     height: 160px;
     overflow: hidden;
+    position: relative;
 }
 
 .tutorial-image img {
@@ -94,8 +124,20 @@
     transition: transform 0.5s ease;
 }
 
-.tutorial-item:hover .tutorial-image img {
-    transform: scale(1.05);
+/* 置顶标记样式 */
+.sticky-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+    letter-spacing: 1px;
 }
 
 .tutorial-content {
@@ -126,12 +168,20 @@
     color: #666;
 }
 
+/* 多分类标签样式 */
+.tutorial-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
 .tutorial-category {
     background-color: var(--primary-color);
     color: var(--dark-color);
     padding: 3px 8px;
     border-radius: 4px;
     font-size: 0.8rem;
+    white-space: nowrap;
 }
 
 /* 空状态样式 */
@@ -172,5 +222,44 @@
         left: 15px;
         width: 18px;
         height: 18px;
+    }
+    
+    .category-filter {
+        padding: 12px 15px;
+        background-position: right 12px center;
+    }
+    
+    .sticky-badge {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+    
+    .tutorial-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .tutorial-categories {
+        width: 100%;
+    }
+}
+
+/* 桌面端布局优化 */
+@media (min-width: 769px) {
+    .filter-container {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+    }
+    
+    .search-container {
+        flex: 2;
+        margin-bottom: 0;
+    }
+    
+    .category-filter-container {
+        flex: 1;
+        margin-bottom: 0;
     }
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="resources/styles/tutorial_home.css">
     <link rel="icon" href="resources/images/logocircle.webp">
 </head>
+
 <body>
     <div class="loader">
         <div class="loader-container">
@@ -32,7 +34,7 @@
                         <li><a href="/#events" class="dropdown-link">活动列表</a></li>
                         <li><a href="/#features" class="dropdown-link">玩法特性一览</a></li>
                         <li><a href="status" class="dropdown-link">服务器状态监控</a></li>
-                        <li><a href="banlist" class="dropdown-link">封神榜</a></li>
+                        <li><a href="banlist" class="dropdown-link">玩家处罚记录</a></li>
                     </ul>
                 </div>
                 <div class="nav-item dropdown">
@@ -73,18 +75,27 @@
             <div class="tutorial-intro">
                 <p>在这里找到所有服务器相关教程，帮助您更好地游玩悠哉世界</p>
             </div>
-            
+
             <!-- 搜索区域 -->
             <div class="search-section">
-                <div class="search-container">
-                    <input type="text" id="tutorialSearch" placeholder="搜索教程标题..." class="search-input">
-                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="#345e54"/>
-                    </svg>
+                <div class="filter-container">
+                    <div class="search-container">
+                        <input type="text" id="tutorialSearch" placeholder="搜索教程标题..." class="search-input">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"
+                                fill="#345e54" />
+                        </svg>
+                    </div>
+                    <div class="category-filter-container">
+                        <select id="categoryFilter" class="category-filter">
+                            <!-- 选项将通过JavaScript动态生成 -->
+                        </select>
+                    </div>
                 </div>
                 <p class="search-results-info">找到 <span id="resultCount">0</span> 个教程</p>
             </div>
-            
+
             <!-- 教程列表 -->
             <div class="tutorial-list" id="tutorialList">
                 <!-- 教程项将通过JavaScript动态生成 -->
@@ -103,7 +114,8 @@
                     <p>一个充满创意与冒险的Minecraft服务器，致力于为玩家提供最佳的游戏体验。</p>
                     <br><br>
                     <img src="resources/images/cloudflare.svg" alt="Cloudflare">
-                    <p>本站由 <a class="external-link" href="https://cloudflare.com" target="_blank">Cloudflare</a> 提供安全防护</p>
+                    <p>本站由 <a class="external-link" href="https://cloudflare.com" target="_blank">Cloudflare</a> 提供安全防护
+                    </p>
                 </div>
                 <div class="footer-section">
                     <h3>快速链接</h3>
@@ -115,7 +127,7 @@
                         <li><a href="/#join" class="internal-link">加入服务器与服务器 QQ 群</a></li>
                         <li><a href="tutorial" class="internal-link">教程中心</a></li>
                         <li><a href="status" class="internal-link">服务器状态监控</a></li>
-                        <li><a href="banlist" class="internal-link">封神榜</a></li>
+                        <li><a href="banlist" class="internal-link">玩家处罚记录</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -156,4 +168,5 @@
     <script src="resources/scripts/script.js"></script>
     <script src="resources/scripts/tutorial_home.js"></script>
 </body>
+
 </html>
