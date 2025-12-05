@@ -10,12 +10,25 @@ class ServerStatusMonitor {
     }
 
     init() {
-        this.loadStatus();
+    this.loadStatus();
+    
+    // 全局刷新按钮
+    if (this.refreshBtn) {
         this.refreshBtn.addEventListener('click', () => this.loadStatus());
-
-        // 每5分钟自动刷新
-        setInterval(() => this.loadStatus(), 2 * 60 * 1000);
     }
+    
+    // 每5分钟自动刷新
+    setInterval(() => this.loadStatus(), 2 * 60 * 1000);
+    
+    // 使用事件委托处理卡片上的刷新按钮
+    if (this.nodeContainer) {
+        this.nodeContainer.addEventListener('click', (e) => {
+            if (e.target.closest('.node-refresh-btn') && !e.target.closest('.node-refresh-btn').disabled) {
+                this.loadStatus();
+            }
+        });
+    }
+}
 
     async loadStatus() {
         // 显示加载状态
@@ -50,32 +63,37 @@ class ServerStatusMonitor {
     }
 
     showLoading() {
-        this.nodeContainer.innerHTML = this.nodes.map(node => `
-            <div class="status-node-card loading">
-                <div class="status-node-header">
-                    <h3 class="status-node-title">Youzai World Sever</h3>
-                    <div class="status-node-status status-loading">
-                        <span class="status-indicator loading"></span>
-                        获取中...
+    this.nodeContainer.innerHTML = this.nodes.map(node => `
+        <div class="status-node-card loading">
+            <div class="status-node-header">
+                <h3 class="status-node-title">
+                    Youzai World Sever
+                    <button class="node-refresh-btn" title="刷新状态" id="cardRefreshBtn" disabled>
+                        <img src="resources/images/refresh.svg" alt="刷新">
+                    </button>
+                </h3>
+                <div class="status-node-status status-loading">
+                    <span class="status-indicator loading"></span>
+                    获取中...
+                </div>
+            </div>
+            <div class="status-info-grid">
+                <div class="status-info-section">
+                    <div class="status-info-title">系统信息</div>
+                    <div class="status-info-items">
+                        ${this.createLoadingItems(2)}
                     </div>
                 </div>
-                <div class="status-info-grid">
-                    <div class="status-info-section">
-                        <div class="status-info-title">系统信息</div>
-                        <div class="status-info-items">
-                            ${this.createLoadingItems(2)}
-                        </div>
-                    </div>
-                    <div class="status-info-section">
-                        <div class="status-info-title">系统资源</div>
-                        <div class="status-info-items">
-                            ${this.createLoadingItems(2)}
-                        </div>
+                <div class="status-info-section">
+                    <div class="status-info-title">系统资源</div>
+                    <div class="status-info-items">
+                        ${this.createLoadingItems(2)}
                     </div>
                 </div>
             </div>
-        `).join('');
-    }
+        </div>
+    `).join('');
+}
 
     createLoadingItems(count) {
         return Array(count).fill(0).map(() => `
@@ -102,103 +120,113 @@ class ServerStatusMonitor {
     }
 
     createNodeCard(node) {
-        const cpuUsage = (node.system.cpuUsage * 100).toFixed(1);
-        const memUsage = (node.system.memUsage * 100).toFixed(1);
-        const loadAvg = this.formatLoadAvg(node.system.loadavg);
-        return `
-            <div class="status-node-card">
-                <div class="status-node-header">
-                    <h3 class="status-node-title">Youzai World Sever</h3>
-                    <div class="status-node-status status-online">
-                        <span class="status-indicator online"></span>
-                        在线
-                    </div>
+    const cpuUsage = (node.system.cpuUsage * 100).toFixed(1);
+    const memUsage = (node.system.memUsage * 100).toFixed(1);
+    const loadAvg = this.formatLoadAvg(node.system.loadavg);
+    return `
+        <div class="status-node-card">
+            <div class="status-node-header">
+                <h3 class="status-node-title">
+                    Youzai World Sever
+                    <button class="node-refresh-btn" title="刷新状态" id="cardRefreshBtn">
+                        <img src="resources/images/refresh.svg" alt="刷新">
+                    </button>
+                </h3>
+                <div class="status-node-status status-online">
+                    <span class="status-indicator online"></span>
+                    在线
                 </div>
-                <div class="status-info-grid">
-                    <div class="status-info-section">
-                        <div class="status-info-title">系统信息</div>
-                        <div class="status-info-items">
-                            <div class="status-info-item">
-                                <span class="status-info-label">系统类型</span>
-                                <span class="status-info-value">${node.system.type}</span>
-                            </div>
-                            <div class="status-info-item">
-                                <span class="status-info-label">更新时间</span>
-                                <span class="status-info-value">${this.formatTime(node.timestamp)}</span>
-                            </div>
+            </div>
+            <div class="status-info-grid">
+                <div class="status-info-section">
+                    <div class="status-info-title">系统信息</div>
+                    <div class="status-info-items">
+                        <div class="status-info-item">
+                            <span class="status-info-label">系统类型</span>
+                            <span class="status-info-value">${node.system.type}</span>
+                        </div>
+                        <div class="status-info-item">
+                            <span class="status-info-label">更新时间</span>
+                            <span class="status-info-value">${this.formatTime(node.timestamp)}</span>
                         </div>
                     </div>
-                    <div class="status-info-section">
-                        <div class="status-info-title">系统资源</div>
-                        <div class="status-info-items">
-                            <div class="status-info-item">
-                                <span class="status-info-label">CPU 使用率</span>
-                                <span class="status-info-value">${cpuUsage}%</span>
-                                <div class="status-progress-container">
-                                    <div class="status-progress-bar" style="width: ${cpuUsage}%"></div>
-                                </div>
+                </div>
+                <div class="status-info-section">
+                    <div class="status-info-title">系统资源</div>
+                    <div class="status-info-items">
+                        <div class="status-info-item">
+                            <span class="status-info-label">CPU 使用率</span>
+                            <span class="status-info-value">${cpuUsage}%</span>
+                            <div class="status-progress-container">
+                                <div class="status-progress-bar" style="width: ${cpuUsage}%"></div>
                             </div>
-                            <div class="status-info-item">
-                                <span class="status-info-label">内存使用率</span>
-                                <span class="status-info-value">${memUsage}%</span>
-                                <div class="status-progress-container">
-                                    <div class="status-progress-bar" style="width: ${memUsage}%"></div>
-                                </div>
+                        </div>
+                        <div class="status-info-item">
+                            <span class="status-info-label">内存使用率</span>
+                            <span class="status-info-value">${memUsage}%</span>
+                            <div class="status-progress-container">
+                                <div class="status-progress-bar" style="width: ${memUsage}%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        `;
-    }
+        </div>
+    `;
+}
 
-    createOfflineNode(nodeName) {
-        return `
-            <div class="status-node-card">
-                <div class="status-node-header">
-                    <h3 class="status-node-title">Youzai World Sever</h3>
-                    <div class="status-node-status status-offline">
-                        <span class="status-indicator offline"></span>
-                        离线
-                    </div>
+createOfflineNode(nodeName) {
+    return `
+        <div class="status-node-card">
+            <div class="status-node-header">
+                <h3 class="status-node-title">
+                    Youzai World Sever
+                    <button class="node-refresh-btn" title="刷新状态" id="cardRefreshBtn">
+                        <img src="resources/images/refresh.svg" alt="刷新">
+                    </button>
+                </h3>
+                <div class="status-node-status status-offline">
+                    <span class="status-indicator offline"></span>
+                    离线
                 </div>
-                <div class="status-info-grid">
-                    <div class="status-info-section">
-                        <div class="status-info-title">系统信息</div>
-                        <div class="status-info-items">
-                            <div class="status-info-item">
-                                <span class="status-info-label">系统类型</span>
-                                <span class="status-info-value">-</span>
-                            </div>
-                            <div class="status-info-item">
-                                <span class="status-info-label">更新时间</span>
-                                <span class="status-info-value">-</span>
-                            </div>
+            </div>
+            <div class="status-info-grid">
+                <div class="status-info-section">
+                    <div class="status-info-title">系统信息</div>
+                    <div class="status-info-items">
+                        <div class="status-info-item">
+                            <span class="status-info-label">系统类型</span>
+                            <span class="status-info-value">-</span>
+                        </div>
+                        <div class="status-info-item">
+                            <span class="status-info-label">更新时间</span>
+                            <span class="status-info-value">-</span>
                         </div>
                     </div>
-                    <div class="status-info-section">
-                        <div class="status-info-title">系统资源</div>
-                        <div class="status-info-items">
-                            <div class="status-info-item">
-                                <span class="status-info-label">CPU 使用率</span>
-                                <span class="status-info-value">-</span>
-                                <div class="status-progress-container">
-                                    <div class="status-progress-bar" style="width: 0%"></div>
-                                </div>
+                </div>
+                <div class="status-info-section">
+                    <div class="status-info-title">系统资源</div>
+                    <div class="status-info-items">
+                        <div class="status-info-item">
+                            <span class="status-info-label">CPU 使用率</span>
+                            <span class="status-info-value">-</span>
+                            <div class="status-progress-container">
+                                <div class="status-progress-bar" style="width: 0%"></div>
                             </div>
-                            <div class="status-info-item">
-                                <span class="status-info-label">内存使用率</span>
-                                <span class="status-info-value">-</span>
-                                <div class="status-progress-container">
-                                    <div class="status-progress-bar" style="width: 0%"></div>
-                                </div>
+                        </div>
+                        <div class="status-info-item">
+                            <span class="status-info-label">内存使用率</span>
+                            <span class="status-info-value">-</span>
+                            <div class="status-progress-container">
+                                <div class="status-progress-bar" style="width: 0%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        `;
-    }
+        </div>
+    `;
+}
 
     showError(message) {
         this.nodeContainer.innerHTML = `
