@@ -1,7 +1,7 @@
 /* ==================== 教程区域主样式 ==================== */
 .tutorials {
     padding: 80px 0;
-    background-color: #f9fdfb;
+    background: var(--background);
 }
 
 /* 教程介绍区域 */

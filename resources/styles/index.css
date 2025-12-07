@@ -1,7 +1,7 @@
 /* 上月玩家之最样式 */
 .ranking {
     padding: 100px 0;
-    background-color: linear-gradient(135deg, #f9fdfb 0%, #e8f7f1 100%);
+    background: var(--background);
     position: relative;
 }
 
