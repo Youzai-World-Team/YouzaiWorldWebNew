@@ -4,11 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>捐赠 - Youzai World</title>
+    <title>403 拒绝访问 - Youzai World</title>
     <link rel="stylesheet" href="resources/styles/style.css">
-    <link rel="stylesheet" href="resources/styles/tutorial_home.css">
     <link rel="icon" href="resources/images/logocircle.webp">
-    <link rel="stylesheet" href="resources/styles/donate.css">
+    <link rel="stylesheet" href="resources/styles/404.css">
 </head>
 
 <body>
@@ -19,7 +18,7 @@
             <p class="loader-image" style="color: var(--dark-color);">正在加载中...</p>
         </div>
     </div>
-
+    
     <!-- 导航栏 -->
     <nav class="navbar">
         <div class="nav-container">
@@ -62,112 +61,46 @@
         </div>
     </nav>
 
-    <!-- 捐赠页面内容 -->
-    <section class="hero-other">
-        <div class="hero-content">
-            <br><br><br><br>
-            <h1>捐赠 Youzai World</h1>
-            <p>Donate Youzai World</p>
-        </div>
-    </section>
-<br><br>
-    <section class="donate-container">
-        <!-- 捐赠信息部分 -->
-        <div class="donate-info-section">
-            <div class="donate-card">
-                <h2>微信捐赠</h2>
-                <p>使用微信扫描下方二维码进行捐赠</p>
-
-                <div class="qr-container">
-                    <div class="qr-code">
-                        <img src="resources/images/donate_qr.webp" alt="微信捐赠二维码">
-                    </div>
-                </div>
-
-                <div class="donate-instructions">
-                    <h3>捐赠说明：</h3>
-                    <ol>
-                        <li>打开微信，点击"扫一扫"</li>
-                        <li>扫描上方二维码</li>
-                        <li>输入捐赠金额并完成支付</li>
-                        <li>支付完成后，请将您的<strong>玩家代号</strong>和<strong>支付完成截图</strong>发给管理员</li>
-                    </ol>
-                </div>
-
-                <div class="donate-note">
-                    <strong>重要提示：</strong> 捐赠后请务必联系管理员登记，以便我们准确记录并更新您的捐赠信息。
-                </div>
+    <!-- 404错误内容区域 -->
+    <main class="error-hero">
+        <div class="error-container">
+            <div class="error-illustration">
+                <img src="resources/images/error.webp" alt="404 Error Illustration">
             </div>
-        </div>
-
-        <!-- 捐赠统计数据 -->
-        <div class="donate-info-section">
-            <div class="donate-stat-item">
-                <div class="donate-stat-value" id="total-donators">-</div>
-                <div class="donate-stat-label">总捐赠人数</div>
-            </div>
-            <div class="donate-stat-item">
-                <div class="donate-stat-value" id="total-amount">¥-</div>
-                <div class="donate-stat-label">捐赠总额</div>
-            </div>
-            <div class="donate-stat-item">
-                <div class="donate-stat-value" id="avg-donation">¥-</div>
-                <div class="donate-stat-label">平均捐赠额</div>
-            </div>
-        </div>
-
-        <!-- 捐赠者列表部分 -->
-        <div class="donators-section">
-            <div class="section-header">
-                <h2>感谢这些支持者</h2>
-                <p>感谢所有捐赠者的支持，是你们让悠哉世界变得更好！</p>
-            </div>
-
-            <!-- 搜索和筛选区域 -->
-            <div class="donate-filter-section">
-                <div class="donate-search-container">
-                    <input type="text" class="donate-search-input" id="donator-search" placeholder="搜索捐赠者名称或留言...">
-                    <svg class="donate-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            
+            <h1 class="error-code">403</h1>
+            <h2 class="error-title">拒绝访问</h2>
+            <p class="error-description">
+                哎呀！看起来您没有权限访问此页面。<br>
+                如果您认为这是错误，请联系网站管理员。
+            </p>
+            
+            <div class="error-actions">
+                <a href="/" class="error-link error-link-primary">
+                    <svg class="error-link-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M9.707 14.707a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 1.414L7.414 9H15a1 1 0 110 2H7.414l2.293 2.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
                     </svg>
-                </div>
-
-                <select class="donate-filter-select" id="amount-filter">
-                    <option value="all">全部捐赠金额</option>
-                    <option value="0-50">10-50元</option>
-                    <option value="51-100">51-100元</option>
-                    <option value="101-250">101-250元</option>
-                    <option value="251-500">251-500元</option>
-                    <option value="501+">501元以上</option>
-                </select>
+                    返回主页
+                </a>
+                <a href="javascript:history.back()" class="error-link error-link-secondary">
+                    <svg class="error-link-icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    返回上一页
+                </a>
             </div>
-
-            <!-- 捐赠者表格 -->
-            <div class="donators-table-container">
-                <table class="donators-table" id="donators-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 25%;">玩家代号</th>
-                            <th style="width: 15%;">捐赠金额</th>
-                            <th style="width: 20%;">捐赠时间</th>
-                            <th style="width: 40%;">留言</th>
-                        </tr>
-                    </thead>
-                    <tbody id="donators-table-body">
-                        <!-- 捐赠者数据将通过JavaScript动态生成 -->
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- 空状态（初始隐藏） -->
-            <div class="donate-empty-state" id="empty-state" style="display: none;">
-                <h3>暂无捐赠记录</h3>
-                <p>当前没有找到符合条件的捐赠记录。</p>
+            
+            <div class="error-suggestions">
+                <h3>您可能想访问：</h3>
+                <ul class="error-suggestions-list">
+                    <li><a href="/">网站首页</a></li>
+                    <li><a href="banlist">玩家处罚记录</a></li>
+                    <li><a href="tutorial">教程中心</a></li>
+                    <li><a href="status">服务器状态监控</a></li>
+                </ul>
             </div>
         </div>
-    </section>
+    </main>
 
     <!-- 页底 -->
     <footer class="footer">
@@ -226,6 +159,15 @@
                                 <p>Minecraft 服务器集体宣传组织</p>
                             </div>
                         </a>
+                        <a href="https://mscpo.top" class="friend-link-card" target="_blank">
+                            <div class="friend-link-icon">
+                                <img src="resources/images/mscpo.webp" alt="mscpo">
+                            </div>
+                            <div class="friend-link-content">
+                                <h4>MSCPO</h4>
+                                <p>Minecraft 服务器集体宣传组织</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -244,7 +186,6 @@
     <div class="click-effect"></div>
 
     <script src="resources/scripts/script.js"></script>
-    <script src="resources/scripts/donate.js"></script>
 </body>
 
 </html>
