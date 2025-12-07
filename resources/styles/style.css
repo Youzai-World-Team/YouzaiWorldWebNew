@@ -1103,26 +1103,6 @@ body {
     box-shadow: 0 5px 15px rgba(107, 179, 155, 0.3);
 }
 
-.show-more-btn::after {
-    content: '↓';
-    font-size: 1.2rem;
-    transition: transform 0.3s ease;
-}
-
-.show-more-btn.expanded::after {
-    transform: rotate(180deg);
-}
-
-.trend-list .trend-item:nth-child(n+4) {
-    opacity: 0.6;
-    transform: scale(0.98);
-}
-
-.trend-list.expanded .trend-item {
-    opacity: 1;
-    transform: scale(1);
-}
-
 /* 加入我们区域 */
 .join {
     padding: 50px 0;
