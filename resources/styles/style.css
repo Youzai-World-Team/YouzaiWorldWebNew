@@ -93,6 +93,39 @@ body {
     font-size: 1.0rem;
 }
 
+/* 面包屑导航 */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(168, 230, 207, 0.3);
+}
+
+.breadcrumb-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb-link:hover {
+    color: var(--dark-color);
+}
+
+.breadcrumb-separator {
+    margin: 0 10px;
+    color: var(--text-color);
+    opacity: 0.6;
+}
+
+.breadcrumb-current {
+    color: var(--dark-color);
+    font-weight: 600;
+}
+
 /* 下载按钮 */
 .download-btn {
     display: inline-flex;
