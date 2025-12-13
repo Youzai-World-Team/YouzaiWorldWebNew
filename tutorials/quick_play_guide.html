@@ -128,7 +128,7 @@
                     欢迎来到悠哉世界！本指南将帮助您加入服务器。<br>
                     如果您已经拥有过国际版我的世界游玩经历，可以直接点击<strong>目录</strong>的<strong>2
                         进入服务器</strong>章节跳转，本教程适用于第一次接触国际版我的世界的玩家！<br>
-                    本文档最后修改于 2025-11-23 12:58 。
+                    本文档最后修改于 2025-12-13 23:58 。
                 </p>
             </section>
             <section id="section1" class="tutorial-section">
@@ -517,10 +517,10 @@
                     <h4>领地价格计算</h4>
                     <ol>
                         <li>3D领地
-                            <pre><code>volume * random_num_range(5, 10)</code></pre>
+                            <pre><code>volume * random_num_range ( 5 , 10 )</code></pre>
                         </li>
                         <li>2D领地
-                            <pre><code>square * 0.5 * height * random_num_range(5, 10)</code></pre>
+                            <pre><code>square * 0.5 * height * random_num_range ( 5 , 10 )</code></pre>
                         </li>
                     </ol>
                     <table>
@@ -540,7 +540,7 @@
                                 <td>底面积</td>
                             </tr>
                             <tr>
-                                <td><code>random_num_range(5, 10)</code></td>
+                                <td><code>random_num_range ( 5 , 10 )</code></td>
                                 <td>随机数因子</td>
                             </tr>
                         </tbody>
@@ -580,114 +580,349 @@
                     <center style="font-size: 0.8rem;">视频：在一个普通领地创建一个子领地的例子</center>
                     <h4>如何管理领地的权限？</h4>
                     <p>前往<strong>管理领地</strong>，点击要修改的领地的名字，再点击编辑权限即可<br>
-                    <strong>注意：编辑完权限一定要划到页面最底下点击保存按钮，点击右上角的 × 为取消操作！</strong></p>
+                        <strong>注意：编辑完权限一定要划到页面最底下点击保存按钮，点击右上角的 × 为取消操作！</strong>
+                    </p>
                     <h4>如何设置/撤销领地管理员？</h4>
                     <p>前往<strong>管理领地</strong>，点击要修改的领地的名字，再点击修改成员即可添加在线或离线成员（要添加离线玩家，在搜索时必须全字匹配目标玩家玩家代号）<br>
-                    下面的名字则是点击后撤销领地管理员</p>
+                        下面的名字则是点击后撤销领地管理员</p>
                     <h4>如何修改领地的名字/描述？</h4>
                     <p>前往<strong>管理领地</strong>，点击要修改的领地的名字，再点击修改领地名称/描述即可</p>
                     <h4>如何设置领地的默认传送地点？</h4>
                     <p>前往<strong>管理领地</strong>，点击要修改的领地的名字，再点击设置传送点即可（需要您站在想要设置的位置上使用该功能）</p>
                 </section>
-            </section>
-            <section id="section3-3" class="tutorial-section">
-                <h3>3.3 公会系统</h3>
-                <h4>调用指令</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>命令</th>
-                            <th>描述</th>
-                            <th>备注</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>/orgex</code></td>
-                            <td>打开 GUI</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td><code>/orgex gh</code></td>
-                            <td>打开我的公会</td>
-                            <td>如果您未加入任何公会，则会打开全部公会列表</td>
-                        </tr>
-                        <tr>
-                            <td><code>/orgrank</code></td>
-                            <td>打开公会排行榜</td>
-                            <td>权重 公积金:公会规模= 4 : 6</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <img src="../resources/images/tutorial/quick_play_guide/I3-3_1.webp" alt="3.3_1" loading="lazy">
-                <center style="font-size: 0.8rem;">公会系统界面</center>
-                <h4>公会</h4>
-                <p>公会是玩家自发组织起来的团队，成员可以共同建设、战斗和参与活动。在此菜单中，您可以查看公会信息、前往公会总部、管理公会（您必须为公会的管理员或创始人）等。<br>
-                    一个玩家只能加入一个公会！当您加入了一个公会后，您将无法再加入其他公会，也无法创建一个新的公会</p>
-                <h4>搜索加入</h4>
-                <p>进入该菜单后，输入公会名称或公会创始人的玩家代号（必须全字匹配），如果您提供的内容和服务器数据库到的公会有匹配上的，将会显示是否发送加入公会申请（若该公会只允许公会管理员或创始人邀请成员加入，则您无法发送申请）<br>
-                </p>
-                <h4>创建</h4>
-                <p>创建一个公会，你需要支付金币作为创建费用，费用如下表</p>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>类型</th>
-                            <th>价格</th>
-                            <th>规格</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>基础型</td>
-                            <td>100 金币</td>
-                            <td>最多 15 名成员、最多设置 5 个公会传送点和 1 个公会总部</td>
-                        </tr>
-                        <tr>
-                            <td>进阶型</td>
-                            <td>500 金币</td>
-                            <td>最多 30 名成员、最多设置 10 个公会传送点和 1 个公会总部</td>
-                        </tr>
-                        <tr>
-                            <td>专业型</td>
-                            <td>1000 金币</td>
-                            <td>最多 50 名成员、最多设置 25 个公会传送点和 1 个公会总部</td>
-                        </tr>
-                        <tr>
-                            <td>豪华型</td>
-                            <td>5000 金币</td>
-                            <td>最多 100 名成员、最多设置 50 个公会传送点和 1 个公会总部</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p>如后期需要升级或降级公会规格，则需要提前往<strong>公会 > 公积金</strong>里存入金币，然后再在<strong>公会 > 公会管理 > 升降配</strong>中进行操作<br>
-                    升级规格需要扣除公积金，降级规格则会退回公积金</p>
-                <h4>查看所有公会</h4>
-                <p>可以查看服务器内所有公会的信息，包括公会名称、创始人、当前公会成员数量和规格，点击将会显示是否发送加入公会申请（若该公会只允许公会管理员或创始人邀请成员加入，则您无法发送申请）</p>
-                <h4>公积金</h4>
-                <p>公积金是公会的共同资金，公会的成员（需要管理员或创始人提前在<strong>公会 > 公会管理 > 成员权限</strong>中设置）、管理员和创始人可以往公积金里存入或取出金币，公积金可以用于升级公会规格等</p>
-                <h4>前往总部/传送锚点</h4>
-                <p>点击前往总部将会被传送到管理员或创始人设置的公会总部，而点击传送锚点将会打开该公会已经添加的传送锚点列表</p>
-                <br><br>
-                <h4>发送的申请如何被公会的管理员或创始人通过？</h4>
-                <p>该公会的管理员或创始人可以在<strong>公会 > 公会管理 > 新成员</strong>处<strong>允许</strong>或<strong>拒绝</strong>该申请</p>
-                <h4>公会的管理员或创始人该怎么邀请成员加入公会？</h4>
-                <p>该公会的管理员或创始人可以在<strong>公会 > 公会管理 > 新成员</strong>处选择邀请在线玩家或搜索离线玩家玩家代号（必须全字匹配）来发送邀请<br>
-                    被邀请的玩家可以在<strong>公会（查看我已加入的公会）</strong>里查看到邀请弹窗</p>
-                <h4>公会的管理员或创始人该怎么踢出成员或设置/取消管理员？</h4>
-                <p>该公会的管理员或创始人可以在<strong>公会 > 公会管理 > 成员管理</strong>处选择要踢出的成员和选择操作来<strong>踢出成员</strong>或<strong>设置/取消管理员</strong><br>
-                公会的管理员只能由公会的创始人管理！</p>
-            </section>
+                <section id="section3-3" class="tutorial-section">
+                    <h3>3.3 公会系统</h3>
+                    <h4>调用指令</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>命令</th>
+                                <th>描述</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>/orgex</code></td>
+                                <td>打开 GUI</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><code>/orgex gh</code></td>
+                                <td>打开我的公会</td>
+                                <td>如果您未加入任何公会，则会打开全部公会列表</td>
+                            </tr>
+                            <tr>
+                                <td><code>/orgrank</code></td>
+                                <td>打开公会排行榜</td>
+                                <td>权重 公积金:公会规模= 4 : 6</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <img src="../resources/images/tutorial/quick_play_guide/I3-3_1.webp" alt="3.3_1" loading="lazy">
+                    <center style="font-size: 0.8rem;">公会系统界面</center>
+                    <h4>公会</h4>
+                    <p>公会是玩家自发组织起来的团队，成员可以共同建设、战斗和参与活动。在此菜单中，您可以查看公会信息、前往公会总部、管理公会（您必须为公会的管理员或创始人）等。<br>
+                        一个玩家只能加入一个公会！当您加入了一个公会后，您将无法再加入其他公会，也无法创建一个新的公会</p>
+                    <h4>搜索加入</h4>
+                    <p>进入该菜单后，输入公会名称或公会创始人的玩家代号（必须全字匹配），如果您提供的内容和服务器数据库到的公会有匹配上的，将会显示是否发送加入公会申请（若该公会只允许公会管理员或创始人邀请成员加入，则您无法发送申请）<br>
+                    </p>
+                    <h4>创建</h4>
+                    <p>创建一个公会，你需要支付金币作为创建费用，费用如下表</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>类型</th>
+                                <th>价格</th>
+                                <th>规格</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>基础型</td>
+                                <td>100 金币</td>
+                                <td>最多 15 名成员、最多设置 5 个公会传送点和 1 个公会总部</td>
+                            </tr>
+                            <tr>
+                                <td>进阶型</td>
+                                <td>500 金币</td>
+                                <td>最多 30 名成员、最多设置 10 个公会传送点和 1 个公会总部</td>
+                            </tr>
+                            <tr>
+                                <td>专业型</td>
+                                <td>1000 金币</td>
+                                <td>最多 50 名成员、最多设置 25 个公会传送点和 1 个公会总部</td>
+                            </tr>
+                            <tr>
+                                <td>豪华型</td>
+                                <td>5000 金币</td>
+                                <td>最多 100 名成员、最多设置 50 个公会传送点和 1 个公会总部</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>如后期需要升级或降级公会规格，则需要提前往<strong>公会 > 公积金</strong>里存入金币，然后再在<strong>公会 > 公会管理 > 升降配</strong>中进行操作<br>
+                        升级规格需要扣除公积金，降级规格则会退回公积金</p>
+                    <h4>查看所有公会</h4>
+                    <p>可以查看服务器内所有公会的信息，包括公会名称、创始人、当前公会成员数量和规格，点击将会显示是否发送加入公会申请（若该公会只允许公会管理员或创始人邀请成员加入，则您无法发送申请）</p>
+                    <h4>公积金</h4>
+                    <p>公积金是公会的共同资金，公会的成员（需要管理员或创始人提前在<strong>公会 > 公会管理 >
+                            成员权限</strong>中设置）、管理员和创始人可以往公积金里存入或取出金币，公积金可以用于升级公会规格等</p>
+                    <h4>前往总部/传送锚点</h4>
+                    <p>点击前往总部将会被传送到管理员或创始人设置的公会总部，而点击传送锚点将会打开该公会已经添加的传送锚点列表</p>
+                    <br><br>
+                    <h4>发送的申请如何被公会的管理员或创始人通过？</h4>
+                    <p>该公会的管理员或创始人可以在<strong>公会 > 公会管理 > 新成员</strong>处<strong>允许</strong>或<strong>拒绝</strong>该申请</p>
+                    <h4>公会的管理员或创始人该怎么邀请成员加入公会？</h4>
+                    <p>该公会的管理员或创始人可以在<strong>公会 > 公会管理 > 新成员</strong>处选择邀请在线玩家或搜索离线玩家玩家代号（必须全字匹配）来发送邀请<br>
+                        被邀请的玩家可以在<strong>公会（查看我已加入的公会）</strong>里查看到邀请弹窗</p>
+                    <h4>公会的管理员或创始人该怎么踢出成员或设置/取消管理员？</h4>
+                    <p>该公会的管理员或创始人可以在<strong>公会 > 公会管理 >
+                            成员管理</strong>处选择要踢出的成员和选择操作来<strong>踢出成员</strong>或<strong>设置/取消管理员</strong><br>
+                        公会的管理员只能由公会的创始人管理！</p>
+                </section>
+                <section id="section3-4" class="tutorial-section">
+                    <h3>3.4 等级</h3>
+                    <h4>调用指令</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>命令</th>
+                                <th>描述</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>/level</code></td>
+                                <td>打开 GUI</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <img src="../resources/images/tutorial/quick_play_guide/I3-4_1.webp" alt="3.4_1" loading="lazy">
+                    <center style="font-size: 0.8rem;">等级界面</center>
+                    <p>玩家在游戏内的游玩会获得经验，达到一定经验值后可以提升等级<br>
+                        提升到一定等级后，玩家会获得一些奖励或增益效果</p>
+                    <h4>升级</h4>
+                    <p>服务器开启了自动升级功能，玩家无需手动操作即可自动升级，该按钮无效</p>
+                    <h4>我的等级</h4>
+                    <p>在里面可以查看当前等级、经验、升下一级所需的经验值、已拥有的属性点和玩家属性，通过下面的按钮消耗属性点来提升玩家的属性</p>
+                    <h4>排行榜</h4>
+                    <p>可以查看服务器内所有玩家的等级排名</p>
+                    <h4>更多功能</h4>
+                    <p>一些其他的非主要的功能</p>
+                    <br><br>
+                    <h4>等级升级计算公式及奖励</h4>
+                    <p>计算公式为
+                    <pre><code>BEV x ( GR ^ ( CL / SF ) )</code></pre>
+                    </p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>参数名称</th>
+                                <th>意思</th>
+                                <th>数值</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>BEV（Basic Experience Value）</code></td>
+                                <td>基础经验值</td>
+                                <td>100</td>
+                            </tr>
+                            <tr>
+                                <td><code>GR（Growth Rate）</code></td>
+                                <td>增长率</td>
+                                <td>1.2</td>
+                            </tr>
+                            <tr>
+                                <td><code>CL（Current Level）</code></td>
+                                <td>当前等级</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><code>SF（Scaling Factor）</code></td>
+                                <td>缩放因子</td>
+                                <td>8</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>升级 1 ~ 10 所需经验如下表所示，要计算其他等级，请访问<strong>等级升级所需经验计算器</strong> <a href="../tools/ECRFLU"
+                            class="internal-link" style="text-decoration: none;">▷ 前往使用</a></p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>当前等级</th>
+                                <th>升级到下一级所需经验</th>
+                                <th>从第 1 级开始升级所需经验</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>102</td>
+                                <td>102</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>105</td>
+                                <td>207</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>107</td>
+                                <td>314</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>110</td>
+                                <td>424</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>112</td>
+                                <td>536</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>115</td>
+                                <td>641</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>117</td>
+                                <td>758</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>120</td>
+                                <td>878</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>123</td>
+                                <td>1001</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>126</td>
+                                <td>1127</td>
+                            </tr>
+                            <tr>
+                                <td>...</td>
+                                <td>...</td>
+                                <td>...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>升级奖励为</p>
+                    <p><strong>范围奖励（每级都有的奖励）：</strong></p>
+                    <ol>
+                        <li>
+                            1~100级：每级给20金币和2面包</li>
+                        <li>
+                            101~500级：每级给40金币和3面包</li>
+                        <li>
+                            501~1500级：每级给60金币和4面包</li>
+                        <li>
+                            1501~5000级：每级给80金币和5面包</li>
+                        <li>
+                            5001~10000级：每级给100金币和6面包</li>
+                    </ol>
+                    <p><strong>附加奖励（在特定等级给予）：</strong></p>
+                    <ol>
+                        <li>
+                            10级：50金币、2属性点和32煤炭</li>
+                        <li>
+                            35级：100金币、3属性点和2抽奖券</li>
+                        <li>
+                            50级：200金币、4属性点、32铁锭和迅捷增益</li>
+                        <li>
+                            75级：300金币、5属性点和3抽奖券</li>
+                        <li>
+                            100级：400金币、6属性点、32金锭、4抽奖券和急迫增益</li>
+                        <li>
+                            250级：500金币、7属性点和5抽奖券</li>
+                        <li>
+                            500级：600金币、8属性点、32钻石、6抽奖券和跳跃提升增益</li>
+                        <li>
+                            1000级：700金币、9属性点、7抽奖券和抗性提升增益</li>
+                        <li>
+                            1500级：800金币、10属性点、32绿宝石、8抽奖券和夜视增益</li>
+                        <li>
+                            3500级：900金币、11属性点、9抽奖券和生命恢复增益</li>
+                        <li>
+                            5000级：1000金币、12属性点、32下界合金锭、10抽奖券和饱和增益</li>
+                        <li>
+                            10000级：获得服务器的某些特权</li>
+                    </ol>
+                </section>
+                <section id="section3-5" class="tutorial-section">
+                    <h3>3.5 传送系统</h3>
+                    <h4>调用指令</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>命令</th>
+                                <th>描述</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>/tps</code></td>
+                                <td>打开传送系统主菜单</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><code>/home</code></td>
+                                <td>家系统菜单（设置、传送到家）</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><code>/tpa</code></td>
+                                <td>玩家互传系统（发送传送请求）</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><code>/tpy</code></td>
+                                <td>同意传送请求</td>
+                                <td>与玩家互传系统配套使用</td>
+                            </tr>
+                            <tr>
+                                <td><code>/tpn</code></td>
+                                <td>拒绝传送请求</td>
+                                <td>与玩家互传系统配套使用</td>
+                            </tr>
+                            <tr>
+                                <td><code>/tpr</code></td>
+                                <td>随机传送（在不同维度安全随机传送）</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><code>/warp</code></td>
+                                <td>公共传送点菜单</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><code>/tpdeath</code></td>
+                                <td>死亡点传送（返回死亡位置）</td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <img src="../resources/images/tutorial/quick_play_guide/I3-5_1.webp" alt="3.5_1" loading="lazy">
+                    <center style="font-size: 0.8rem;">传送系统界面</center>
+                </section>
+                <!-- 移动端目录按钮 -->
+                <button class="tutorial-nav-toggle" id="tutorialNavToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
 
-            <!-- 移动端目录按钮 -->
-            <button class="tutorial-nav-toggle" id="tutorialNavToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <!-- 移动端遮罩层 -->
-            <div class="overlay" id="tutorialOverlay"></div>
+                <!-- 移动端遮罩层 -->
+                <div class="overlay" id="tutorialOverlay"></div>
     </main>
 
 
@@ -737,6 +972,15 @@
                             <div class="friend-link-content">
                                 <h4>羽梦千景</h4>
                                 <p>这里是千景的小站</p>
+                            </div>
+                        </a>
+                        <a href="https://mscpo.top" class="friend-link-card" target="_blank">
+                            <div class="friend-link-icon">
+                                <img src="../resources/images/mscpo.webp" alt="mscpo">
+                            </div>
+                            <div class="friend-link-content">
+                                <h4>MSCPO</h4>
+                                <p>Minecraft 服务器集体宣传组织</p>
                             </div>
                         </a>
                     </div>
