@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 页面未找到 - Youzai World</title>
-    <link rel="stylesheet" href="resources/styles/style.css">
-    <link rel="icon" href="resources/images/logocircle.webp">
-    <link rel="stylesheet" href="resources/styles/404or403.css">
+    <link rel="stylesheet" href="/resources/styles/style.css">
+    <link rel="icon" href="/resources/images/logocircle.webp">
+    <link rel="stylesheet" href="/resources/styles/404or403.css">
 </head>
 
 <body>
     <div class="loader">
         <div class="loader-container">
-            <img class="loader-image" src="resources/images/loading.webp" alt="Loading...">
+            <img class="loader-image" src="/resources/images/loading.webp" alt="Loading...">
             <hr class="loader-image" style="color: var(--dark-color);background-color: var(--dark-color);height: 2px;">
             <p class="loader-image" style="color: var(--dark-color);">正在加载中...</p>
         </div>
@@ -23,7 +23,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="resources/images/youzaiworld.webp" alt="悠哉世界">
+                <img src="/resources/images/youzaiworld.webp" alt="悠哉世界">
             </div>
             <div class="nav-menu">
                 <a href="/" class="nav-link">主页</a>
@@ -33,8 +33,8 @@
                         <li><a href="/#trend" class="dropdown-link">动态查看</a></li>
                         <li><a href="/#events" class="dropdown-link">活动列表</a></li>
                         <li><a href="/#features" class="dropdown-link">玩法特性一览</a></li>
-                        <li><a href="status" class="dropdown-link">服务器状态监控</a></li>
-                        <li><a href="banlist" class="dropdown-link">玩家处罚记录</a></li>
+                        <li><a href="/status" class="dropdown-link">服务器状态监控</a></li>
+                        <li><a href="/banlist" class="dropdown-link">玩家处罚记录</a></li>
                     </ul>
                 </div>
                 <div class="nav-item dropdown">
@@ -47,9 +47,15 @@
                 <div class="nav-item dropdown">
                     <div class="nav-link dropdown-toggle">教程中心</div>
                     <ul class="dropdown-menu">
-                        <li><a href="tutorial" class="dropdown-link">教程中心主页</a></li>
-                        <li><a href="tutorials/quick_play_guide" class="dropdown-link">快速游玩指南</a></li>
-                        <li><a href="resources/wiki.pdf" class="dropdown-link">旧版教程页面<br>（不推荐）</a></li>
+                        <li><a href="/tutorial" class="dropdown-link">教程中心主页</a></li>
+                        <li><a href="/tutorials/quick_play_guide" class="dropdown-link">快速游玩指南</a></li>
+                        <li><a href="/resources/wiki.pdf" class="dropdown-link">旧版教程页面<br>（不推荐）</a></li>
+                    </ul>
+                </div>
+                <div class="nav-item dropdown">
+                    <div class="nav-link dropdown-toggle">实用工具</div>
+                    <ul class="dropdown-menu">
+                        <li><a href="/tools/ECRFLU" class="dropdown-link">等级经验计算器</a></li>
                     </ul>
                 </div>
             </div>
@@ -65,7 +71,7 @@
     <main class="error-hero">
         <div class="error-container">
             <div class="error-illustration">
-                <img src="resources/images/error.webp" alt="404 Error Illustration">
+                <img src="/resources/images/error.webp" alt="404 Error Illustration">
             </div>
             
             <h1 class="error-code">404</h1>
@@ -94,9 +100,9 @@
                 <h3>您可能想访问：</h3>
                 <ul class="error-suggestions-list">
                     <li><a href="/">网站首页</a></li>
-                    <li><a href="banlist">玩家处罚记录</a></li>
-                    <li><a href="tutorial">教程中心</a></li>
-                    <li><a href="status">服务器状态监控</a></li>
+                    <li><a href="/banlist">玩家处罚记录</a></li>
+                    <li><a href="/tutorial">教程中心</a></li>
+                    <li><a href="/status">服务器状态监控</a></li>
                 </ul>
             </div>
         </div>
@@ -108,11 +114,11 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="nav-logo">
-                        <img src="resources/images/youzaiworldlight.webp" alt="悠哉世界">
+                        <img src="/resources/images/youzaiworldlight.webp" alt="悠哉世界">
                     </div><br>
                     <p>一个充满创意与冒险的 Minecraft 服务器，致力于为玩家提供最佳的游戏体验。</p>
                     <br><br>
-                    <img src="resources/images/cloudflare.svg" alt="Cloudflare">
+                    <img src="/resources/images/cloudflare.svg" alt="Cloudflare">
                     <p>本站由 <a class="external-link" href="https://cloudflare.com" target="_blank">Cloudflare</a> 提供安全防护
                     </p>
                 </div>
@@ -124,9 +130,10 @@
                         <li><a href="/#events" class="internal-link">活动列表</a></li>
                         <li><a href="/#features" class="internal-link">玩法特性一览</a></li>
                         <li><a href="/#join" class="internal-link">加入服务器与服务器 QQ 群</a></li>
-                        <li><a href="tutorial" class="internal-link">教程中心</a></li>
-                        <li><a href="status" class="internal-link">服务器状态监控</a></li>
-                        <li><a href="banlist" class="internal-link">玩家处罚记录</a></li>
+                        <li><a href="/tutorial" class="internal-link">教程中心</a></li>
+                        <li><a href="/status" class="internal-link">服务器状态监控</a></li>
+                        <li><a href="/banlist" class="internal-link">玩家处罚记录</a></li>
+                        <li><a href="/tools/ECRFLU" class="internal-link">等级经验计算器</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -134,7 +141,7 @@
                     <div class="friend-links-grid">
                         <a href="https://eqad.fun" class="friend-link-card" target="_blank">
                             <div class="friend-link-icon">
-                                <img src="resources/images/eqad.webp" alt="eqad">
+                                <img src="/resources/images/eqad.webp" alt="eqad">
                             </div>
                             <div class="friend-link-content">
                                 <h4>EQAD</h4>
@@ -143,7 +150,7 @@
                         </a>
                         <a href="https://raku404.com" class="friend-link-card" target="_blank">
                             <div class="friend-link-icon">
-                                <img src="resources/images/raku.webp" alt="raku">
+                                <img src="/resources/images/raku.webp" alt="raku">
                             </div>
                             <div class="friend-link-content">
                                 <h4>羽梦千景</h4>
@@ -152,7 +159,7 @@
                         </a>
                         <a href="https://mscpo.top" class="friend-link-card" target="_blank">
                             <div class="friend-link-icon">
-                                <img src="resources/images/mscpo.webp" alt="mscpo">
+                                <img src="/resources/images/mscpo.webp" alt="mscpo">
                             </div>
                             <div class="friend-link-content">
                                 <h4>MSCPO</h4>
@@ -161,7 +168,7 @@
                         </a>
                         <a href="https://mscpo.top" class="friend-link-card" target="_blank">
                             <div class="friend-link-icon">
-                                <img src="resources/images/mscpo.webp" alt="mscpo">
+                                <img src="/resources/images/mscpo.webp" alt="mscpo">
                             </div>
                             <div class="friend-link-content">
                                 <h4>MSCPO</h4>
@@ -185,7 +192,7 @@
     <!-- 点击特效元素 -->
     <div class="click-effect"></div>
 
-    <script src="resources/scripts/script.js"></script>
+    <script src="/resources/scripts/script.js"></script>
 </body>
 
 </html>
