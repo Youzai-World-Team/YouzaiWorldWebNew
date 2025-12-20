@@ -1,0 +1,250 @@
+/* 工具页面特定样式 */
+.tools {
+    padding: 80px 0;
+    background: var(--background);
+}
+
+.tools-intro {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.tools-intro p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+/* 工具分类 */
+.tool-categories {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.tool-category-btn {
+    padding: 10px 20px;
+    background-color: var(--light-text);
+    border: 2px solid var(--accent-color);
+    border-radius: 50px;
+    font-size: 1rem;
+    color: var(--dark-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tool-category-btn:hover,
+.tool-category-btn.active {
+    background-color: var(--accent-color);
+    color: var(--light-text);
+}
+
+/* 工具列表 */
+.tools-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.tool-item {
+    background-color: var(--light-text);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.tool-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* 工具图标/图片区域 */
+.tool-header {
+    padding: 25px 25px 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.tool-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.tool-icon img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+.tool-title {
+    margin-bottom: 5px;
+    color: var(--dark-color);
+    font-size: 1.4rem;
+}
+
+/* 工具内容 */
+.tool-content {
+    padding: 20px 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.tool-description {
+    color: var(--text-color);
+    margin-bottom: 20px;
+    line-height: 1.6;
+    flex: 1;
+}
+
+/* 工具功能列表 */
+.tool-features {
+    margin: 15px 0;
+    padding-left: 20px;
+    list-style-type: none;
+}
+
+.tool-features li {
+    margin-bottom: 8px;
+    color: var(--text-color);
+    position: relative;
+}
+
+.tool-features li:before {
+    content: "✓";
+    color: var(--accent-color);
+    font-weight: bold;
+    position: absolute;
+    left: -20px;
+}
+
+/* 工具标签 */
+.tool-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 15px 0;
+}
+
+.tool-tag {
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+/* 工具操作区域 */
+.tool-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(168, 230, 207, 0.3);
+}
+
+.tool-btn {
+    flex: 1;
+    padding: 10px 15px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.tool-btn-primary {
+    background-color: var(--accent-color);
+    color: var(--light-text);
+}
+
+.tool-btn-primary:hover {
+    background-color: var(--dark-color);
+}
+
+.tool-btn-secondary {
+    background-color: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+}
+
+.tool-btn-secondary:hover {
+    background-color: rgba(107, 179, 155, 0.1);
+}
+
+/* 工具元信息 */
+.tool-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 15px;
+}
+
+/* 空状态 */
+.empty-tools {
+    text-align: center;
+    padding: 60px 20px;
+    grid-column: 1 / -1;
+}
+
+.empty-tools h3 {
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.empty-tools p {
+    color: var(--text-color);
+    max-width: 500px;
+    margin: 0 auto 25px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .tools {
+        padding: 60px 0;
+    }
+
+    .tools-list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .tool-header {
+        padding: 20px 20px 0;
+    }
+
+    .tool-content {
+        padding: 15px 20px;
+    }
+
+    .tool-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .tool-categories {
+        gap: 10px;
+    }
+
+    .tool-category-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
