@@ -3,9 +3,10 @@ class ServerStatusMonitor {
     constructor() {
         this.apiUrl = 'https://api.eqad.fun/mcsm/api/services/';
         this.nodeContainer = document.getElementById('statusNodeContainer');
-        this.nodes = ['EQAD-001'];
+        this.nodes = ['EQAD-003'];
         this.minecraftServer = 'mc.youzaiworld.top';
-        this.minecraftPort = 19950;
+        //this.minecraftServer = 'suyecity.eqad.fun';
+        this.minecraftPort = 25565;
         
         this.init();
     }
@@ -296,7 +297,7 @@ class ServerStatusMonitor {
     // 游戏服务器状态获取函数
     async fetchMinecraftServerStatus(host, port) {
         try {
-            const response = await fetch(`https://api.mcsrvstat.us/bedrock/2/${host}:${port}`);
+            const response = await fetch(`https://api.eqad.fun/mc-status/ping-mc?host=${host}&port=${port}`);
             if (!response.ok) {
                 throw new Error('Network Error');
             }

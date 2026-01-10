@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function fetchServerStatus(host, port) {
-    return fetch(`https://api.mcsrvstat.us/bedrock/2/${host}:${port}`)
+    return fetch(`https://api.eqad.fun/mc-status/ping-mc?host=${host}&port=${port}`)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network Error');
