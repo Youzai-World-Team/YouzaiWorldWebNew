@@ -14,15 +14,6 @@
     padding-bottom: 20px;
 }
 
-.ranking-intro {
-    text-align: center;
-    font-size: 1.2rem;
-    color: var(--text-color);
-    max-width: 600px;
-    margin: 0 auto 50px;
-    line-height: 1.6;
-}
-
 .ranking-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
