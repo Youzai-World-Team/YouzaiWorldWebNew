@@ -4,7 +4,7 @@ const trendsData = [
     { date: "2026-1-28 19:17", text: "我们正在准备迁移版本到 JAVA 版本，迁移期间无法进入！", type: "info", icon: "info.svg" },
     { date: "2025-11-30 12:57", text: "服务器已经更新到 1.21.124 版本了，功能已经修复完毕，可以正常游玩！", type: "success", icon: "succeed.svg" },
     { date: "2025-11-29 18:57", text: "服务器已经更新到 1.21.124 版本了，但缺失部分功能，正在修复中。当前仍可进入游玩！", type: "update", icon: "updata.svg" },
-    { date: "2025-11-29 16:59", text: "服务器升级过程中遇到问题，正在修复，当前无法进入！", type: "warning", icon: "warning.svg" },
+    { date: "2025-11-29 16:59", text: "服务器升级过程中遇到问题，正在修复，当前无法进入！", type: "warning", icon: "warning-red.svg" },
     { date: "2025-11-28 18:40", text: "关服维护和更新", type: "info", icon: "info.svg" },
     { date: "2025-11-21 21:20", text: "修复了等级系统的问题，重新设计升级所需的经验值公式", type: "fix", icon: "fix.svg" },
     { date: "2025-11-19 14:25", text: "安装了新的等级系统，配置了新的设置", type: "install", icon: "install.svg" },
