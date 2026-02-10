@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -75,6 +76,18 @@
             <p>Level Experience Calculator</p>
         </div>
     </section>
+    <br><br>
+
+    <!-- 面包屑导航 -->
+    <div class="container">
+        <div class="breadcrumbs">
+            <a href="/" class="breadcrumb-link">主页</a>
+            <span class="breadcrumb-separator">/</span>
+            <a href="../tool" class="breadcrumb-link">实用工具</a>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-current">等级经验计算器</span>
+        </div>
+    </div>
 
     <!-- 计算器区域 -->
     <section id="calculator" class="calculator-page">
@@ -92,30 +105,36 @@
                 <!-- 左侧输入区域 -->
                 <div class="calculator-input-section">
                     <h2>输入等级信息</h2>
-                    
+
                     <div class="calculator-form">
                         <div class="input-group">
                             <label for="start-level"><i class="fas fa-arrow-up"></i> 起始等级</label>
                             <div class="input-with-buttons">
-                                <input type="number" id="start-level" min="0" max="1000" value="0" placeholder="请输入起始等级">
+                                <input type="number" id="start-level" min="0" max="1000" value="0"
+                                    placeholder="请输入起始等级">
                                 <div class="input-buttons">
-                                    <button type="button" class="input-btn" data-action="decrease" data-target="start-level">-</button>
-                                    <button type="button" class="input-btn" data-action="increase" data-target="start-level">+</button>
+                                    <button type="button" class="input-btn" data-action="decrease"
+                                        data-target="start-level">-</button>
+                                    <button type="button" class="input-btn" data-action="increase"
+                                        data-target="start-level">+</button>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="input-group">
                             <label for="target-level"><i class="fas fa-bullseye"></i> 目标等级</label>
                             <div class="input-with-buttons">
-                                <input type="number" id="target-level" min="1" max="1000" value="10" placeholder="请输入目标等级">
+                                <input type="number" id="target-level" min="1" max="1000" value="10"
+                                    placeholder="请输入目标等级">
                                 <div class="input-buttons">
-                                    <button type="button" class="input-btn" data-action="decrease" data-target="target-level">-</button>
-                                    <button type="button" class="input-btn" data-action="increase" data-target="target-level">+</button>
+                                    <button type="button" class="input-btn" data-action="decrease"
+                                        data-target="target-level">-</button>
+                                    <button type="button" class="input-btn" data-action="increase"
+                                        data-target="target-level">+</button>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="calculator-controls">
                             <button id="calculate-btn" class="btn-primary">
                                 <i class="fas fa-calculator"></i> 计算所需经验
@@ -126,7 +145,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- 右侧结果区域 -->
                 <div class="calculator-result-section">
                     <div class="result-card">
@@ -138,7 +157,7 @@
                                 <span class="level-badge target-level">Lv. <span id="result-target">10</span></span>
                             </div>
                         </div>
-                        
+
                         <div class="result-main">
                             <div class="total-exp">
                                 <h4>总经验需求</h4>
@@ -177,7 +196,8 @@
                     <p>一个充满创意与冒险的 Minecraft 服务器，致力于为玩家提供最佳的游戏体验。</p>
                     <br><br>
                     <img src="../resources/images/cloudflare.svg" alt="Cloudflare">
-                    <p>本站由 <a class="external-link" href="https://cloudflare.com" target="_blank">Cloudflare</a> 提供安全防护</p>
+                    <p>本站由 <a class="external-link" href="https://cloudflare.com" target="_blank">Cloudflare</a> 提供安全防护
+                    </p>
                 </div>
                 <div class="footer-section">
                     <h3>快速链接</h3>
@@ -214,7 +234,7 @@
                                 <p>这里是千景的小站</p>
                             </div>
                         </a>
-                        
+
                     </div>
                 </div>
             </div>
@@ -231,8 +251,9 @@
 
     <!-- 点击特效元素 -->
     <div class="click-effect"></div>
-    
+
     <script src="../resources/scripts/script.js"></script>
     <script src="../resources/scripts/ECRFLU.js"></script>
 </body>
+
 </html>
