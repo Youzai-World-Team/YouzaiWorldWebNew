@@ -2,11 +2,11 @@
  * 下载页面交互功能
  */
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // 下载按钮点击效果
     const downloadButtons = document.querySelectorAll('.download-btn');
     downloadButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
+        button.addEventListener('click', function (e) {
             // 添加点击效果
             this.style.transform = 'scale(0.95)';
             setTimeout(() => {
@@ -20,11 +20,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (rendererNote && window.innerWidth < 768) {
         const rendererHeading = rendererNote.querySelector('h3');
         const rendererContent = rendererNote.querySelector('ul, p');
-        
+
         if (rendererHeading && rendererContent) {
             rendererContent.style.display = 'none';
             rendererHeading.style.cursor = 'pointer';
-            
+
             rendererHeading.addEventListener('click', () => {
                 if (rendererContent.style.display === 'none') {
                     rendererContent.style.display = 'block';
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
         header.addEventListener('click', () => {
             const platformSection = header.closest('.download-section');
             const packageGrid = platformSection.querySelector('.package-grid');
-            
+
             if (packageGrid) {
                 // 切换显示/隐藏
                 if (packageGrid.style.display === 'none') {
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // 添加点击特效
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         const clickEffect = document.querySelector('.click-effect');
         if (clickEffect) {
             clickEffect.style.left = e.pageX + 'px';
