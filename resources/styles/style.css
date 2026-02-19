@@ -1823,7 +1823,7 @@ body {
 .slide:nth-child(1) {
     background-image: url('../images/background_1.webp');
 }
-
+/*
 .slide:nth-child(2) {
     background-image: url('../images/background_2.webp');
 }
@@ -1858,7 +1858,7 @@ body {
 
 .slide:nth-child(10) {
     background-image: url('../images/background_10.webp');
-}
+}*/
 
 .hero-overlay {
     position: absolute;
