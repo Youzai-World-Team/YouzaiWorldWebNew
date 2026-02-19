@@ -1465,7 +1465,7 @@ body {
 }
 
 /* Cloudflare图片样式 */
-.footer-section .nav-logo + br + p + br + br + img[src*="cloudflare"] {
+.footer-section .nav-logo+br+p+br+br+img[src*="cloudflare"] {
     width: 120px;
     height: auto;
     margin-top: 15px;
@@ -1543,6 +1543,7 @@ body {
         height: 0;
         opacity: 0.7;
     }
+
     100% {
         width: 100px;
         height: 100px;
@@ -1552,12 +1553,19 @@ body {
 
 /* 滚动箭头动画 */
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0) rotate(45deg);
     }
+
     40% {
         transform: translateY(-10px) rotate(45deg);
     }
+
     60% {
         transform: translateY(-5px) rotate(45deg);
     }
@@ -1598,9 +1606,11 @@ body {
     0% {
         opacity: 0.4;
     }
+
     50% {
         opacity: 1;
     }
+
     100% {
         opacity: 0.4;
     }
@@ -1651,20 +1661,28 @@ body {
 }
 
 @-webkit-keyframes sk-bouncedelay {
-    0%, 80%, 100% {
+
+    0%,
+    80%,
+    100% {
         -webkit-transform: scale(0);
     }
+
     40% {
         -webkit-transform: scale(1.0);
     }
 }
 
 @keyframes sk-bouncedelay {
-    0%, 80%, 100% {
+
+    0%,
+    80%,
+    100% {
         -webkit-transform: scale(0);
         -ms-transform: scale(0);
         transform: scale(0);
     }
+
     40% {
         -webkit-transform: scale(1.0);
         -ms-transform: scale(1.0);
@@ -1676,6 +1694,7 @@ body {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -1795,16 +1814,45 @@ body {
     opacity: 1;
 }
 
-.slide:nth-child(1) { background-image: url('../images/background_1.webp'); }
-.slide:nth-child(2) { background-image: url('../images/background_2.webp'); }
-.slide:nth-child(3) { background-image: url('../images/background_3.webp'); }
-.slide:nth-child(4) { background-image: url('../images/background_4.webp'); }
-.slide:nth-child(5) { background-image: url('../images/background_5.webp'); }
-.slide:nth-child(6) { background-image: url('../images/background_6.webp'); }
-.slide:nth-child(7) { background-image: url('../images/background_7.webp'); }
-.slide:nth-child(8) { background-image: url('../images/background_8.webp'); }
-.slide:nth-child(9) { background-image: url('../images/background_9.webp'); }
-.slide:nth-child(10) { background-image: url('../images/background_10.webp'); }
+.slide:nth-child(1) {
+    background-image: url('../images/background_1.webp');
+}
+
+.slide:nth-child(2) {
+    background-image: url('../images/background_2.webp');
+}
+
+.slide:nth-child(3) {
+    background-image: url('../images/background_3.webp');
+}
+
+.slide:nth-child(4) {
+    background-image: url('../images/background_4.webp');
+}
+
+.slide:nth-child(5) {
+    background-image: url('../images/background_5.webp');
+}
+
+.slide:nth-child(6) {
+    background-image: url('../images/background_6.webp');
+}
+
+.slide:nth-child(7) {
+    background-image: url('../images/background_7.webp');
+}
+
+.slide:nth-child(8) {
+    background-image: url('../images/background_8.webp');
+}
+
+.slide:nth-child(9) {
+    background-image: url('../images/background_9.webp');
+}
+
+.slide:nth-child(10) {
+    background-image: url('../images/background_10.webp');
+}
 
 .hero-overlay {
     position: absolute;
@@ -1838,15 +1886,15 @@ body {
     .nav-container {
         justify-content: flex-start;
     }
-    
+
     .nav-menu {
         margin-left: 40px;
     }
-    
+
     .nav-link {
         margin-right: 30px;
     }
-    
+
     .nav-link:last-child {
         margin-right: 0;
     }
@@ -1854,11 +1902,12 @@ body {
 
 /* 移动端适配 */
 @media (max-width: 768px) {
+
     /* 导航栏 */
     .nav-container {
         justify-content: space-between;
     }
-    
+
     .nav-menu {
         position: absolute;
         top: 100%;
@@ -1875,7 +1924,7 @@ body {
         opacity: 0;
         visibility: hidden;
     }
-    
+
     .nav-menu.active {
         max-height: 100vh;
         overflow-y: auto;
@@ -1883,7 +1932,7 @@ body {
         visibility: visible;
         padding: 15px 0;
     }
-    
+
     .nav-link {
         margin: 8px 0;
         padding: 8px 20px;
@@ -1892,55 +1941,55 @@ body {
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         text-align: left;
     }
-    
+
     .nav-link:last-child {
         border-bottom: none;
     }
-    
+
     .nav-toggle {
         display: flex;
     }
-    
+
     .navbar.menu-open {
         background-color: rgba(168, 230, 207, 0.95) !important;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
     }
-    
+
     .navbar.menu-open .nav-logo {
         color: var(--dark-color) !important;
     }
-    
+
     .navbar.menu-open .nav-logo img {
         filter: none !important;
     }
-    
+
     .navbar.menu-open .bar {
         background-color: var(--dark-color) !important;
     }
-    
+
     .nav-toggle.active .bar:nth-child(1) {
         transform: translateY(8px) rotate(45deg);
     }
-    
+
     .nav-toggle.active .bar:nth-child(2) {
         opacity: 0;
     }
-    
+
     .nav-toggle.active .bar:nth-child(3) {
         transform: translateY(-8px) rotate(-45deg);
     }
-    
+
     /* 移动端二级菜单 */
     .nav-item.dropdown {
         width: 100%;
     }
-    
+
     .dropdown-toggle {
         width: 100%;
         justify-content: space-between;
         padding: 8px 20px;
     }
-    
+
     .dropdown-menu {
         position: static;
         width: 100%;
@@ -1957,28 +2006,28 @@ body {
         border: none;
         border-radius: 0;
     }
-    
+
     .dropdown-menu.active {
         max-height: 300px;
         padding: 8px 0;
     }
-    
+
     .dropdown-link {
         padding: 10px 20px 10px 40px;
         color: var(--dark-color);
         border-bottom: 1px solid rgba(52, 94, 84, 0.2);
         font-size: 1.1rem;
     }
-    
+
     .dropdown-link:hover {
         background-color: var(--accent-color);
         color: var(--light-text);
     }
-    
+
     .nav-menu.active .dropdown-toggle::after {
         border-top-color: var(--dark-color);
     }
-    
+
     /* 首页横幅 */
     .hero-content {
         flex-direction: column;
@@ -1986,20 +2035,20 @@ body {
         padding: 0 15px;
         gap: 40px;
     }
-    
+
     .album-cover {
         width: 300px;
         height: 300px;
     }
-    
+
     .album-info h2 {
         font-size: 36px;
     }
-    
+
     .album-info p {
         font-size: 16px;
     }
-    
+
     /* 轮播按钮 */
     .swiper-button-next,
     .swiper-button-prev {
@@ -2007,264 +2056,396 @@ body {
         height: 40px;
         margin-top: -20px;
     }
-    
+
     .swiper-button-next:after,
     .swiper-button-prev:after {
         font-size: 18px;
     }
-    
+
     .swiper-button-next {
         right: 10px;
     }
-    
+
     .swiper-button-prev {
         left: 10px;
     }
-    
+
     .album-info {
         padding: 20px 15px;
         margin: 0 15px;
     }
-    
+
     .album-info h2 {
         font-size: 2rem;
     }
-    
+
     .album-info p {
         font-size: 1.1rem;
     }
-    
+
     /* 优势部分 */
     .strength {
         padding: 80px 0;
     }
-    
+
     .strength h2 {
         font-size: 2.2rem;
         margin-bottom: 40px;
     }
-    
+
     .strength-grid {
         grid-template-columns: 1fr;
         gap: 30px;
         padding: 0 15px;
     }
-    
+
     .strength-card {
         padding: 30px 20px 25px;
         margin: 0 10px;
     }
-    
+
     .strength-image-container {
         max-width: 240px;
         height: 94px;
         margin-bottom: 20px;
     }
-    
+
     .strength-card h3 {
         font-size: 1.4rem;
     }
-    
+
     .strength-card p {
         font-size: 1rem;
     }
-    
+
     /* 团队 */
     .team {
         padding: 80px 0;
     }
-    
+
     .team h2 {
         font-size: 2.2rem;
         margin-bottom: 15px;
     }
-    
+
     .team-intro {
         font-size: 1.1rem;
         margin-bottom: 40px;
         padding: 0 15px;
     }
-    
+
     .team-grid {
         grid-template-columns: 1fr;
         gap: 25px;
         padding: 0 15px;
     }
-    
+
     .team-card {
         padding: 25px 20px;
         margin: 0 10px;
     }
-    
+
     .team-avatar {
         width: 100px;
         height: 100px;
         margin-bottom: 18px;
     }
-    
+
     .team-info h3 {
         font-size: 1.3rem;
     }
-    
+
     .team-info p {
         font-size: 0.95rem;
     }
-    
+
     /* 活动列表 */
     .event-item {
         flex-direction: column;
         height: auto;
         text-align: center;
     }
-    
+
     .event-image {
         width: 100%;
         min-width: auto;
         min-height: 150px;
     }
-    
+
     .event-image img {
         width: 100%;
         height: 150px;
         min-height: auto;
     }
-    
+
     .event-content {
         width: 100%;
         padding: 15px;
     }
-    
+
     .event-header {
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
     }
-    
+
     .event-status {
         margin-left: 0;
         align-self: flex-start;
     }
-    
+
     /* 服务器动态 */
     .trend-item {
         padding: 12px 15px;
         margin-bottom: 12px;
     }
-    
+
     .trend-icon {
         width: 20px;
         height: 20px;
         margin-right: 12px;
     }
-    
+
     .trend-content {
         font-size: 0.95rem;
     }
-    
+
     .show-more-btn {
         padding: 8px 20px;
         font-size: 0.95rem;
     }
-    
+
     /* 宽卡片 */
     .join-info-wide {
         grid-column: auto;
         margin-top: 0;
     }
-    
+
     .wide-card-content {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .wide-feature {
         flex-direction: row;
         text-align: left;
         padding: 15px;
     }
-    
+
     .feature-icon {
         margin-bottom: 0;
         margin-right: 15px;
         flex-shrink: 0;
     }
-    
+
     .feature-text {
         flex: 1;
     }
-    
+
     /* 服务器信息 */
     .server-info-item {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .info-label {
         min-width: auto;
         margin-bottom: 5px;
     }
-    
+
     .info-value {
         margin: 5px 0;
         width: 100%;
     }
-    
+
     .copy-btn {
         align-self: flex-end;
     }
-    
+
     /* 下载区域 */
     .download-section {
         margin: 20px 0;
         padding: 15px;
     }
-    
+
     .download-btn {
         width: 100%;
         padding: 12px 20px;
     }
-    
+
     /* 友情链接 */
     .friend-links-grid {
         grid-template-columns: 1fr;
         gap: 12px;
     }
-    
+
     .friend-link-card {
         padding: 10px;
         min-height: 55px;
     }
-    
+
     .friend-link-icon {
         font-size: 1.3rem;
         width: 35px;
         height: 35px;
     }
-    
+
     .friend-link-content h4 {
         font-size: 0.95rem;
     }
-    
+
     .friend-link-content p {
         font-size: 0.75rem;
     }
-    
+
     /* 表格 */
     .tutorial-section table {
         display: block;
         overflow-x: auto;
         white-space: nowrap;
     }
-    
+
     .tutorial-section th,
     .tutorial-section td {
         padding: 10px 8px;
         font-size: 0.9rem;
     }
-    
+
     /* Cloudflare图片 */
-    .footer-section .nav-logo + br + p + br + br + img[src*="cloudflare"] {
+    .footer-section .nav-logo+br+p+br+br+img[src*="cloudflare"] {
         width: 100px;
         margin-top: 12px;
+    }
+}
+
+/* 横幅容器 */
+.banner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: #ffffff;
+    /* 纯白背景，让强调色更鲜明 */
+    border-left: 6px solid var(--accent-color);
+    /* 左侧强调边框 = accent */
+    border-radius: 0.5rem;
+    color: var(--dark-color);
+    /* 所有直接文字 = dark */
+    box-shadow: 0 4px 12px rgba(52, 94, 84, 0.1);
+    margin: 1.5rem 0 2rem 0;
+    transition: box-shadow 0.2s, border-left-color 0.2s;
+}
+
+.banner:hover {
+    box-shadow: 0 6px 16px rgba(52, 94, 84, 0.15);
+    border-left-color: #4f8f7c;
+    /* 轻微加深的accent (hover时变化) */
+}
+
+/* 图标区域 — 不强制着色，保留emoji原始风格，但可增加滤镜微调 */
+.banner-icon {
+    font-size: 2rem;
+    line-height: 1;
+    filter: drop-shadow(0 2px 2px rgba(107, 179, 155, 0.2));
+}
+
+/* 主要文字内容 — 继承父级 dark-color */
+.banner-content {
+    flex: 1;
+    font-size: 1rem;
+}
+
+.banner-content strong {
+    font-weight: 600;
+    color: var(--dark-color);
+    /* 加深但仍在dark色系 */
+    opacity: 0.9;
+}
+
+/* 横幅内的链接 — 使用 accent 色，hover时过渡到 dark 色 */
+.banner-content a {
+    color: var(--accent-color);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 2px;
+    transition: color 0.2s;
+}
+
+.banner-content a:hover {
+    color: var(--dark-color);
+    /* 悬停变为深墨绿 */
+    text-decoration-color: currentColor;
+}
+
+/* 关闭按钮 — 外形、交互全部适配 dark/accent 色系 */
+.banner-close {
+    background: transparent;
+    border: none;
+    font-size: 2.2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--dark-color);
+    /* 深色符号，清晰可见 */
+    opacity: 0.75;
+    padding: 0.25rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: opacity 0.2s, background 0.15s, transform 0.1s;
+    flex-shrink: 0;
+}
+
+.banner-close:hover {
+    opacity: 1;
+    background: rgba(107, 179, 155, 0.12);
+    /* 半透明accent色 */
+    transform: scale(1.02);
+    color: #1d453c;
+    /* 略微加深 */
+}
+
+.banner-close:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
+    opacity: 1;
+}
+
+/* 移动端优化：小屏时内容换行，关闭按钮保持右上 */
+@media (max-width: 520px) {
+    .banner {
+        flex-wrap: wrap;
+        gap: 0.5rem 0.75rem;
+        padding: 1rem 1.2rem;
+    }
+
+    .banner-icon {
+        font-size: 1.9rem;
+    }
+
+    .banner-content {
+        min-width: 100%;
+        order: 2;
+        /* 内容移到第二行 */
+        margin-top: 0.2rem;
+    }
+
+    .banner-close {
+        order: 1;
+        margin-left: auto;
+        /* 靠右对齐，与图标分开 */
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 2rem;
+    }
+}
+
+/* 非常小的屏幕 (≤380px) 时减小内边距 */
+@media (max-width: 380px) {
+    .banner {
+        padding: 0.8rem 1rem;
     }
 }

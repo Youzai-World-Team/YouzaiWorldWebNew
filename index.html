@@ -101,6 +101,22 @@
         </div>
     </section>
 
+    <!-- 临时横幅，将在完成后去除 -->
+    <div class="container">
+        <div class="banner" role="alert">
+            <!-- 图标 -->
+            <span class="banner-icon" aria-hidden="true">🌱</span>
+            <!-- 内容 -->
+            <div class="banner-content">
+                <strong>提示：</strong>此页面及其子页面部分内容属于前 Bedrock 版服务器的遗留内容，正在逐步更新中！
+            </div>
+            <!-- 关闭按钮 -->
+            <button class="banner-close" aria-label="关闭此提示" onclick="this.parentNode.style.display='none'">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+
     <!-- 关于服务器 -->
     <section id="about" class="gallery">
         <div class="container">
@@ -420,7 +436,7 @@
             <h2>玩法特性一览</h2>
         </div>
         <p class="ranking-note">Oops！正在制作中，稍后在来看看吧~</p>
-        <!--
+        <br><br>
         <section id="hero">
             <div class="swiper hero-bg-swiper">
                 <div class="swiper-wrapper">
@@ -428,6 +444,7 @@
                         <div class="hero-bg" style="background-image: url('resources/images/feature/img_1.webp');">
                         </div>
                     </div>
+                    <!--
                     <div class="swiper-slide">
                         <div class="hero-bg" style="background-image: url('resources/images/feature/img_2.webp');">
                         </div>
@@ -484,6 +501,7 @@
                         <div class="hero-bg" style="background-image: url('resources/images/feature/img_15.webp');">
                         </div>
                     </div>
+                -->
                 </div>
             </div>
 
@@ -492,21 +510,24 @@
                     <div class="swiper-slide">
                         <div class="hero-content">
                             <div class="album-info">
-                                <h2>市场</h2>
-                                <p style="color: white;">在市场和其他玩家用经济交易物品吧<br>
-                                    您可以在官方商店回收矿物来获取经济</p>
+                                <h2>世界冒险</h2>
+                                <p style="color: white;">
+                                    加入了 When Dungeons Arise 等拓展地图的 MOD<br>
+                                    使世界更加丰富，在世界上跑图探索遗迹、建筑吧</p>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="swiper-slide">
                         <div class="hero-content">
                             <div class="album-info">
-                                <h2>决斗</h2>
-                                <p style="color: white;">玩家们可以在指定区域内发起决斗并设置赌注<br>
-                                    决斗胜利后可以获得赌注的金币</p>
+                                <h2>属性加成</h2>
+                                <p style="color: white;">通过游玩获得技能点<br>
+                                    在属性面板中分配技能点以提升属性</p>
                             </div>
                         </div>
                     </div>
+                    <!--
                     <div class="swiper-slide">
                         <div class="hero-content">
                             <div class="album-info">
@@ -624,12 +645,13 @@
                             </div>
                         </div>
                     </div>
+                -->
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-pagination"></div>
             </div>
-        </section>-->
+        </section>
     </section>
 
     <!-- 我们的团队板块 -->
@@ -711,8 +733,7 @@
                 </div>
             </div>
             <br><br>
-            <p class="ranking-note">我们正在招聘开发、维护和管理等成员，有意者请<a class="external-link"
-                    href="mailto:youzaiworld@outlook.com">联系服主</a>以获取更多信息~</p>
+            <p class="ranking-note">我们正在招聘开发、维护和管理等成员，有意者请联系服主以获取更多信息~</p>
         </div>
     </section>
 
@@ -734,7 +755,7 @@
                         <img src="resources/images/strength_2.webp" alt="飞起来" loading="lazy">
                     </div>
                     <h3>快速</h3>
-                    <p>AMD Ryzen 7 5800X with Windows 服务器<br>让你的游戏体验飞起来</p>
+                    <p>AMD Ryzen 7 5800X 服务器<br>让你的游戏体验飞起来</p>
                     <a href="status" class="internal-link" style="text-decoration: none;">▷ 查看状态</a>
                 </div>
                 <div class="strength-card">
@@ -744,6 +765,14 @@
                     <h3>友善</h3>
                     <p>友善的玩家和管理<br>没有神权行为</p>
                     <a href="banlist" class="internal-link" style="text-decoration: none;">▷ 查看玩家处罚</a>
+                </div>
+                <div class="strength-card">
+                    <div class="strength-image-container">
+                        <img src="resources/images/strength_4.webp" alt="版本更新" loading="lazy">
+                    </div>
+                    <h3>更新</h3>
+                    <p>定期同步国际版进度<br>保持版本较新</p>
+                    <a href="/#version" class="internal-link" style="text-decoration: none;">▷ 查看版本信息</a>
                 </div>
             </div>
         </div>
@@ -763,7 +792,8 @@
                     </div>
                     <div class="download-section">
                         <img src="resources/images/info.svg" alt="信息" class="trend-icon">
-                        <p>在您加入服务器之前，您还需要前往<a href="download#download-packages" class="internal-link">此处</a>下载并安装服务器的整合包~</p>
+                        <p>在您加入服务器之前，您还需要前往<a href="download#download-packages"
+                                class="internal-link">此处</a>下载并安装服务器的整合包~</p>
                     </div>
                     <hr class="b-border">
                     <section id="version" style="width: 0px;height: 0px;"></section>
@@ -778,7 +808,8 @@
                     </div>
                     <div class="download-section">
                         <img src="resources/images/info.svg" alt="信息" class="trend-icon">
-                        <p>还没有 Minecraft Java 启动器？前往<a href="download#download-laucher" class="internal-link">此处</a>查看详情并下载启动器~</p>
+                        <p>还没有 Minecraft Java 启动器？前往<a href="download#download-laucher"
+                                class="internal-link">此处</a>查看详情并下载启动器~</p>
                     </div>
                     <hr class="b-border">
                     <h3>服务器状态</h3>
@@ -895,6 +926,15 @@
                             <div class="friend-link-content">
                                 <h4>羽梦千景</h4>
                                 <p>这里是千景的小站</p>
+                            </div>
+                        </a>
+                        <a href="https://dev.mscpo.org" class="friend-link-card" target="_blank">
+                            <div class="friend-link-icon">
+                                <img src="resources/images/mscpo.webp" alt="mscpo">
+                            </div>
+                            <div class="friend-link-content">
+                                <h4>MSCPO</h4>
+                                <p>Minecraft 服务器集体宣传组织</p>
                             </div>
                         </a>
                     </div>

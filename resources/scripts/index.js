@@ -105,7 +105,9 @@ function initHeroSlider() {
 
     function preloadImages() {
         const imagePaths = [
-            'resources/images/background_1.webp',
+            'resources/images/background_1.webp'
+        ];
+        /*,
             'resources/images/background_2.webp',
             'resources/images/background_3.webp',
             'resources/images/background_4.webp',
@@ -116,8 +118,7 @@ function initHeroSlider() {
             'resources/images/background_9.webp',
             'resources/images/background_10.webp',
             'resources/images/background_11.webp'
-        ];
-
+        */
         let loadedImages = 0;
         const totalImages = imagePaths.length;
 
@@ -147,7 +148,7 @@ function initHeroSlider() {
         slides[currentSlide].classList.remove('active');
 
         // 移动到下一张
-        currentSlide = (currentSlide + 1) % slides.length;
+        //currentSlide = (currentSlide + 1) % slides.length;
 
         // 显示新幻灯片
         slides[currentSlide].classList.add('active');
