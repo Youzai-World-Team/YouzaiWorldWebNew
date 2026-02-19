@@ -13,6 +13,12 @@
     --background: linear-gradient(135deg, #f9fdfb 0%, #e8f7f1 100%);
 }
 
+/* ==================== CSS字体定义 ==================== */
+@font-face {
+  font-family: 'MyFont';
+  src: url('../fonts/ZhanKuKuaiLeTi2016XiuDingBan-1.woff2') format('woff2');
+}
+
 /* ==================== 重置和基础样式 ==================== */
 * {
     margin: 0;
@@ -21,7 +27,7 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'MyFont', Arial, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: #f9fdfb;
