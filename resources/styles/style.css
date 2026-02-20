@@ -818,6 +818,10 @@ body {
     background: linear-gradient(135deg, #a8e6cf, #6bb39b, #a8e6cf);
 }
 
+.strength-card:nth-child(5) .strength-image-container::after {
+    background: linear-gradient(135deg, #ffd93d, #ff9a3d, #ffd93d);
+}
+
 .strength-card:nth-child(1):hover {
     border-color: rgba(107, 179, 155, 0.5);
 }
@@ -832,6 +836,10 @@ body {
 
 .strength-card:nth-child(4):hover {
     border-color: rgba(107, 179, 155, 0.5);
+}
+
+.strength-card:nth-child(5):hover {
+    border-color: rgba(255, 154, 61, 0.5);
 }
 
 /* 团队板块 */
