@@ -1730,6 +1730,26 @@ body {
     left: 20px;
 }
 
+
+/* 导航按钮默认样式 */
+.swiper-button-prev,
+.swiper-button-next {
+    color: var(--light-text);
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+/* 悬停/焦点状态 —— 模仿分页点的激活效果 */
+.swiper-button-prev:hover,
+.swiper-button-next:hover,
+.swiper-button-prev:focus,
+.swiper-button-next:focus {
+    color: var(--accent-color);
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+
 .swiper-button-next:after,
 .swiper-button-prev:after {
     font-family: swiper-icons;
@@ -1883,6 +1903,86 @@ body {
 /* 玩法特性轮播区域 */
 #features {
     padding: 80px 0 0;
+}
+
+/* 横幅容器 */
+.banner {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: #ffffff;
+    /* 纯白背景，让强调色更鲜明 */
+    border-left: 6px solid var(--accent-color);
+    /* 左侧强调边框 = accent */
+    border-radius: 0.5rem;
+    color: var(--dark-color);
+    /* 所有直接文字 = dark */
+    box-shadow: 0 4px 12px rgba(52, 94, 84, 0.1);
+    margin: 1.5rem 0 2rem 0;
+    transition: box-shadow 0.2s, border-left-color 0.2s;
+}
+
+.banner:hover {
+    box-shadow: 0 6px 16px rgba(52, 94, 84, 0.15);
+    border-left-color: #4f8f7c;
+    /* 轻微加深的accent (hover时变化) */
+}
+
+/* 图标区域 — 不强制着色，保留emoji原始风格，但可增加滤镜微调 */
+.banner-icon {
+    font-size: 2rem;
+    line-height: 1;
+    filter: drop-shadow(0 2px 2px rgba(107, 179, 155, 0.2));
+}
+
+/* 主要文字内容 — 继承父级 dark-color */
+.banner-content {
+    flex: 1;
+    font-size: 1rem;
+}
+
+.banner-content strong {
+    font-weight: 600;
+    color: var(--dark-color);
+    /* 加深但仍在dark色系 */
+    opacity: 0.9;
+}
+
+/* 关闭按钮 */
+.banner-close {
+    background: transparent;
+    border: none;
+    font-size: 2.2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: var(--dark-color);
+    /* 深色符号，清晰可见 */
+    opacity: 0.75;
+    padding: 0.25rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: opacity 0.2s, background 0.15s, transform 0.1s;
+    flex-shrink: 0;
+}
+
+.banner-close:hover {
+    opacity: 1;
+    background: rgba(107, 179, 155, 0.12);
+    /* 半透明accent色 */
+    transform: scale(1.02);
+    color: #1d453c;
+    /* 略微加深 */
+}
+
+.banner-close:focus {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
+    opacity: 1;
 }
 
 /* ==================== 响应式设计 ==================== */
@@ -2324,103 +2424,6 @@ body {
     }
 }
 
-/* 横幅容器 */
-.banner {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.5rem;
-    background: #ffffff;
-    /* 纯白背景，让强调色更鲜明 */
-    border-left: 6px solid var(--accent-color);
-    /* 左侧强调边框 = accent */
-    border-radius: 0.5rem;
-    color: var(--dark-color);
-    /* 所有直接文字 = dark */
-    box-shadow: 0 4px 12px rgba(52, 94, 84, 0.1);
-    margin: 1.5rem 0 2rem 0;
-    transition: box-shadow 0.2s, border-left-color 0.2s;
-}
-
-.banner:hover {
-    box-shadow: 0 6px 16px rgba(52, 94, 84, 0.15);
-    border-left-color: #4f8f7c;
-    /* 轻微加深的accent (hover时变化) */
-}
-
-/* 图标区域 — 不强制着色，保留emoji原始风格，但可增加滤镜微调 */
-.banner-icon {
-    font-size: 2rem;
-    line-height: 1;
-    filter: drop-shadow(0 2px 2px rgba(107, 179, 155, 0.2));
-}
-
-/* 主要文字内容 — 继承父级 dark-color */
-.banner-content {
-    flex: 1;
-    font-size: 1rem;
-}
-
-.banner-content strong {
-    font-weight: 600;
-    color: var(--dark-color);
-    /* 加深但仍在dark色系 */
-    opacity: 0.9;
-}
-
-/* 横幅内的链接 — 使用 accent 色，hover时过渡到 dark 色 */
-.banner-content a {
-    color: var(--accent-color);
-    font-weight: 600;
-    text-decoration: underline;
-    text-decoration-thickness: 1.5px;
-    text-underline-offset: 2px;
-    transition: color 0.2s;
-}
-
-.banner-content a:hover {
-    color: var(--dark-color);
-    /* 悬停变为深墨绿 */
-    text-decoration-color: currentColor;
-}
-
-/* 关闭按钮 — 外形、交互全部适配 dark/accent 色系 */
-.banner-close {
-    background: transparent;
-    border: none;
-    font-size: 2.2rem;
-    line-height: 1;
-    cursor: pointer;
-    color: var(--dark-color);
-    /* 深色符号，清晰可见 */
-    opacity: 0.75;
-    padding: 0.25rem;
-    width: 2.8rem;
-    height: 2.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: opacity 0.2s, background 0.15s, transform 0.1s;
-    flex-shrink: 0;
-}
-
-.banner-close:hover {
-    opacity: 1;
-    background: rgba(107, 179, 155, 0.12);
-    /* 半透明accent色 */
-    transform: scale(1.02);
-    color: #1d453c;
-    /* 略微加深 */
-}
-
-.banner-close:focus {
-    outline: 3px solid var(--accent-color);
-    outline-offset: 3px;
-    opacity: 1;
-}
-
-/* 移动端优化：小屏时内容换行，关闭按钮保持右上 */
 @media (max-width: 520px) {
     .banner {
         flex-wrap: wrap;
@@ -2446,12 +2449,5 @@ body {
         width: 2.5rem;
         height: 2.5rem;
         font-size: 2rem;
-    }
-}
-
-/* 非常小的屏幕 (≤380px) 时减小内边距 */
-@media (max-width: 380px) {
-    .banner {
-        padding: 0.8rem 1rem;
     }
 }
