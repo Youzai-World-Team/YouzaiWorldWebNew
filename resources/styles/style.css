@@ -17,6 +17,7 @@
 @font-face {
   font-family: 'MyFont';
   src: url('../fonts/ZhanKuKuaiLeTi2016XiuDingBan-1.woff2') format('woff2');
+  font-display: swap;
 }
 
 /* ==================== 重置和基础样式 ==================== */
