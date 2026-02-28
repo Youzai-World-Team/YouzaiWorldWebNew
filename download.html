@@ -13,13 +13,12 @@
 <body>
     <div class="loader">
         <div class="loader-container">
-            <img class="loader-image" src="resources/images/loading.webp" alt="加载中...">
+            <img class="loader-image" src="resources/images/loading.webp" alt="Loading...">
             <hr class="loader-image" style="color: var(--dark-color);background-color: var(--dark-color);height: 2px;">
             <p class="loader-image" style="color: var(--dark-color);">正在加载中...</p>
         </div>
     </div>
 
-    <!-- 导航栏 -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
@@ -42,6 +41,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="/#join-server" class="dropdown-link">服务器地址</a></li>
                         <li><a href="/#join-qqqun" class="dropdown-link">加入 QQ 群</a></li>
+                        <li><a href="download" class="dropdown-link">下载中心</a></li>
                     </ul>
                 </div>
                 <div class="nav-item dropdown">
@@ -60,7 +60,6 @@
         </div>
     </nav>
 
-    <!-- 页面横幅 -->
     <section class="hero-other">
         <div class="hero-content">
             <br><br><br><br>
@@ -79,466 +78,307 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="banner" role="alert">
-            <!-- 图标 -->
-            <span class="banner-icon" aria-hidden="true">🌱</span>
-            <!-- 内容 -->
-            <div class="banner-content">
-                <strong>提示：</strong>若下载此页面的任何资源包安装后无法进入服务器，请<a href="/#join-qqqun" class="internal-link">加入 QQ
-                    群</a>联系管理员反馈问题！我们会尽快修复相关问题并更新资源包。
+    <section class="download-main container">
+        <p>请注意选择您所使用的平台对应的资源包进行下载！若发现下载资源包后无法进入服务器，请进入 QQ 群联系管理员反馈问题！</p><br>
+        <div class="download-section-block" id="download-packages">
+            <h2 class="download-section-title">📦 资源包下载</h2>
+            <!-- Windows 资源包 -->
+            <div class="download-platform">
+                <h3 class="platform-title">
+                    <img src="resources/images/windows.svg" alt="Windows" class="platform-icon"
+                        onerror="this.style.display='none'"> Windows 版资源包
+                </h3>
+                <div class="download-cards">
+                    <div class="download-card">
+                        <div class="download-card-header">
+                            <h4>
+                                <img src="resources/images/zip.svg" class="card-icon" alt="zip">
+                                常规版
+                            </h4>
+                            <span class="download-version">v1.2.0</span>
+                        </div>
+                        <div class="download-card-body">
+                            <p class="download-desc">包含服务器所有玩法模组、光影预设、优化配置。</p>
+                            <div class="download-meta">
+                                <span class="download-size">📏 大小: 51.4 MB （53,902,726 字节）</span>
+                                <span class="download-date">📅 更新: 2026-02-28</span>
+                            </div>
+                            <div class="download-hash" title="MD5 校验">MD5: 0ba5f74ee81dc8f5d0ace1f2e619dd2f</div>
+                        </div>
+                        <div class="download-card-footer">
+                            <a href="files/public/download/packages/1.2.0/[Windows]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.0.zip"
+                                class="btn-primary download-btn">⬇ 下载</a>
+                        </div>
+                    </div>
+
+                    <div class="download-card">
+                        <div class="download-card-header">
+                            <h4>
+                                <img src="resources/images/zip.svg" class="card-icon" alt="zip">
+                                不带光影版
+                            </h4>
+                            <span class="download-version">v1.2.0</span>
+                        </div>
+                        <div class="download-card-body">
+                            <p class="download-desc">包含服务器所有玩法模组、优化配置，不包含光影预设。</p>
+                            <div class="download-meta">
+                                <span class="download-size">📏 大小: 51.4 MB （53,902,057 字节）</span>
+                                <span class="download-date">📅 更新: 2026-02-28</span>
+                            </div>
+                            <div class="download-hash" title="MD5 校验">MD5: c414c82c6be6d9a247dc77ff0cf792b1</div>
+                        </div>
+                        <div class="download-card-footer">
+                            <a href="files/public/download/packages/1.2.0/[Windows_NoShaders]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.0.zip"
+                                class="btn-primary download-btn">⬇ 下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Android 资源包 (分为两个渲染器区块，并排显示) -->
+            <div class="download-platform">
+                <h3 class="platform-title">
+                    <img src="resources/images/android.svg" alt="Android" class="platform-icon"
+                        onerror="this.style.display='none'"> Android 版资源包
+                </h3>
+                <!-- 使用 renderer-grid 实现两列并排，每列包含标题+卡片 -->
+                <div class="renderer-grid">
+                    <!-- MG渲染器专用版区块 -->
+                    <div class="renderer-col">
+                        <h4 class="renderer-title">
+                            <img src="resources/images/MobileGlues.webp" class="renderer-icon" alt="MG渲染器图标">
+                            Mobile Glues 渲染器专用版
+                        </h4>
+                        <div class="download-cards">
+                            <div class="download-card">
+                                <div class="download-card-header">
+                                    <h4>
+                                        <img src="resources/images/zip.svg" class="card-icon" alt="zip">
+                                        常规版
+                                    </h4>
+                                    <span class="download-version">v1.2.0</span>
+                                </div>
+                                <div class="download-card-body">
+                                    <p class="download-desc">针对该渲染器的版本，包含服务器所有玩法模组、光影预设、优化配置。
+                                    </p>
+                                    <div class="download-meta">
+                                        <span class="download-size">📏 大小: 51.4 MB （53,902,147 字节）</span>
+                                        <span class="download-date">📅 更新: 2026-02-28</span>
+                                    </div>
+                                    <div class="download-hash" title="MD5 校验">MD5: 4f884bcfba6fe2b21c13871ccb36ca3c
+                                    </div>
+                                    <div class="download-note">注意：该版本只能由 Mobile Glues 渲染器使用，其他渲染器一旦加载就会直接崩溃！</div>
+                                </div>
+                                <div class="download-card-footer">
+                                    <a href="files/public/download/packages/1.2.0/[Android_MobileGluesOnly]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.0.zip"
+                                        class="btn-primary download-btn">⬇ 下载</a>
+                                </div>
+                            </div>
+                            <div class="download-card">
+                                <div class="download-card-header">
+                                    <h4>
+                                        <img src="resources/images/zip.svg" class="card-icon" alt="zip">
+                                        不带光影版
+                                    </h4>
+                                    <span class="download-version">v1.2.0</span>
+                                </div>
+                                <div class="download-card-body">
+                                    <p class="download-desc">针对该渲染器的版本，包含服务器所有玩法模组、优化配置，不包含光影预设。
+                                    </p>
+                                    <div class="download-meta">
+                                        <span class="download-size">📏 大小: 551.4 MB （53,901,707 字节）</span>
+                                        <span class="download-date">📅 更新: 2026-02-28</span>
+                                    </div>
+                                    <div class="download-hash" title="MD5 校验">MD5: 2c72776f14a368bb5026a70133393fe3
+                                    </div>
+                                    <div class="download-note">注意：该版本只能由 Mobile Glues 渲染器使用，其他渲染器一旦加载就会直接崩溃！</div>
+                                </div>
+                                <div class="download-card-footer">
+                                    <a href="files/public/download/packages/1.2.0/[Android_MobileGluesOnly&NoShaders]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.0.zip"
+                                        class="btn-primary download-btn">⬇ 下载</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 通用渲染器兼容版区块 -->
+                    <div class="renderer-col">
+                        <h4 class="renderer-title">
+                            <img src="resources/images/UniversalRenderer.webp" class="renderer-icon" alt="通用渲染器图标">
+                            通用渲染器兼容版
+                        </h4>
+                        <div class="download-card">
+                            <div class="download-card-header">
+                                <h4>
+                                    <img src="resources/images/zip.svg" class="card-icon" alt="zip">
+                                    常规版
+                                </h4>
+                                <span class="download-version">v1.2.0</span>
+                            </div>
+                            <div class="download-card-body">
+                                <p class="download-desc">适用于所有主流 Android 设备 (OpenGL ES 3.0+)，兼容性最佳，功能完整。</p>
+                                <div class="download-meta">
+                                    <span class="download-size">📏 大小: 51.4 MB （53,900,266 字节）</span>
+                                    <span class="download-date">📅 更新: 2026-02-28</span>
+                                </div>
+                                <div class="download-hash" title="MD5 校验">MD5: fcf6faf2f182a5f1207c6c61ba5e60ee</div>
+                                <div class="download-note">注意：该版本无法使用光影和优化，不建议使用该版本，除非你无法使用 Mobile Glues 渲染器！</div>
+                            </div>
+                            <div class="download-card-footer">
+                                <a href="#" class="btn-primary download-btn">⬇ 下载</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="download-tip">💡 不知道什么是 Mobile Glues 渲染器？点击<a
+                        href="https://www.bilibili.com/video/BV1udbEzfEjv" class="external-link"
+                        target="_blank">这里</a>前往了解！</p>
+                <div class="banner" role="alert">
+                    <!-- 图标 -->
+                    <span class="banner-icon" aria-hidden="true">🌱</span>
+                    <!-- 内容 -->
+                    <div class="banner-content">
+                        <strong>Mobile Glues 支持使用的光影包：</strong>访问<a
+                            href="https://github.com/MobileGL-Dev/MobileGlues-release/blob/main/CompatibleShaders.md"
+                            target="_blank"
+                            class="external-link">https://github.com/MobileGL-Dev/MobileGlues-release/blob/main/CompatibleShaders.md</a>以获取最新的兼容光影包列表！
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="download-section-block" id="download-laucher">
+            <h2 class="download-section-title">🚀 启动器下载</h2>
+            <!-- Windows 启动器 -->
+            <div class="download-platform">
+                <h3 class="platform-title">
+                    <img src="resources/images/windows.svg" alt="Windows" class="platform-icon"
+                        onerror="this.style.display='none'"> Windows 启动器
+                </h3>
+                <div class="download-cards">
+                    <div class="download-card">
+                        <div class="download-card-header">
+                            <h4>
+                                <img src="resources/images/PCL2.webp" class="card-icon" alt="PCL2">
+                                PCL 2
+                            </h4>
+                            <span class="download-version">由 <strong>龙腾猫跃</strong> 开发</span>
+                        </div>
+                        <div class="download-card-body">
+                            <p class="download-desc">最棒的第三方 Windows 的 Minecraft JAVA
+                                版启动器，提供超快的下载速度、智能模组管理、简洁美观的界面，让您的体验更加出色。</p>
+                        </div>
+                        <div class="download-card-footer">
+                            <a href="https://afdian.com/p/0164034c016c11ebafcb52540025c377" target="_blank"
+                                class="btn-primary download-btn">前往官方网站下载</a>
+                        </div>
+                    </div>
+
+                    <div class="download-card">
+                        <div class="download-card-header">
+                            <h4>
+                                <img src="resources/images/HMCL.webp" class="card-icon" alt="HMCL">
+                                HMCL
+                            </h4>
+                            <span class="download-version">由 <strong>huangyuhui</strong> 开发</span>
+                        </div>
+                        <div class="download-card-body">
+                            <p class="download-desc">十二年历史的第三方启动器，具有多系统支持、全新界面，支持导入多款国外启动器下载的整合包、创建与安装游戏，个性化主题。</p>
+                        </div>
+                        <div class="download-card-footer">
+                            <a href="https://hmcl.huangyuhui.net/download" target="_blank"
+                                class="btn-primary download-btn">前往官方网站下载</a>
+                        </div>
+                    </div>
+
+                    <div class="download-card">
+                        <div class="download-card-header">
+                            <h4>
+                                <img src="resources/images/BakaXL.webp" class="card-icon" alt="Baka XL">
+                                BakaXL
+                            </h4>
+                            <span class="download-version">由 <strong>TT702</strong> 开发</span>
+                        </div>
+                        <div class="download-card-body">
+                            <p class="download-desc">打破传统启动器的层级概念，使用起来更加称心如意。
+                                强大的自定义主题功能无需任何额外付费即可使用，还有视差效果和实况壁纸加持，实在是泰裤辣！</p>
+                        </div>
+                        <div class="download-card-footer">
+                            <a href="https://www.bakaxl.com/#download" target="_blank"
+                                class="btn-primary download-btn">前往官方网站下载</a>
+                        </div>
+                    </div>
+
+                    <div class="download-card">
+                        <div class="download-card-header">
+                            <h4>
+                                <img src="resources/images/minecraft-launcher.webp" class="card-icon"
+                                    alt="Minecraft Launcher">
+                                Minecraft Launcher
+                            </h4>
+                            <span class="download-version">由 <strong>MOJANG</strong> 开发</span>
+                        </div>
+                        <div class="download-card-body">
+                            <p class="download-desc">官方启动器，一个账号，多架构平台启动。</p>
+                        </div>
+                        <div class="download-card-footer">
+                            <a href="https://www.minecraft.net/download" target="_blank"
+                                class="btn-primary download-btn">前往官方网站下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Android 启动器 -->
+            <div class="download-platform">
+                <h3 class="platform-title">
+                    <img src="resources/images/android.svg" alt="Android" class="platform-icon"
+                        onerror="this.style.display='none'"> Android 启动器
+                </h3>
+                <div class="download-cards">
+                    <div class="download-card">
+                        <div class="download-card-header">
+                            <h4>
+                                <img src="resources/images/FCL.webp" class="card-icon" alt="FCL">
+                                FCL
+                            </h4>
+                            <span class="download-version">由 <strong>FCL-Team</strong> 开发</span>
+                        </div>
+                        <div class="download-card-body">
+                            <p class="download-desc">由 FCL 团队开发的 Android 平台 Minecraft: Java Edition 启动器。基于 HMCL 的核心功能，结合
+                                PojavLauncher 后端和 Boat 后端，让您能在移动设备上畅玩 Java 版 MC ，支持模组加载与全版本运行。</p>
+                        </div>
+                        <div class="download-card-footer">
+                            <a href="https://foldcraftlauncher.cn" class="btn-primary download-btn">前往镜像网站下载</a>
+                        </div>
+                    </div>
+
+                    <div class="download-card">
+                        <div class="download-card-header">
+                            <h4>
+                                <img src="resources/images/zl.webp" class="card-icon" alt="ZL 2">
+                                ZL 2
+                            </h4>
+                            <span class="download-version">由 <strong>ZalithLauncher</strong> 开发</span>
+                        </div>
+                        <div class="download-card-body">
+                            <p class="download-desc">在 Android 设备上运行 Minecraft Java 版，更好的界面，更多实用功能，更低的使用门槛。</p>
+                        </div>
+                        <div class="download-card-footer">
+                            <a href="https://www.zalithlauncher.cn/zl2-download.html"
+                                class="btn-primary download-btn">前往镜像网站下载</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 额外提示 -->
+            <div class="download-extra">
+                <p>🔗 需要帮助？请访问<a href="tutorials/quick_play_guide" class="internal-link">快速游玩指南</a>或加入 QQ 群获取帮助。</p>
             </div>
         </div>
-    </div>
-        
-    <!-- 下载整合包 -->
-    <section class="container" id="download-packages">
-        <h1 style="text-align: center;color: var(--dark-color);">下载整合包</h1>
-        <!-- Windows 整合包下载 -->
-        <section class="download-section">
-            <div class="container">
-                <div class="platform-header">
-                    <div class="platform-icon">
-                        <img src="resources/images/windows.svg" alt="Windows">
-                    </div>
-                    <div class="platform-title">
-                        <h2>Windows 整合包</h2>
-                        <p>适用于 Windows 系统的游戏客户端</p>
-                    </div>
-                </div>
-
-                <div class="package-grid">
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3>ForWindows_Pro</h3>
-                            <span class="package-version">专业版</span>
-                            <span class="renderer-tag">适合中高端设备</span>
-                        </div>
-                        <div class="package-description">
-                            <p>包含所有功能模组，高清材质及光影，完整视觉体验。</p>
-                            <div class="package-info">
-                                <div class="info-item">
-                                    <span class="info-label">文件格式：</span>
-                                    <span class="info-value">ZIP（Minecraft 整合包）</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">文件大小：</span>
-                                    <span class="info-value">约 10.5 MB（11,093,817 字节）</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="package-footer">
-                            <a href="files/public/download/packages/1.1.0/windows/[ForWindows_Pro]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.1.0.zip"
-                                class="download-btn btn-primary">
-                                <i class="fa fa-download"></i> 下载 Windows Pro 版
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3>ForWindows_Min</h3>
-                            <span class="package-version">最低版</span>
-                            <span class="renderer-tag">适合较低端设备</span>
-                        </div>
-                        <div class="package-description">
-                            <p>仅包含必要模组，低资源占用，运行流畅及游戏优化。</p>
-                            <div class="package-info">
-                                <div class="info-item">
-                                    <span class="info-label">文件格式：</span>
-                                    <span class="info-value">ZIP（Minecraft 整合包）</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">文件大小：</span>
-                                    <span class="info-value">约 10.5 MB（11,093,426 字节）</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="package-footer">
-                            <a href="files/public/download/packages/1.1.0/windows/[ForWindows_Min]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.1.0.zip"
-                                class="download-btn btn-primary">
-                                <i class="fa fa-download"></i> 下载 Windows 精简版
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Android 整合包下载 -->
-        <section class="download-section">
-            <div class="container">
-                <div class="platform-header">
-                    <div class="platform-icon">
-                        <img src="resources/images/android.svg" alt="Android">
-                    </div>
-                    <div class="platform-title">
-                        <h2>Android 整合包</h2>
-                        <p>适用于 Android 设备的游戏客户端</p>
-                    </div>
-                </div>
-                <h3>MobileGlues 渲染器系列</h3>
-                <hr class="b-border">
-                <div class="package-grid">
-                    <!-- MG (MobileGlues) 系列 -->
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3>ForAndroid_MG_Rec</h3>
-                            <span class="package-version">推荐版</span>
-                            <span class="renderer-tag">适合中端设备</span>
-                        </div>
-                        <div class="package-description">
-                            <p>平衡性能与画质，推荐大多数设备使用。</p>
-                            <div class="package-info">
-                                <div class="info-item">
-                                    <span class="info-label">文件格式：</span>
-                                    <span class="info-value">ZIP（Minecraft 整合包）</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">文件大小：</span>
-                                    <span class="info-value">约 10.5 MB（11,098,732 字节）</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="package-footer">
-                            <a href="files/public/download/packages/1.1.0/android/[ForAndroid_MG_Rec]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.1.0.zip"
-                                class="download-btn btn-primary">
-                                <i class="fa fa-download"></i> 下载 Android MG 推荐版
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3>ForAndroid_MG_Min</h3>
-                            <span class="package-version">最低版</span>
-                            <span class="renderer-tag">适合低端设备</span>
-                        </div>
-                        <div class="package-description">
-                            <p>最简配置，较低画质，极低资源占用。</p>
-                            <div class="package-info">
-                                <div class="info-item">
-                                    <span class="info-label">文件格式：</span>
-                                    <span class="info-value">ZIP（Minecraft 整合包）</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">文件大小：</span>
-                                    <span class="info-value">约 10.5 MB（11,099,232 字节）</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="package-footer">
-                            <a href="files/public/download/packages/1.1.0/android/[ForAndroid_MG_Min]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.1.0.zip"
-                                class="download-btn btn-primary">
-                                <i class="fa fa-download"></i> 下载 Android MG 精简版
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3>ForAndroid_MG_Pro</h3>
-                            <span class="package-version">专业版</span>
-                            <span class="renderer-tag">适合高端设备</span>
-                        </div>
-                        <div class="package-description">
-                            <p>高清材质及光影，最佳视觉体验。</p>
-                            <div class="package-info">
-                                <div class="info-item">
-                                    <span class="info-label">文件格式：</span>
-                                    <span class="info-value">ZIP（Minecraft 整合包）</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">文件大小：</span>
-                                    <span class="info-value">约 10.5 MB（11,099,170 字节）</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="package-footer">
-                            <a href="files/public/download/packages/1.1.0/android/[ForAndroid_MG_Pro]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.1.0.zip"
-                                class="download-btn btn-primary">
-                                <i class="fa fa-download"></i> 下载 Android MG 专业版
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <h3>通用渲染器系列（推荐 Holy GL4ES 渲染器）</h3>
-                <hr class="b-border">
-                <div class="package-grid">
-                    <!-- No (无限制) 系列 -->
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3>ForAndroid_No_Min</h3>
-                            <span class="package-version">最低版</span>
-                            <span class="renderer-tag">适合较低端设备</span>
-                        </div>
-                        <div class="package-description">
-                            <p>最简配置，兼容性强。</p>
-                            <div class="package-info">
-                                <div class="info-item">
-                                    <span class="info-label">文件格式：</span>
-                                    <span class="info-value">ZIP（Minecraft 整合包）</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">文件大小：</span>
-                                    <span class="info-value">约 10.5 MB（11,098,722 字节）</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="package-footer">
-                            <a href="files/public/download/packages/1.1.0/android/[ForAndroid_No_Min]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.1.0.zip"
-                                class="download-btn btn-primary">
-                                <i class="fa fa-download"></i> 下载 Android 无限制精简版
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="package-card">
-                        <div class="package-header">
-                            <h3>ForAndroid_No_Pro</h3>
-                            <span class="package-version">专业版</span>
-                            <span class="renderer-tag">适合中高端设备</span>
-                        </div>
-                        <div class="package-description">
-                            <p>完整功能，兼容性好。</p>
-                            <div class="package-info">
-                                <div class="info-item">
-                                    <span class="info-label">文件格式：</span>
-                                    <span class="info-value">ZIP（Minecraft 整合包）</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="info-label">文件大小：</span>
-                                    <span class="info-value">约 10.5 MB（11,100,160 字节）</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="package-footer">
-                            <a href="files/public/download/packages/1.1.0/android/[ForAndroid_No_Pro]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.1.0.zip"
-                                class="download-btn btn-primary">
-                                <i class="fa fa-download"></i> 下载 Android 无限制专业版
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="renderer-note">
-                    <h3><i class="fa fa-exclamation-triangle"></i> 渲染器说明</h3>
-                    <ul>
-                        <li><strong>No</strong> - 无渲染器限制（推荐使用 <a
-                                href="https://release-assets.githubusercontent.com/github-production-release-asset/920331898/baa17607-d30a-4ec3-87f2-76ba0386cd79?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-02-09T17%3A58%3A07Z&rscd=attachment%3B+filename%3DLegacy.Holy.GL4ES.apk&rsct=application%2Fvnd.android.package-archive&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-02-09T16%3A57%3A20Z&ske=2026-02-09T17%3A58%3A07Z&sks=b&skv=2018-11-09&sig=4Ywp8IEf4k%2FTxjwOU5aMa4PnGF0TK97DqOsbs6f9Y%2BY%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc3MDY1NjU0MSwibmJmIjoxNzcwNjU2MjQxLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.h4cKGbWwjdT7yDHuxAuu_24DFa-1QA9JMkEVnD7cFT8&response-content-disposition=attachment%3B%20filename%3DLegacy.Holy.GL4ES.apk&response-content-type=application%2Fvnd.android.package-archive"
-                                class="external-link" target="_blank">Holy GL4ES</a> 渲染器获得最佳体验），但不能装载光影及优化模组（如<a
-                                href="https://www.mcmod.cn/class/2785.html" class="external-link"
-                                target="_blank">钠（Sodium）</a>）。</li>
-                        <li><strong>MG</strong> - 仅限 <a
-                                href="https://release-assets.githubusercontent.com/github-production-release-asset/920331898/e87ab42e-2fa3-41ca-a441-3619424beb0b?sp=r&sv=2018-11-09&sr=b&spr=https&se=2026-02-09T17%3A59%3A18Z&rscd=attachment%3B+filename%3DMobileGlues.V1.3.1.apk&rsct=application%2Fvnd.android.package-archive&skoid=96c2d410-5711-43a1-aedd-ab1947aa7ab0&sktid=398a6654-997b-47e9-b12b-9515b896b4de&skt=2026-02-09T16%3A59%3A09Z&ske=2026-02-09T17%3A59%3A18Z&sks=b&skv=2018-11-09&sig=nQLfNIbqA0%2FNtZooGurKM%2F9y%2FYpC04HgIQUNV%2BTPaIM%3D&jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmVsZWFzZS1hc3NldHMuZ2l0aHVidXNlcmNvbnRlbnQuY29tIiwia2V5Ijoia2V5MSIsImV4cCI6MTc3MDY1ODE1MCwibmJmIjoxNzcwNjU2MzUwLCJwYXRoIjoicmVsZWFzZWFzc2V0cHJvZHVjdGlvbi5ibG9iLmNvcmUud2luZG93cy5uZXQifQ.slDqwjtJAjdJL5hdfxmniERkDEDJwUj21okbCZXNLO4&response-content-disposition=attachment%3B%20filename%3DMobileGlues.V1.3.1.apk&response-content-type=application%2Fvnd.android.package-archive"
-                                class="external-link" target="_blank">MobileGlues</a> 渲染器可用，可以装载光影及优化模组。</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
     </section>
 
-    <!--启动器下载-->
-    <section class="container" id="download-laucher">
-        <h1 style="text-align: center;color: var(--dark-color);">下载启动器</h1>
-        <!-- Windows 启动器下载 -->
-        <section class="download-section">
-            <div class="container">
-                <div class="platform-header">
-                    <div class="platform-icon">
-                        <img src="resources/images/windows.svg" alt="Windows">
-                    </div>
-                    <div class="platform-title">
-                        <h2>Windows 游戏启动器</h2>
-                        <p>适用于 Windows 系统的 Minecraft Java 版启动器</p>
-                    </div>
-                </div>
-
-                <div class="launcher-grid">
-                    <div class="launcher-card">
-                        <div class="launcher-icon">
-                            <img src="resources/images/minecraft-launcher.png" alt="Minecraft Launcher">
-                        </div>
-                        <div class="launcher-info">
-                            <h3>Minecraft Launcher</h3>
-                            <span class="team-role">★官方★</span>
-                            <p>官方正版启动器，稳定性好，正版玩家必备~</p>
-                            <div class="launcher-features">
-                                <span class="feature-tag">官方出品</span>
-                                <span class="feature-tag">正版验证</span>
-                            </div>
-                            <div class="launcher-links">
-                                <a href="https://www.minecraft.net/zh-hans/download" class="download-btn btn-secondary"
-                                    target="_blank">
-                                    <i class="fa fa-external-link"></i> 前往官网下载
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="launcher-card">
-                        <div class="launcher-icon">
-                            <img src="resources/images/hmcl.png" alt="HMCL">
-                        </div>
-                        <div class="launcher-info">
-                            <h3>HMCL</h3>
-                            <span class="team-role">★推荐★</span>
-                            <p>开源免费，功能强大，支持模组管理，适合进阶玩家</p>
-                            <div class="launcher-features">
-                                <span class="feature-tag">开源免费</span>
-                                <span class="feature-tag">模组管理</span>
-                            </div>
-                            <div class="launcher-links">
-                                <a href="https://hmcl.huangyuhui.net/download/" class="download-btn btn-secondary"
-                                    target="_blank">
-                                    <i class="fa fa-external-link"></i> 前往官网下载
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="launcher-card">
-                        <div class="launcher-icon">
-                            <img src="resources/images/PCL2.png" alt="PCL">
-                        </div>
-                        <div class="launcher-info">
-                            <h3>PCL</h3>
-                            <span class="team-role">★推荐★</span>
-                            <p>界面美观，功能全面，社区活跃，开源免费，支持模组管理，适合进阶玩家</p>
-                            <div class="launcher-features">
-                                <span class="feature-tag">界面美观</span>
-                                <span class="feature-tag">社区活跃</span>
-                            </div>
-                            <div class="launcher-links">
-                                <a href="" class="download-btn btn-secondary" target="_blank">
-                                    <i class="fa fa-external-link"></i> 前往官网下载
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="renderer-note">
-                    <h3><i class="fa fa-exclamation-triangle"></i> 启动器说明</h3>
-                    <ul>
-                        <li>要使用 Minecraft Launcher，您必须要拥有正版账户才可使用，访问 <a
-                                href="https://www.minecraft.net/zh-hans/store/minecraft-deluxe-collection-pc"
-                                class="external-link" target="_blank">minecraft.net</a> 或 <a
-                                href="https://apps.microsoft.com/detail/9NXP44L49SHJ" class="external-link"
-                                target="_blank">Microsoft Store</a> 来购买。</li>
-                        <li>要使用离线账户加入到服务器，您只能使用支持离线账户的启动器（例如 PCL）。</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Android 启动器下载 -->
-        <section class="download-section">
-            <div class="container">
-                <div class="platform-header">
-                    <div class="platform-icon">
-                        <img src="resources/images/android.svg" alt="Android">
-                    </div>
-                    <div class="platform-title">
-                        <h2>Android 游戏启动器</h2>
-                        <p>适用于 Android 设备的 Minecraft Java 版启动器</p>
-                    </div>
-                </div>
-
-                <div class="launcher-grid">
-                    <div class="launcher-card">
-                        <div class="launcher-icon">
-                            <img src="resources/images/pojavLauncher.png" alt="PojavLauncher">
-                        </div>
-                        <div class="launcher-info">
-                            <h3>PojavLauncher</h3>
-                            <span class="team-role">★老牌★</span>
-                            <p>老牌启动器，兼容性好，专注启动游戏本体功能</p>
-                            <div class="launcher-features">
-                                <span class="feature-tag">兼容性好</span>
-                                <span class="feature-tag">功能专注</span>
-                            </div>
-                            <div class="launcher-links">
-                                <a href="" class="download-btn btn-secondary" target="_blank">
-                                    <i class="fa fa-external-link"></i> 前往官网下载
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="launcher-card">
-                        <div class="launcher-icon">
-                            <img src="resources/images/FCL.png" alt="FCL">
-                        </div>
-                        <div class="launcher-info">
-                            <h3>FCL</h3><span class="team-role">★推荐★</span>
-                            <p>类似于 HMCL 的 Android 版本，同样也支持模组管理，下载社区资源，界面友好</p>
-                            <div class="launcher-features">
-                                <span class="feature-tag">模组管理</span>
-                                <span class="feature-tag">社区资源</span>
-                            </div>
-                            <div class="launcher-links">
-                                <a href="" class="download-btn btn-secondary" target="_blank">
-                                    <i class="fa fa-external-link"></i> 前往官网下载
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </section>
-
-    <!-- 安装指南 -->
-    <div class="container">
-        <section class="download-section">
-            <div class="container">
-                <div class="installation-guide">
-                    <h2><i class="fa fa-graduation-cap"></i> 安装指南</h2>
-
-                    <div class="guide-steps">
-                        <div class="step">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <h3>下载整合包</h3>
-                                <p>根据您的设备类型和配置，选择上方合适的整合包并下载</p>
-                            </div>
-                        </div>
-
-                        <div class="step">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <h3>解压文件</h3>
-                                <p>将下载的 ZIP 文件解压到任意文件夹（建议使用英文路径）</p>
-                            </div>
-                        </div>
-
-                        <div class="step">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <h3>导入启动器</h3>
-                                <p>在您的 Minecraft 启动器中导入解压后的文件夹作为游戏实例</p>
-                            </div>
-                        </div>
-
-                        <div class="step">
-                            <div class="step-number">4</div>
-                            <div class="step-content">
-                                <h3>启动游戏</h3>
-                                <p>选择悠哉世界整合包，启动游戏并加入服务器</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tutorial-link">
-                        <p>需要更详细的安装教程？请查看 <a href="tutorials/quick_play_guide" class="internal-link">快速游玩指南</a></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- 页脚 -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
@@ -549,8 +389,7 @@
                     <p>一个充满创意与冒险的 Minecraft 服务器，致力于为玩家提供最佳的游戏体验。</p>
                     <br><br>
                     <img src="resources/images/cloudflare.svg" alt="Cloudflare">
-                    <p>本站由 <a class="external-link" href="https://cloudflare.com" target="_blank">Cloudflare</a>
-                        提供安全防护
+                    <p>本站由 <a class="external-link" href="https://cloudflare.com" target="_blank">Cloudflare</a> 提供安全防护
                     </p>
                 </div>
                 <div class="footer-section">
@@ -560,9 +399,11 @@
                         <li><a href="/#trend" class="internal-link">服务器动态</a></li>
                         <li><a href="/#events" class="internal-link">活动列表</a></li>
                         <li><a href="/#features" class="internal-link">玩法特性一览</a></li>
-                        <li><a href="/#join" class="internal-link">加入服务器</a></li>
+                        <li><a href="/#join" class="internal-link">加入服务器与服务器 QQ 群</a></li>
                         <li><a href="tutorial" class="internal-link">教程中心</a></li>
+                        <li><a href="download" class="internal-link">下载中心</a></li>
                         <li><a href="status" class="internal-link">服务器状态监控</a></li>
+                        <li><a href="banlist" class="internal-link">玩家处罚记录</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -603,9 +444,8 @@
     <!-- 点击特效元素 -->
     <div class="click-effect"></div>
 
+    <!-- 全局脚本 -->
     <script src="resources/scripts/script.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="resources/scripts/download.js"></script>
 </body>
 
 </html>
