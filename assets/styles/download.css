@@ -157,16 +157,6 @@
     border-radius: 30px;
     margin-bottom: 12px;
 }
-.download-hash {
-    font-family: monospace;
-    font-size: 0.85rem;
-    color: var(--accent-color);
-    background: #ecf9f2;
-    padding: 6px 12px;
-    border-radius: 40px;
-    word-break: break-all;
-    border: 1px dashed var(--primary-color);
-}
 .download-note {
     font-size: 0.85rem;
     color: var(--dark-color);
@@ -175,6 +165,37 @@
     border-radius: 30px;
     margin-top: 10px;
     border-left: 3px solid #ffb74d;
+}
+
+/* 配置文件选项区域样式 */
+.download-options {
+    margin: 10px 0 15px;
+    padding: 10px 12px;
+    background: rgba(168, 230, 207, 0.1);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.download-options .options-label {
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-right: 5px;
+}
+.download-options label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+.download-options input[type="radio"] {
+    accent-color: var(--accent-color);
+    width: 14px;
+    height: 14px;
+    margin-right: 2px;
+    cursor: pointer;
 }
 
 .download-card-footer {
@@ -229,6 +250,9 @@
     .download-card-header h4 {
         font-size: 1.25rem;
     }
+    .download-options {
+        gap: 12px;
+    }
 }
 @media (max-width: 480px) {
     .download-meta {
@@ -237,5 +261,10 @@
     }
     .download-card {
         padding: 20px 16px;
+    }
+    .download-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
     }
 }
