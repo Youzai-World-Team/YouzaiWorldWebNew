@@ -103,7 +103,7 @@ function renderTrendsList(trendsToShow = null) {
         };
 
         trendItem.innerHTML = `
-                    <img src="resources/images/${trend.icon}" alt="${typeLabels[trend.type]}" class="trend-icon">
+                    <img src="assets/images/${trend.icon}" alt="${typeLabels[trend.type]}" class="trend-icon">
                     <div class="trend-content">
                         <span class="trend-date">${trend.date}</span>
                         <span class="trend-type-badge ${typeClasses[trend.type]}">${typeLabels[trend.type]}</span>

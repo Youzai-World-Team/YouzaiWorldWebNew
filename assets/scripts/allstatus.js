@@ -62,7 +62,7 @@ class ServerStatusMonitor {
                     <h3 class="status-node-title">
                         Youzai World Sever
                         <button class="node-refresh-btn" title="刷新状态" id="cardRefreshBtn" disabled>
-                            <img src="resources/images/refresh.svg" alt="刷新">
+                            <img src="assets/images/refresh.svg" alt="刷新">
                         </button>
                     </h3>
                     <div class="status-node-status status-loading">
@@ -128,7 +128,7 @@ class ServerStatusMonitor {
                     <h3 class="status-node-title">
                         Youzai World Sever
                         <button class="node-refresh-btn" title="刷新状态" id="cardRefreshBtn" onclick="serverStatusMonitor.loadStatus()">
-                            <img src="resources/images/refresh.svg" alt="刷新">
+                            <img src="assets/images/refresh.svg" alt="刷新">
                         </button>
                     </h3>
                     <div class="status-node-status status-online">
@@ -182,7 +182,7 @@ class ServerStatusMonitor {
                     <h3 class="status-node-title">
                         Youzai World Sever
                         <button class="node-refresh-btn" title="刷新状态" id="cardRefreshBtn" onclick="serverStatusMonitor.loadStatus()">
-                            <img src="resources/images/refresh.svg" alt="刷新">
+                            <img src="assets/images/refresh.svg" alt="刷新">
                         </button>
                     </h3>
                     <div class="status-node-status status-offline">

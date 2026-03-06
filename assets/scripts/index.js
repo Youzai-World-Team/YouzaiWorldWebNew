@@ -105,19 +105,19 @@ function initHeroSlider() {
 
     function preloadImages() {
         const imagePaths = [
-            'resources/images/background_1.webp'
+            'assets/images/background_1.webp'
         ];
         /*,
-            'resources/images/background_2.webp',
-            'resources/images/background_3.webp',
-            'resources/images/background_4.webp',
-            'resources/images/background_5.webp',
-            'resources/images/background_6.webp',
-            'resources/images/background_7.webp',
-            'resources/images/background_8.webp',
-            'resources/images/background_9.webp',
-            'resources/images/background_10.webp',
-            'resources/images/background_11.webp'
+            'assets/images/background_2.webp',
+            'assets/images/background_3.webp',
+            'assets/images/background_4.webp',
+            'assets/images/background_5.webp',
+            'assets/images/background_6.webp',
+            'assets/images/background_7.webp',
+            'assets/images/background_8.webp',
+            'assets/images/background_9.webp',
+            'assets/images/background_10.webp',
+            'assets/images/background_11.webp'
         */
         let loadedImages = 0;
         const totalImages = imagePaths.length;
