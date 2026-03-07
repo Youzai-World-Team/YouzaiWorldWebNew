@@ -232,6 +232,104 @@ body {
     text-decoration: none;
 }
 
+/* details 标签样式 */
+details {
+    display: block;
+    margin-bottom: 1rem;
+    background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(168, 230, 207, 0.5);
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(2px);
+    box-shadow: 0 4px 12px rgba(52, 94, 84, 0.05);
+}
+
+details:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 6px 16px rgba(52, 94, 84, 0.1);
+}
+
+details[open] {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-color: var(--accent-color);
+}
+
+/* 摘要部分 */
+summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--dark-color);
+    padding: 0.5rem 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    user-select: none;
+    transition: color 0.2s;
+}
+
+summary:hover {
+    color: var(--accent-color);
+}
+
+/* 自定义箭头（默认：关闭状态） */
+summary::before {
+    content: '';
+    display: inline-block;
+    width: 0.6rem;
+    height: 0.6rem;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(-45deg);
+    transition: transform 0.3s ease;
+    margin-right: 0.4rem;
+}
+
+/* 关键修正：仅当 details 为 open 时，其直接子 summary 箭头旋转 */
+details[open] > summary::before {
+    transform: rotate(45deg);
+}
+
+/* 移除 WebKit 默认三角 */
+summary::-webkit-details-marker {
+    display: none;
+}
+
+/* details 内部内容样式（除 summary 外） */
+details > :not(summary) {
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px dashed rgba(107, 179, 155, 0.3);
+    color: var(--text-color);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* ===== 嵌套 details 的视觉优化 ===== */
+details details {
+    margin-left: 1.2rem;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-width: 1px;
+    padding: 0.4rem 0.8rem;
+}
+
+details details summary {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+details details summary::before {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+/* 更深层嵌套（可选） */
+details details details {
+    margin-left: 1.5rem;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
 /* ==================== 布局组件 ==================== */
 
 /* 导航栏 */

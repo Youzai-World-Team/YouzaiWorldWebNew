@@ -79,7 +79,22 @@
     </div>
 
     <section class="download-main container">
-        <p>请注意选择您所使用的平台对应的资源包进行下载！若发现下载资源包后无法进入服务器，请进入 QQ 群联系管理员反馈问题！</p><br>
+        <p>请注意选择您所使用的平台对应的资源包进行下载！若发现下载资源包后无法进入服务器，请进入 QQ 群联系管理员反馈问题！</p>
+        <div class="banner" role="alert">
+            <span class="banner-icon" aria-hidden="true">🌱</span>
+            <div class="banner-content">
+                <strong>注意：</strong>“是否带配置”选项为是否包含客户端的配置文件（即包含原版的 options.txt
+                文件），如下载包含该文件的版本，则游戏将优先使用资源包内的配置文件，覆盖掉原有的配置文件；如下载不包含该文件的版本，则游戏将使用原版默认的配置文件（可能存在某些地方的按键冲突）。<br>
+                <details>
+                    <summary><strong>我该如何选择是否带配置</strong></summary>
+                    <strong>新手玩家：</strong>建议选择带配置的版本，使用资源包制作者的 options.txt 文件。<br>
+                    <strong>高阶玩家：</strong>可以选择不带配置的版本并复制自己的 options.txt 文件到安装完的版本文件夹内，以保留自己的按键设置和视频设置等配置项。
+                </details>
+            </div>
+            <button class="banner-close" aria-label="关闭此提示" onclick="this.parentNode.style.display='none'">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         <div class="download-section-block" id="download-packages">
             <h2 class="download-section-title">📦 资源包下载</h2>
             <!-- Windows 资源包 -->
