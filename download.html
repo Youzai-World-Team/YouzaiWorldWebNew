@@ -116,7 +116,7 @@
                         <div class="download-card-body">
                             <p class="download-desc">包含服务器所有玩法模组、光影预设、优化配置。</p>
                             <div class="download-meta">
-                                <span class="download-size">📏 大小: 40.0 MB</span>
+                                <span class="download-size">📏 大小: 34.7 MB</span>
                                 <span class="download-date">📅 更新: 2026-03-07</span>
                             </div>
                         </div>
@@ -145,7 +145,7 @@
                         <div class="download-card-body">
                             <p class="download-desc">包含服务器所有玩法模组、光影预设、优化配置，不包含材质纹理。</p>
                             <div class="download-meta">
-                                <span class="download-size">📏 大小: 40.0 MB</span>
+                                <span class="download-size">📏 大小: 34.7 MB</span>
                                 <span class="download-date">📅 更新: 2026-03-07</span>
                             </div>
                         </div>
@@ -174,7 +174,7 @@
                         <div class="download-card-body">
                             <p class="download-desc">包含服务器所有玩法模组、材质纹理、优化配置，不包含光影预设。</p>
                             <div class="download-meta">
-                                <span class="download-size">📏 大小: 40.0 MB</span>
+                                <span class="download-size">📏 大小: 34.7 MB</span>
                                 <span class="download-date">📅 更新: 2026-03-07</span>
                             </div>
                         </div>
@@ -203,7 +203,7 @@
                         <div class="download-card-body">
                             <p class="download-desc">只包含服务器所有玩法模组、优化配置。</p>
                             <div class="download-meta">
-                                <span class="download-size">📏 大小: 40.0 MB</span>
+                                <span class="download-size">📏 大小: 34.7 MB</span>
                                 <span class="download-date">📅 更新: 2026-03-07</span>
                             </div>
                         </div>
@@ -223,83 +223,145 @@
                 </div>
             </div>
 
-            <!-- Android 资源包 (分为两个渲染器区块，并排显示) -->
+            <!-- Android 资源包 -->
             <div class="download-platform">
                 <h3 class="platform-title">
                     <img src="assets/images/android.svg" alt="Android" class="platform-icon"
                         onerror="this.style.display='none'"> Android 版资源包
                 </h3>
-                <!-- 使用 renderer-grid 实现两列并排，每列包含标题+卡片 -->
                 <div class="renderer-grid">
                     <!-- MG渲染器专用版区块 -->
                     <div class="renderer-col">
                         <h4 class="renderer-title">
                             <img src="assets/images/MobileGlues.webp" class="renderer-icon" alt="MG渲染器图标">
-                            Mobile Glues 渲染器专用版
+                            Mobile Glues 渲染器专用版（推荐）
                         </h4>
                         <div class="download-cards">
-                            <!-- MG常规版卡片 -->
-                            <div class="download-card" id="card-android-mg-normal">
+                            <!-- MG 完整版 -->
+                            <div class="download-card" id="android-mg-complete">
                                 <div class="download-card-header">
                                     <h4>
                                         <img src="assets/images/zip.svg" class="card-icon" alt="zip">
-                                        常规版
+                                        完整版
                                     </h4>
-                                    <span class="download-version">v1.2.0</span>
+                                    <span class="download-version">v1.2.1</span>
                                 </div>
                                 <div class="download-card-body">
-                                    <p class="download-desc">针对该渲染器的版本，包含服务器所有玩法模组、光影预设、优化配置。
+                                    <p class="download-desc">针对该渲染器的版本，包含服务器所有玩法模组、光影预设、材质纹理、优化配置。
                                     </p>
                                     <div class="download-meta">
-                                        <span class="download-size">📏 大小: 51.4 MB （53,902,147 字节）</span>
-                                        <span class="download-date">📅 更新: 2026-02-28</span>
+                                        <span class="download-size">📏 大小: 37.4 MB</span>
+                                        <span class="download-date">📅 更新: 2026-03-08</span>
                                     </div>
                                     <div class="download-note">注意：该版本只能由 Mobile Glues 渲染器使用，其他渲染器一旦加载就会直接崩溃！</div>
                                 </div>
                                 <!-- 配置文件选项单选框组 -->
                                 <div class="download-options">
                                     <span class="options-label">是否带配置</span>
-                                    <label><input type="radio" name="config_android_mg_normal" value="default" checked>
+                                    <label><input type="radio" name="mg_complete" value="default" checked>
                                         带配置</label>
-                                    <label><input type="radio" name="config_android_mg_normal" value="none"> 无配置</label>
+                                    <label><input type="radio" name="mg_complete" value="none"> 无配置</label>
                                 </div>
                                 <div class="download-card-footer">
-                                    <a href="#" class="btn-primary download-btn"
-                                        data-url-default="files/public/download/packages/1.2.0/[Android_MobileGluesOnly]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.0.zip"
-                                        data-url-none="files/public/download/packages/1.2.0/[Android_MobileGluesOnly_NoConfig]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.0.zip"
+                                    <a href="" class="btn-primary download-btn"
+                                        data-url-default="files/public/download/packages/1.2.1/android/mg/complete/[Android_MobileGlues_Complete]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
+                                        data-url-none="files/public/download/packages/1.2.1/android/mg/complete/[Android_MobileGlues_NoProfile]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
                                         data-has-option="true">⬇ 下载</a>
                                 </div>
                             </div>
-                            <!-- MG不带光影版卡片 -->
-                            <div class="download-card" id="card-android-mg-noshader">
+                            <!-- MG 不带材质纹理包版 -->
+                            <div class="download-card" id="android-mg-notextures">
+                                <div class="download-card-header">
+                                    <h4>
+                                        <img src="assets/images/zip.svg" class="card-icon" alt="zip">
+                                        不带材质纹理包版
+                                    </h4>
+                                    <span class="download-version">v1.2.1</span>
+                                </div>
+                                <div class="download-card-body">
+                                    <p class="download-desc">针对该渲染器的版本，包含服务器所有玩法模组、光影预设、优化配置，不包含材质纹理。
+                                    </p>
+                                    <div class="download-meta">
+                                        <span class="download-size">📏 大小: 37.4 MB</span>
+                                        <span class="download-date">📅 更新: 2026-03-08</span>
+                                    </div>
+                                    <div class="download-note">注意：该版本只能由 Mobile Glues 渲染器使用，其他渲染器一旦加载就会直接崩溃！</div>
+                                </div>
+                                <!-- 配置文件选项单选框组 -->
+                                <div class="download-options">
+                                    <span class="options-label">是否带配置</span>
+                                    <label><input type="radio" name="mg_no_textures" value="default" checked>
+                                        带配置</label>
+                                    <label><input type="radio" name="mg_no_textures" value="none"> 无配置</label>
+                                </div>
+                                <div class="download-card-footer">
+                                    <a href="" class="btn-primary download-btn"
+                                        data-url-default="files/public/download/packages/1.2.1/android/mg/textures/[Android_MobileGlues_NoTextures]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
+                                        data-url-none="files/public/download/packages/1.2.1/android/mg/textures/[Android_MobileGlues_NoTextures&Profile]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
+                                        data-has-option="true">⬇ 下载</a>
+                                </div>
+                            </div>
+                            <!-- MG 不带光影版 -->
+                            <div class="download-card" id="android-mg-noshader">
                                 <div class="download-card-header">
                                     <h4>
                                         <img src="assets/images/zip.svg" class="card-icon" alt="zip">
                                         不带光影版
                                     </h4>
-                                    <span class="download-version">v1.2.0</span>
+                                    <span class="download-version">v1.2.1</span>
                                 </div>
                                 <div class="download-card-body">
-                                    <p class="download-desc">针对该渲染器的版本，包含服务器所有玩法模组、优化配置，不包含光影预设。
+                                    <p class="download-desc">针对该渲染器的版本，包含服务器所有玩法模组、材质纹理、优化配置，不包含光影预设。
                                     </p>
                                     <div class="download-meta">
-                                        <span class="download-size">📏 大小: 551.4 MB （53,901,707 字节）</span>
-                                        <span class="download-date">📅 更新: 2026-02-28</span>
+                                        <span class="download-size">📏 大小: 37.4 MB</span>
+                                        <span class="download-date">📅 更新: 2026-03-08</span>
                                     </div>
                                     <div class="download-note">注意：该版本只能由 Mobile Glues 渲染器使用，其他渲染器一旦加载就会直接崩溃！</div>
                                 </div>
                                 <!-- 配置文件选项单选框组 -->
                                 <div class="download-options">
                                     <span class="options-label">是否带配置</span>
-                                    <label><input type="radio" name="config_android_mg_noshader" value="default"
-                                            checked> 带配置</label>
-                                    <label><input type="radio" name="config_android_mg_noshader" value="none">
-                                        无配置</label>
+                                    <label><input type="radio" name="mg_noshader" value="default" checked>
+                                        带配置</label>
+                                    <label><input type="radio" name="mg_noshader" value="none"> 无配置</label>
                                 </div>
                                 <div class="download-card-footer">
-                                    <a href="#" class="btn-primary download-btn"
-                                        data-url-default="files/public/download/packages/1.2.0/[Android_MobileGluesOnly&NoShaders]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.0.zip"
-                                        data-url-none="files/public/download/packages/1.2.0/[Android_MobileGluesOnly&NoShaders_NoConfig]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.0.zip"
+                                    <a href="" class="btn-primary download-btn"
+                                        data-url-default="files/public/download/packages/1.2.1/android/mg/shadows/[Android_MobileGlues_NoShadows]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
+                                        data-url-none="files/public/download/packages/1.2.1/android/mg/shadows/[Android_MobileGlues_NoShadows&Profile]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
+                                        data-has-option="true">⬇ 下载</a>
+                                </div>
+                            </div>
+                            <!-- MG 仅带必要资源版 -->
+                            <div class="download-card" id="android-mg-none">
+                                <div class="download-card-header">
+                                    <h4>
+                                        <img src="assets/images/zip.svg" class="card-icon" alt="zip">
+                                        仅带必要资源版
+                                    </h4>
+                                    <span class="download-version">v1.2.1</span>
+                                </div>
+                                <div class="download-card-body">
+                                    <p class="download-desc">只包含服务器所有玩法模组、优化配置。
+                                    </p>
+                                    <div class="download-meta">
+                                        <span class="download-size">📏 大小: 37.4 MB</span>
+                                        <span class="download-date">📅 更新: 2026-03-08</span>
+                                    </div>
+                                    <div class="download-note">注意：该版本只能由 Mobile Glues 渲染器使用，其他渲染器一旦加载就会直接崩溃！</div>
+                                </div>
+                                <!-- 配置文件选项单选框组 -->
+                                <div class="download-options">
+                                    <span class="options-label">是否带配置</span>
+                                    <label><input type="radio" name="mg_none" value="default" checked>
+                                        带配置</label>
+                                    <label><input type="radio" name="mg_none" value="none"> 无配置</label>
+                                </div>
+                                <div class="download-card-footer">
+                                    <a href="" class="btn-primary download-btn"
+                                        data-url-default="files/public/download/packages/1.2.1/android/mg/none/[Android_MobileGlues_NoShadows&Textures]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1 1.2.1.zip"
+                                        data-url-none="files/public/download/packages/1.2.1/android/mg/none/[Android_MobileGlues_NoShadows&Textures&Profile]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1 1.2.1.zip"
                                         data-has-option="true">⬇ 下载</a>
                                 </div>
                             </div>
@@ -309,36 +371,68 @@
                     <div class="renderer-col">
                         <h4 class="renderer-title">
                             <img src="assets/images/UniversalRenderer.webp" class="renderer-icon" alt="通用渲染器图标">
-                            通用渲染器兼容版
+                            通用渲染器版（建议使用 Holy GL4ES 渲染器）
                         </h4>
                         <div class="download-cards">
-                            <div class="download-card" id="card-android-univ">
+                            <!-- univ 完整版 -->
+                            <div class="download-card" id="android-univ-complete">
                                 <div class="download-card-header">
                                     <h4>
                                         <img src="assets/images/zip.svg" class="card-icon" alt="zip">
-                                        常规版
+                                        完整版
                                     </h4>
-                                    <span class="download-version">v1.2.0</span>
+                                    <span class="download-version">v1.2.1</span>
                                 </div>
                                 <div class="download-card-body">
-                                    <p class="download-desc">适用于所有主流 Android 设备 (OpenGL ES 3.0+)，兼容性最佳，功能完整。</p>
+                                    <p class="download-desc">适用于所有主流渲染器，兼容性最佳，功能完整。</p>
                                     <div class="download-meta">
-                                        <span class="download-size">📏 大小: 51.4 MB （53,900,266 字节）</span>
-                                        <span class="download-date">📅 更新: 2026-02-28</span>
+                                        <span class="download-size">📏 大小: 37.4 MB</span>
+                                        <span class="download-date">📅 更新: 2026-03-08</span>
                                     </div>
                                     <div class="download-note">注意：该版本无法使用光影和优化，不建议使用该版本，除非你无法使用 Mobile Glues 渲染器！</div>
                                 </div>
                                 <!-- 配置文件选项单选框组 -->
                                 <div class="download-options">
                                     <span class="options-label">是否带配置</span>
-                                    <label><input type="radio" name="config_android_univ" value="default" checked>
+                                    <label><input type="radio" name="univ_complete" value="default" checked>
                                         带配置</label>
-                                    <label><input type="radio" name="config_android_univ" value="none"> 无配置</label>
+                                    <label><input type="radio" name="univ_complete" value="none"> 无配置</label>
                                 </div>
                                 <div class="download-card-footer">
-                                    <a href="#" class="btn-primary download-btn"
-                                        data-url-default="files/public/download/packages/1.2.0/[Android_Universal]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.0.zip"
-                                        data-url-none="files/public/download/packages/1.2.0/[Android_Universal_NoConfig]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.0.zip"
+                                    <a href="" class="btn-primary download-btn"
+                                        data-url-default="files/public/download/packages/1.2.1/android/universal/complete/[Android_Universal_Complete]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
+                                        data-url-none="files/public/download/packages/1.2.1/android/universal/complete/[Android_Universal_NoProfile]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
+                                        data-has-option="true">⬇ 下载</a>
+                                </div>
+                            </div>
+                            <!-- univ 仅包含必要资源版 -->
+                            <div class="download-card" id="android-univ-none">
+                                <div class="download-card-header">
+                                    <h4>
+                                        <img src="assets/images/zip.svg" class="card-icon" alt="zip">
+                                        仅包含必要资源版
+                                    </h4>
+                                    <span class="download-version">v1.2.1</span>
+                                </div>
+                                <div class="download-card-body">
+                                    <p class="download-desc">适用于所有主流渲染器，兼容性最佳。</p>
+                                    <div class="download-meta">
+                                        <span class="download-size">📏 大小: 37.4 MB</span>
+                                        <span class="download-date">📅 更新: 2026-03-08</span>
+                                    </div>
+                                    <div class="download-note">注意：该版本无法使用光影和优化，不建议使用该版本，除非你无法使用 Mobile Glues 渲染器！</div>
+                                </div>
+                                <!-- 配置文件选项单选框组 -->
+                                <div class="download-options">
+                                    <span class="options-label">是否带配置</span>
+                                    <label><input type="radio" name="univ_none" value="default" checked>
+                                        带配置</label>
+                                    <label><input type="radio" name="univ_none" value="none"> 无配置</label>
+                                </div>
+                                <div class="download-card-footer">
+                                    <a href="" class="btn-primary download-btn"
+                                        data-url-default="files/public/download/packages/1.2.1/android/universal/none/[Android_Universal_NoTextures]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
+                                        data-url-none="files/public/download/packages/1.2.1/android/universal/none/[Android_Universal_NoTextures&Profile]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
                                         data-has-option="true">⬇ 下载</a>
                                 </div>
                             </div>
