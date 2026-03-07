@@ -90,7 +90,7 @@
                 </h3>
                 <div class="download-cards">
                     <!-- 完整版卡片 -->
-                    <div class="download-card" id="card-win-normal">
+                    <div class="download-card" id="win-complete">
                         <div class="download-card-header">
                             <h4>
                                 <img src="assets/images/zip.svg" class="card-icon" alt="zip">
@@ -108,19 +108,18 @@
                         <!-- 配置文件选项单选框组 -->
                         <div class="download-options">
                             <span class="options-label">是否带配置</span>
-                            <label><input type="radio" name="config_win_normal" value="default" checked> 带配置</label>
-                            <label><input type="radio" name="config_win_normal" value="none"> 无配置</label>
+                            <label><input type="radio" name="complete" value="default" checked> 带配置</label>
+                            <label><input type="radio" name="complete" value="none"> 无配置</label>
                         </div>
                         <div class="download-card-footer">
-                            <!-- 注意：此处 href 由 JS 动态更新，静态占位符仅用于初始加载 -->
-                            <a href="#" class="btn-primary download-btn"
+                            <a href="" class="btn-primary download-btn"
                                 data-url-default="files/public/download/packages/1.2.1/windows/complete/[Windows_Complete]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
                                 data-url-none="files/public/download/packages/1.2.1/windows/complete/[Windows_NoProfile]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
                                 data-has-option="true">⬇ 下载</a>
                         </div>
                     </div>
                     <!-- 不带材质纹理包版卡片 -->
-                    <div class="download-card" id="card-win-noshader">
+                    <div class="download-card" id="win-notextures">
                         <div class="download-card-header">
                             <h4>
                                 <img src="assets/images/zip.svg" class="card-icon" alt="zip">
@@ -138,13 +137,71 @@
                         <!-- 配置文件选项单选框组 -->
                         <div class="download-options">
                             <span class="options-label">是否带配置</span>
-                            <label><input type="radio" name="config_win_noshader" value="default" checked> 带配置</label>
-                            <label><input type="radio" name="config_win_noshader" value="none"> 无配置</label>
+                            <label><input type="radio" name="no_textures" value="default" checked> 带配置</label>
+                            <label><input type="radio" name="no_textures" value="none"> 无配置</label>
                         </div>
                         <div class="download-card-footer">
-                            <a href="#" class="btn-primary download-btn"
+                            <a href="" class="btn-primary download-btn"
                                 data-url-default="files/public/download/packages/1.2.1/windows/textures/[Windows_NoTextures]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
                                 data-url-none="files/public/download/packages/1.2.1/windows/textures/[Windows_NoTextures&Profile]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
+                                data-has-option="true">⬇ 下载</a>
+                        </div>
+                    </div>
+                    <!-- 不带光影版 -->
+                    <div class="download-card" id="win-noshader">
+                        <div class="download-card-header">
+                            <h4>
+                                <img src="assets/images/zip.svg" class="card-icon" alt="zip">
+                                不带光影版
+                            </h4>
+                            <span class="download-version">v1.2.1</span>
+                        </div>
+                        <div class="download-card-body">
+                            <p class="download-desc">包含服务器所有玩法模组、材质纹理、优化配置，不包含光影预设。</p>
+                            <div class="download-meta">
+                                <span class="download-size">📏 大小: 40.0 MB</span>
+                                <span class="download-date">📅 更新: 2026-03-07</span>
+                            </div>
+                        </div>
+                        <!-- 配置文件选项单选框组 -->
+                        <div class="download-options">
+                            <span class="options-label">是否带配置</span>
+                            <label><input type="radio" name="no_shadows" value="default" checked> 带配置</label>
+                            <label><input type="radio" name="no_shadows" value="none"> 无配置</label>
+                        </div>
+                        <div class="download-card-footer">
+                            <a href="" class="btn-primary download-btn"
+                                data-url-default="files/public/download/packages/1.2.1/windows/shadows/[Windows_NoShadows]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
+                                data-url-none="files/public/download/packages/1.2.1/windows/shadows/[Windows_NoShadows&Profile]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
+                                data-has-option="true">⬇ 下载</a>
+                        </div>
+                    </div>
+                    <!-- 仅带必要资源版 -->
+                    <div class="download-card" id="win-none">
+                        <div class="download-card-header">
+                            <h4>
+                                <img src="assets/images/zip.svg" class="card-icon" alt="zip">
+                                仅带必要资源版
+                            </h4>
+                            <span class="download-version">v1.2.1</span>
+                        </div>
+                        <div class="download-card-body">
+                            <p class="download-desc">只包含服务器所有玩法模组、优化配置。</p>
+                            <div class="download-meta">
+                                <span class="download-size">📏 大小: 40.0 MB</span>
+                                <span class="download-date">📅 更新: 2026-03-07</span>
+                            </div>
+                        </div>
+                        <!-- 配置文件选项单选框组 -->
+                        <div class="download-options">
+                            <span class="options-label">是否带配置</span>
+                            <label><input type="radio" name="none" value="default" checked> 带配置</label>
+                            <label><input type="radio" name="none" value="none"> 无配置</label>
+                        </div>
+                        <div class="download-card-footer">
+                            <a href="" class="btn-primary download-btn"
+                                data-url-default="files/public/download/packages/1.2.1/windows/shadows/[Windows_NoShadows]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
+                                data-url-none="files/public/download/packages/1.2.1/windows/shadows/[Windows_NoShadows&Profile]YouzaiWorldServer_Java1.21.11_Fabric0.18.4_Ver1.2.1.zip"
                                 data-has-option="true">⬇ 下载</a>
                         </div>
                     </div>
