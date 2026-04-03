@@ -56,8 +56,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const targetElement = document.querySelector(targetId);
             if (targetElement) {
+                // 元素不偏移列表，其他元素偏移 80px 避免被导航栏遮挡
+                const noOffsetIds = ['#hero'];
+
+                let offset = noOffsetIds.includes(targetId) ? 0 : 80;
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80,
+                    top: targetElement.offsetTop - offset,
                     behavior: 'smooth'
                 });
             }
