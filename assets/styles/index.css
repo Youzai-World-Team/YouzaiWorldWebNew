@@ -242,3 +242,218 @@
         font-size: 0.9rem;
     }
 }
+
+/* ==================== 可游玩的世界板块 ==================== */
+.worlds-section {
+    padding: 80px 0;
+    background: var(--background);
+}
+
+.worlds-section h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 2.8rem;
+    color: var(--dark-color);
+}
+
+.worlds-intro {
+    text-align: center;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    margin-bottom: 50px;
+    opacity: 0.9;
+}
+
+.worlds-wrapper {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* 主卡片 */
+.world-main-card {
+    flex: 2;
+    min-width: 280px;
+    background: #fff;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 20px 35px rgba(52, 94, 84, 0.12);
+    transition: transform 0.25s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(168, 230, 207, 0.4);
+    display: flex;
+    flex-direction: column;
+}
+
+/* 上部图片区 (约 1/8 高度，但用比例控制) */
+.world-main-image {
+    height: 200px;      /* 可依实际微调，约占卡片总高 1/3~1/4，更美观 */
+    background-size: cover;
+    background-position: center;
+    background-color: #a8e6cf;
+    transition: background-image 0.3s ease;
+}
+
+/* 下部内容区 */
+.world-main-content {
+    padding: 28px 24px 32px;
+    flex: 1;
+}
+
+.world-main-content h3 {
+    font-size: 1.9rem;
+    color: var(--dark-color);
+    margin-bottom: 12px;
+}
+
+.world-main-desc p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.world-main-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.world-main-features li {
+    padding: 8px 0;
+    font-size: 1rem;
+    border-bottom: 1px dashed rgba(107, 179, 155, 0.3);
+    color: var(--text-color);
+}
+
+/* 右侧列表：长方形卡片带图片背景 */
+.world-side-list {
+    flex: 1;
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.world-side-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+    height: 110px;      /* 固定高度保持长方形 */
+}
+
+.world-side-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.4s ease;
+    z-index: 1;
+}
+
+.world-side-item:hover .world-side-bg {
+    transform: scale(1.05);
+}
+
+/* 半透明遮罩，让文字更清晰 */
+.world-side-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(52, 94, 84, 0.4), rgba(0, 0, 0, 0.3));
+    z-index: 2;
+    transition: background 0.3s ease;
+}
+
+.world-side-item.active::after {
+    background: linear-gradient(135deg, rgba(107, 179, 155, 0.5), rgba(52, 94, 84, 0.4));
+}
+
+.world-side-text {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 20px;
+    color: white;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.world-side-text h4 {
+    font-size: 1.3rem;
+    margin: 0 0 6px 0;
+    font-weight: 700;
+}
+
+.world-side-text p {
+    font-size: 0.85rem;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* 移动端响应式 */
+@media (max-width: 768px) {
+    .worlds-wrapper {
+        flex-direction: column;
+    }
+    .world-side-list {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 14px;
+        padding-bottom: 8px;
+    }
+    .world-side-item {
+        flex: 0 0 auto;
+        width: 200px;
+        height: 100px;
+    }
+    .world-main-image {
+        height: 160px;
+    }
+    .world-main-content {
+        padding: 20px;
+    }
+    .world-main-content h3 {
+        font-size: 1.6rem;
+    }
+}
+
+/* 主卡片渐隐渐显动画 */
+.world-main-card {
+    transition: opacity 0.3s ease;
+    opacity: 1;
+}
+
+.world-main-card.fade-out {
+    opacity: 0;
+}
+
+/* 禁用状态：不可点击、半透明、默认光标 */
+.world-side-item.disabled,
+.world-side-item[data-world="more"] {
+    pointer-events: none;
+    opacity: 0.7;
+    cursor: default;
+}
+
+/* 保持激活状态的高亮，但不可点击（disabled 已覆盖） */
+.world-side-item.active.disabled {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+/* 主卡片按钮样式 */
+.world-main-btn-wrapper {
+    margin-top: 28px;
+    text-align: center;
+}

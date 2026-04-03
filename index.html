@@ -630,6 +630,71 @@
         </section>
     </section>
 
+    <!-- 可游玩的世界 -->
+    <section id="worlds" class="worlds-section">
+        <div class="container">
+            <h2>可游玩的世界</h2>
+            <br><br>
+            <div class="worlds-wrapper">
+                <!-- 主展示卡片 -->
+                <div class="world-main-card" id="worldMainCard">
+                    <div class="world-main-image" id="worldMainImage">
+                        <!-- 背景图片会通过 JS 设置 -->
+                    </div>
+                    <div class="world-main-content">
+                        <h3 id="worldMainTitle">生存世界</h3>
+                        <div class="world-main-desc" id="worldMainDesc">
+                            <p></p>
+                        </div>
+                        <ul class="world-main-features" id="worldMainFeatures">
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <!-- 新增按钮容器 -->
+                        <div id="worldMainBtnWrapper" style="margin-top: 28px;text-align: right;"></div>
+                    </div>
+                </div>
+
+                <!-- 右侧世界列表（长方形图片背景卡片） -->
+                <div class="world-side-list">
+                    <div class="world-side-item active" data-world="survival">
+                        <div class="world-side-bg" style="background-image: url('assets/images/worlds/survival.webp');">
+                        </div>
+                        <div class="world-side-text">
+                            <h4>生存世界</h4>
+                            <p>经典生存，自由探索</p>
+                        </div>
+                    </div>
+                    <div class="world-side-item" data-world="creative">
+                        <div class="world-side-bg" style="background-image: url('assets/images/worlds/creative.webp');">
+                        </div>
+                        <div class="world-side-text">
+                            <h4>创造世界</h4>
+                            <p>无限资源，创意搭建</p>
+                        </div>
+                    </div>
+                    <div class="world-side-item" data-world="building">
+                        <div class="world-side-bg" style="background-image: url('assets/images/worlds/building.webp');">
+                        </div>
+                        <div class="world-side-text">
+                            <h4>建筑世界</h4>
+                            <p>平坦地形，专注建筑</p>
+                        </div>
+                    </div>
+                    <div class="world-side-item" data-world="more">
+                        <div class="world-side-bg" style="background-image: url('assets/images/worlds/more.webp');">
+                        </div>
+                        <div class="world-side-text">
+                            <h4>更多世界等待开放</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- 我们的团队板块 -->
     <section id="team" class="team">
         <div class="container">
@@ -928,7 +993,7 @@
     <!-- 点击特效元素 -->
     <div class="click-effect"></div>
 
-    
+
     <script src="assets/scripts/swiper-bundle.min.js"></script>
     <script src="assets/scripts/script.js"></script>
     <script src="assets/scripts/animation.js"></script>
