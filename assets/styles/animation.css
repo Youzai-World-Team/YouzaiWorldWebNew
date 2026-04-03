@@ -1,0 +1,346 @@
+/* ============================================ */
+/*               animations.css                 */
+/*         所有新增动画效果的独立样式文件        */
+/* ============================================ */
+
+/* 滚动动画的基础类（初始状态） */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1),
+                transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    will-change: opacity, transform;
+}
+
+/* 动画触发后的最终状态 */
+.scroll-animate.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 为不同类型的元素添加细微的延迟，增加层次感 */
+.scroll-animate:nth-child(2) { transition-delay: 0.05s; }
+.scroll-animate:nth-child(3) { transition-delay: 0.1s; }
+.scroll-animate:nth-child(4) { transition-delay: 0.15s; }
+.scroll-animate:nth-child(5) { transition-delay: 0.2s; }
+.scroll-animate:nth-child(6) { transition-delay: 0.25s; }
+
+/* 尊重用户的“减弱动态效果”偏好 */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-animate {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* 按钮悬停增强效果 */
+.btn-primary,
+.btn-secondary,
+.download-btn,
+.copy-btn,
+.show-more-btn,
+.load-more-btn,
+.error-link {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+.btn-primary:hover,
+.download-btn:hover,
+.copy-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(107, 179, 155, 0.3);
+}
+.btn-secondary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(52, 94, 84, 0.2);
+}
+
+/* 卡片悬停增强 */
+.strength-card,
+.team-card,
+.download-card,
+.tutorial-item,
+.event-item,
+.donate-card,
+.status-node-card {
+    transition: transform 0.3s ease, box-shadow 0.4s ease, border-color 0.2s ease;
+}
+.strength-card:hover,
+.team-card:hover,
+.download-card:hover,
+.tutorial-item:hover,
+.event-item:hover,
+.donate-card:hover,
+.status-node-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 35px rgba(52, 94, 84, 0.15);
+}
+
+/* 表格行悬停增强 */
+.penalty-table tbody tr,
+.donators-table tbody tr {
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.penalty-table tbody tr:hover,
+.donators-table tbody tr:hover {
+    transform: scale(1.01);
+}
+
+/* 图标悬停旋转 */
+.node-refresh-btn:hover img,
+.sclink:hover {
+    transform: rotate(180deg);
+    transition: transform 0.4s ease;
+}
+.sclink {
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* 错误页面图标浮动动画 */
+.error-illustration img {
+    animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+/* 面包屑导航淡入及悬停下划线 */
+.breadcrumbs {
+    animation: fadeInLeft 0.6s ease-out;
+}
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.breadcrumb-link {
+    position: relative;
+    transition: color 0.2s ease;
+}
+.breadcrumb-link::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+.breadcrumb-link:hover::before {
+    width: 100%;
+}
+
+/* 首屏标题渐显 */
+.hero-content h1,
+.hero-other h1 {
+    animation: fadeInUp 0.8s ease-out;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 计数器数字变化时的闪烁效果 */
+@keyframes countPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); color: var(--accent-color); }
+    100% { transform: scale(1); }
+}
+.count-updated {
+    animation: countPop 0.3s ease-out;
+}
+
+/* 玩法特性轮播卡片悬停微缩放 */
+#hero .hero-content-swiper .swiper-slide:hover .album-info {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+#hero .album-info {
+    transition: transform 0.3s ease;
+}
+
+/* 动态列表加载更多时新条目的渐显动画 */
+.trend-item.new-item {
+    animation: fadeInUp 0.5s ease-out;
+    animation-fill-mode: both;
+}
+
+/* 轮播切换时的活动幻灯片动画（可选） */
+.slide-active-animation .album-info {
+    animation: slideContentGlow 0.6s ease-out;
+}
+@keyframes slideContentGlow {
+    0% { text-shadow: 0 0 0 rgba(255,255,255,0); }
+    50% { text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+    100% { text-shadow: 0 0 0 rgba(255,255,255,0); }
+}
+
+/* 页脚滚动入场 */
+.footer {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.footer.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 服务器状态卡片入场交错动画 */
+.status-node-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.status-node-card.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 捐赠者表格行依次淡入 */
+.donators-table tbody tr {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.donators-table tbody tr.animated {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 团队卡片悬停头像放大 + 社交图标弹跳 */
+.team-card:hover .team-avatar {
+    transform: scale(1.05);
+    transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+.team-card:hover .sclink {
+    animation: bounceIcon 0.4s ease;
+}
+@keyframes bounceIcon {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+/* 优势卡片悬停图片放大加亮 */
+.strength-image-container img {
+    transition: transform 0.4s ease, filter 0.3s ease;
+}
+.strength-card:hover .strength-image-container img {
+    transform: scale(1.05);
+    filter: brightness(1.05) contrast(1.02);
+}
+
+/* 主页横幅按钮悬停脉冲 */
+.hero-buttons .btn-primary:hover,
+.hero-buttons .btn-secondary:hover {
+    animation: pulse 0.6s ease-out;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* 错误页面建议链接悬停箭头滑动 */
+.error-suggestions-list a::before {
+    transition: transform 0.2s ease, margin-right 0.2s ease;
+}
+.error-suggestions-list a:hover::before {
+    transform: translateX(4px);
+    margin-right: 4px;
+}
+
+/* 所有内部/外部链接下划线滑入增强 */
+.internal-link,
+.external-link {
+    position: relative;
+    text-decoration: none;
+}
+.internal-link::after,
+.external-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+}
+.internal-link:hover::after,
+.external-link:hover::after {
+    width: 100%;
+}
+/* 外链图标优化 */
+.external-link {
+    padding-right: 16px;
+}
+.external-link::before {
+    content: '↗';
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 0.8em;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.external-link:hover::before {
+    opacity: 1;
+    transform: translateX(2px);
+}
+/* 覆盖原有外链的背景图片 */
+.external-link::after {
+    background-image: none;
+    width: 0;
+    height: 2px;
+}
+
+/* 活动列表项悬停图片缩放 */
+.event-item:hover .event-image img {
+    transform: scale(1.05);
+    transition: transform 0.4s ease;
+}
+.event-image img {
+    transition: transform 0.3s ease;
+}
+
+/* 服务器动态项目悬停左侧边框变色 */
+.trend-item {
+    transition: border-left-color 0.2s ease, transform 0.2s ease;
+}
+.trend-item:hover {
+    border-left-color: var(--primary-color);
+}
+
+/* 下载卡片按钮悬停时箭头移动 */
+.download-card-footer .btn-primary::after {
+    content: '↓';
+    display: inline-block;
+    margin-left: 6px;
+    transition: transform 0.2s ease;
+}
+.download-card-footer .btn-primary:hover::after {
+    transform: translateY(3px);
+}
+
+/* 教程卡片悬停时图片缩放 */
+.tutorial-item:hover .tutorial-image img {
+    transform: scale(1.08);
+    transition: transform 0.4s ease;
+}
+.tutorial-image img {
+    transition: transform 0.3s ease;
+}
+
+/* 移动端优化：取消状态卡片交错延迟 */
+@media (max-width: 768px) {
+    .status-node-card {
+        transition-delay: 0s !important;
+    }
+    .donators-table tbody tr {
+        transform: translateX(0);
+    }
+}
