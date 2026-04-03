@@ -172,7 +172,7 @@
     line-height: 1.5;
 }
 
-/* 移动端响应式设计 */
+/* 移动端响应式设计（上月玩家之最） */
 @media (max-width: 768px) {
     .ranking {
         padding: 80px 0;
@@ -284,9 +284,9 @@
     flex-direction: column;
 }
 
-/* 上部图片区 (约 1/8 高度，但用比例控制) */
+/* 上部图片区 */
 .world-main-image {
-    height: 200px;      /* 可依实际微调，约占卡片总高 1/3~1/4，更美观 */
+    height: 200px;
     background-size: cover;
     background-position: center;
     background-color: #a8e6cf;
@@ -325,7 +325,7 @@
     color: var(--text-color);
 }
 
-/* 右侧列表：长方形卡片带图片背景 */
+/* 右侧列表：长方形卡片带图片背景（桌面端纵向排列） */
 .world-side-list {
     flex: 1;
     min-width: 240px;
@@ -341,7 +341,7 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
-    height: 110px;      /* 固定高度保持长方形 */
+    height: 110px;
 }
 
 .world-side-bg {
@@ -360,7 +360,7 @@
     transform: scale(1.05);
 }
 
-/* 半透明遮罩，让文字更清晰 */
+/* 半透明遮罩 */
 .world-side-item::after {
     content: '';
     position: absolute;
@@ -401,33 +401,6 @@
     opacity: 0.9;
 }
 
-/* 移动端响应式 */
-@media (max-width: 768px) {
-    .worlds-wrapper {
-        flex-direction: column;
-    }
-    .world-side-list {
-        flex-direction: row;
-        overflow-x: auto;
-        gap: 14px;
-        padding-bottom: 8px;
-    }
-    .world-side-item {
-        flex: 0 0 auto;
-        width: 200px;
-        height: 100px;
-    }
-    .world-main-image {
-        height: 160px;
-    }
-    .world-main-content {
-        padding: 20px;
-    }
-    .world-main-content h3 {
-        font-size: 1.6rem;
-    }
-}
-
 /* 主卡片渐隐渐显动画 */
 .world-main-card {
     transition: opacity 0.3s ease;
@@ -438,7 +411,7 @@
     opacity: 0;
 }
 
-/* 禁用状态：不可点击、半透明、默认光标 */
+/* 禁用状态：不可点击、半透明 */
 .world-side-item.disabled,
 .world-side-item[data-world="more"] {
     pointer-events: none;
@@ -446,7 +419,6 @@
     cursor: default;
 }
 
-/* 保持激活状态的高亮，但不可点击（disabled 已覆盖） */
 .world-side-item.active.disabled {
     pointer-events: none;
     opacity: 0.7;
@@ -456,4 +428,114 @@
 .world-main-btn-wrapper {
     margin-top: 28px;
     text-align: center;
+}
+
+.world-detail-btn {
+    display: inline-block;
+    padding: 12px 32px;
+    background: linear-gradient(135deg, var(--accent-color), var(--dark-color));
+    color: #fff;
+    text-decoration: none;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(52, 94, 84, 0.2);
+    border: none;
+    cursor: pointer;
+}
+
+.world-detail-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(107, 179, 155, 0.4);
+    background: linear-gradient(135deg, var(--dark-color), var(--accent-color));
+}
+
+/* 移动端响应式：主卡片在上，右侧卡片在下横向滚动 */
+@media (max-width: 768px) {
+    .worlds-wrapper {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .world-main-image {
+        height: 140px;
+    }
+
+    .world-main-content {
+        padding: 20px 18px 24px;
+    }
+
+    .world-main-content h3 {
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+    }
+
+    .world-main-desc p {
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+    }
+
+    .world-main-features li {
+        font-size: 0.85rem;
+        padding: 6px 0;
+    }
+
+    /* 移动端按钮全宽 */
+    .world-detail-btn {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        font-size: 0.9rem;
+    }
+
+    /* 右侧列表：横向滚动 - 关键修复：设置宽度100%防止撑开页面 */
+    .world-side-list {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        overflow-y: hidden;
+        gap: 14px;
+        padding-bottom: 12px;
+        width: 100%;           /* 确保占满父容器宽度，不溢出 */
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    /* 隐藏滚动条（可选） */
+    .world-side-list::-webkit-scrollbar {
+        height: 4px;
+    }
+    .world-side-list::-webkit-scrollbar-track {
+        background: rgba(107, 179, 155, 0.1);
+        border-radius: 4px;
+    }
+    .world-side-list::-webkit-scrollbar-thumb {
+        background: var(--accent-color);
+        border-radius: 4px;
+    }
+
+    /* 右侧卡片宽度固定，防止收缩 */
+    .world-side-item {
+        flex: 0 0 auto;
+        width: 170px;
+        height: 100px;
+    }
+
+    .world-side-text {
+        padding: 0 12px;
+    }
+
+    .world-side-text h4 {
+        font-size: 1rem;
+        margin-bottom: 4px;
+    }
+
+    .world-side-text p {
+        font-size: 0.7rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
