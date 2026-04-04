@@ -169,35 +169,37 @@ function initWorldsSection() {
             desc: '经典生存模式，采集资源、建造家园、挑战怪物。与伙伴一起探索广阔的世界。',
             features: [
                 '✅ 完整原版生存体验',
-                '✅ 领地保护，防止破坏',
-                '✅ 经济系统与玩家交易',
-                '✅ 定期备份，安全可靠'
+                '✅ 世界拓展包，新增地形和生物',
+                '✅ 遗迹增加，丰富冒险内容',
+                '✅ 添加四季变换系统、丰富农夫乐事的种植体验，增强沉浸感'
             ],
-            link: 'read_agreements/world_rules&play_agreement/survival'   // 新增完整介绍页链接
+            link: 'read_agreements/world_rules&play_agreement/survival'
         },
         creative: {
             title: '创造世界',
             mainImage: 'assets/images/worlds/creative.webp',
             desc: '创造模式，无限资源，飞行权限，让你尽情发挥想象力，建造宏伟建筑或红石机械。',
             features: [
-                '✅ 创造模式，无限方块',
+                '✅ 可随意破坏和放置方块，无任何限制',
+                '✅ 可测试红石机械和复杂装置，适合技术玩家',
                 '✅ 飞行权限，方便建造',
-                '✅ 世界编辑工具支持',
-                '✅ 可申请建筑模板'
+                '✅ 可申请获得 WorldEdit 模组权限，极大提升建筑效率和创造力'
             ],
-            link: 'read_agreements/world_rules&play_agreement/creative'
+            link: 'read_agreements/world_rules&play_agreement/creative',
+            applyLink: 'apply/creative'
         },
         building: {
             title: '建筑世界',
             mainImage: 'assets/images/worlds/building.webp',
-            desc: '专门为建筑爱好者准备的平坦世界，超大地形，让你专注建筑艺术。',
+            desc: '专门为建筑爱好者准备的世界，让你专注建筑艺术。',
             features: [
-                '✅ 超平坦地形',
-                '✅ 建筑比赛专区',
-                '✅ 团队协作区域',
-                '✅ 优秀作品展示'
+                '✅ 不允许任何人随意破坏，保护建筑作品',
+                '✅ 未取得权限的玩家为冒险模式，方便参观',
+                '✅ 同样可以申请获得 WorldEdit 模组权限，极大提升建筑效率和创造力',
+                '✅ 建筑比赛专区'
             ],
-            link: 'read_agreements/world_rules&play_agreement/building'
+            link: 'read_agreements/world_rules&play_agreement/building',
+            applyLink: 'apply/creative'
         }
     };
 
@@ -264,10 +266,17 @@ function initWorldsSection() {
             // 处理按钮
             const btnWrapper = document.getElementById('worldMainBtnWrapper');
             if (btnWrapper) {
+                let buttonsHtml = '';
                 if (data.link) {
-                    btnWrapper.innerHTML = `<a href="${data.link}" class="btn-secondary" style="margin-top: 28px;text-align: right;">查看世界规则及游玩协议</a>`;
+                    buttonsHtml += `<a href="${data.link}" class="btn-secondary">查看世界规则及游玩协议</a>`;
+                }
+                if (data.applyLink) {
+                    buttonsHtml += `<a href="${data.applyLink}" class="btn-primary">申请权限</a>`;
+                }
+                if (buttonsHtml) {
+                    btnWrapper.innerHTML = `<div style="display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap;">${buttonsHtml}</div>`;
                 } else {
-                    btnWrapper.innerHTML = ''; // 无链接时隐藏按钮
+                    btnWrapper.innerHTML = '';
                 }
             }
 

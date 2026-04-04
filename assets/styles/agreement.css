@@ -1,0 +1,206 @@
+/* ============================================ */
+/*           协议页面专用样式                    */
+/* ============================================ */
+
+.agreement-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 20px 60px;
+}
+
+.agreement-card {
+    background: var(--light-text);
+    border-radius: 20px;
+    padding: 40px 50px;
+    box-shadow: 
+        0 15px 35px rgba(52, 94, 84, 0.1),
+        0 5px 15px rgba(52, 94, 84, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(168, 230, 207, 0.3);
+}
+
+/* 章节样式 */
+.agreement-section {
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(168, 230, 207, 0.3);
+}
+
+.agreement-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 20px;
+    padding-bottom: 0;
+}
+
+/* 标题层级 */
+.agreement-section h2 {
+    font-size: 1.8rem;
+    color: var(--dark-color);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--accent-color);
+    position: relative;
+}
+
+.agreement-section h2::before {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+
+.agreement-section h3 {
+    font-size: 1.3rem;
+    color: var(--dark-color);
+    margin: 25px 0 15px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent-color);
+}
+
+/* 段落样式 */
+.agreement-section p {
+    line-height: 1.8;
+    margin-bottom: 16px;
+    color: var(--text-color);
+    font-size: 1rem;
+    text-align: justify;
+}
+
+/* 列表样式 */
+.agreement-section ul {
+    margin: 12px 0 16px 30px;
+    padding-left: 0;
+    list-style: none;
+}
+
+.agreement-section li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    line-height: 1.7;
+    color: var(--text-color);
+}
+
+.agreement-section li::before {
+    content: '•';
+    position: absolute;
+    left: 4px;
+    color: var(--accent-color);
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* 嵌套列表（处罚措施中的数字列表） */
+.agreement-section ul ul {
+    margin-left: 20px;
+}
+
+.agreement-section ul ul li::before {
+    content: '◦';
+}
+
+/* 协议底部信息 */
+.agreement-footer {
+    margin-top: 40px;
+    padding-top: 25px;
+    text-align: center;
+    border-top: 1px solid rgba(168, 230, 207, 0.5);
+    background: rgba(168, 230, 207, 0.05);
+    border-radius: 12px;
+    padding: 25px 20px;
+}
+
+.agreement-footer p {
+    color: var(--dark-color);
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+.agreement-footer p:last-child {
+    margin-bottom: 0;
+    font-weight: 500;
+    color: var(--accent-color);
+}
+
+/* 协议中的外链样式 */
+.agreement-section .external-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--accent-color);
+    transition: all 0.2s ease;
+}
+
+.agreement-section .external-link:hover {
+    color: var(--dark-color);
+    border-bottom-color: var(--dark-color);
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .agreement-container {
+        padding: 15px 15px 50px;
+    }
+
+    .agreement-card {
+        padding: 25px 20px;
+        border-radius: 15px;
+    }
+
+    .agreement-section {
+        margin-bottom: 28px;
+        padding-bottom: 20px;
+    }
+
+    .agreement-section h2 {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+    }
+
+    .agreement-section h3 {
+        font-size: 1.2rem;
+        margin: 20px 0 12px;
+    }
+
+    .agreement-section p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        text-align: left;
+    }
+
+    .agreement-section ul {
+        margin-left: 15px;
+    }
+
+    .agreement-section li {
+        font-size: 0.95rem;
+        padding-left: 18px;
+    }
+
+    .agreement-footer {
+        margin-top: 30px;
+        padding: 20px 15px;
+    }
+
+    .agreement-footer p {
+        font-size: 0.85rem;
+    }
+}
+
+/* 超小屏幕（手机竖屏） */
+@media (max-width: 480px) {
+    .agreement-card {
+        padding: 20px 16px;
+    }
+
+    .agreement-section h2 {
+        font-size: 1.3rem;
+    }
+
+    .agreement-section h3 {
+        font-size: 1.1rem;
+    }
+}
