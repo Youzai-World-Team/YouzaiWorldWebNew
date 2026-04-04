@@ -16,7 +16,7 @@
 /* ==================== CSS字体定义 ==================== */
 @font-face {
   font-family: 'MyFont';
-  src: url('../fonts/ZhanKuKuaiLeTi2016XiuDingBan-1.woff2') format('woff2');
+  src: url('../fonts/zkklt2016xdb.woff2') format('woff2');
   font-display: swap;
 }
 
