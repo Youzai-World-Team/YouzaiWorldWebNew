@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     // 初始化轮播
     initHeroSlider();
-    //世界板块交互
+    // 初始化音乐播放器
+    initMusic();
+    // 世界板块交互
     initWorldsSection();
     // Swiper
     const bgSwiper = new Swiper('.hero-bg-swiper', {
@@ -324,4 +326,276 @@ function initWorldsSection() {
     });
     // 激活生存世界
     switchWorld('survival');
+}
+
+function initMusic() {
+    // ----- 音乐列表（请使用本地或长期有效的URL）-----
+    const playlist = [
+        { name: 'A Celtic Lore', url: 'assets/medias/A_Celtic_Lore_min.m4a' },
+        { name: 'Ride', url: 'assets/medias/Ride_min.m4a' },
+        { name: 'A Celtic Tale', url: 'assets/medias/A_Celtic_Tale_min.m4a' },
+        { name: 'Ode to the Fallen', url: 'assets/medias/Ode_to_the_Fallen_min.m4a' }
+    ];
+
+    // 播放器状态
+    let audio = null;
+    let currentIndex = 0;
+    let isPlaying = false;
+    let consecutiveErrors = 0;
+    let pendingPlay = false;          // 用户手动切换时等待播放的标志
+    const MAX_CONSECUTIVE_ERRORS = 2;
+
+    // DOM 元素
+    const musicToggleBtn = document.getElementById('musicToggleBtn');
+    const musicPrevBtn = document.getElementById('musicPrevBtn');
+    const musicNextBtn = document.getElementById('musicNextBtn');
+    const musicPlaylistBtn = document.getElementById('musicPlaylistBtn');
+    const musicPlaylist = document.getElementById('musicPlaylist');
+    const playlistItemsUl = document.getElementById('playlistItems');
+
+    if (!musicToggleBtn || !playlistItemsUl) {
+        console.warn('音乐播放器所需的 DOM 元素未找到，跳过初始化');
+        return;
+    }
+
+    // ========== 辅助函数 ==========
+    function updateButtonIcon(playing) {
+        const playingIcon = document.querySelector('.music-icon.music-playing');
+        const pausedIcon = document.querySelector('.music-icon.music-paused');
+        if (playingIcon && pausedIcon) {
+            playingIcon.style.display = playing ? 'block' : 'none';
+            pausedIcon.style.display = playing ? 'none' : 'block';
+        }
+    }
+
+    let tipShown = false;
+    function showMusicTip() {
+        if (tipShown) return;
+        tipShown = true;
+        const tip = document.createElement('div');
+        tip.className = 'music-tip';
+        tip.innerHTML = '🎵 浏览器限制了自动播放，点击任意位置即可播放背景音乐 🎵';
+        document.body.appendChild(tip);
+        setTimeout(() => {
+            tip.classList.add('fade-out');
+            setTimeout(() => tip.remove(), 1000);
+        }, 5000);
+        const playOnInteraction = function() {
+            if (audio && !isPlaying) {
+                audio.play().catch(e => console.warn('仍无法播放', e));
+            }
+            document.removeEventListener('click', playOnInteraction);
+            document.removeEventListener('touchstart', playOnInteraction);
+        };
+        document.addEventListener('click', playOnInteraction);
+        document.addEventListener('touchstart', playOnInteraction);
+    }
+
+    function updatePlaylistActive() {
+        if (!playlistItemsUl) return;
+        const items = playlistItemsUl.querySelectorAll('li');
+        items.forEach((li, idx) => {
+            if (parseInt(li.dataset.index) === currentIndex) {
+                li.classList.add('active');
+            } else {
+                li.classList.remove('active');
+            }
+        });
+    }
+
+    function renderPlaylist() {
+        if (!playlistItemsUl) return;
+        playlistItemsUl.innerHTML = '';
+        playlist.forEach((item, idx) => {
+            const li = document.createElement('li');
+            li.textContent = item.name;
+            li.dataset.index = idx;
+            if (idx === currentIndex) li.classList.add('active');
+            li.addEventListener('click', () => {
+                // 用户点击列表项，手动切换，传入 true
+                loadAndPlay(idx, true);
+                if (musicPlaylist) musicPlaylist.classList.remove('open');
+            });
+            playlistItemsUl.appendChild(li);
+        });
+    }
+
+    // ========== 音频事件处理 ==========
+    function onCanPlay() {
+        // 如果存在用户手动切换待播放标志，或者当前未播放且音频处于暂停状态
+        if (pendingPlay || (!isPlaying && audio && audio.paused)) {
+            // 清除待播放标志，防止重复
+            pendingPlay = false;
+            audio.play().catch(err => {
+                console.warn('播放失败', err);
+                showMusicTip();
+            });
+        }
+    }
+
+    function onPlay() {
+        isPlaying = true;
+        updateButtonIcon(true);
+        consecutiveErrors = 0;
+        pendingPlay = false; // 确保清除标志
+    }
+
+    function onPause() {
+        isPlaying = false;
+        updateButtonIcon(false);
+    }
+
+    function onEnded() {
+        // 自然结束，自动下一首（不需要用户手势标志）
+        playNext(false);
+    }
+
+    function onError(e) {
+        console.error('音频加载错误:', playlist[currentIndex]?.url, e);
+        consecutiveErrors++;
+        if (consecutiveErrors <= MAX_CONSECUTIVE_ERRORS) {
+            console.warn(`尝试播放下一首（连续错误 ${consecutiveErrors}/${MAX_CONSECUTIVE_ERRORS}）`);
+            playNext(false);
+        } else {
+            console.error('连续错误次数过多，停止自动切换。请检查网络或音乐链接');
+            if (audio) {
+                audio.pause();
+                audio = null;
+            }
+            isPlaying = false;
+            updateButtonIcon(false);
+        }
+    }
+
+    // ========== 核心播放控制 ==========
+    // userInitiated: 是否是用户手动触发的切换（用于区分自动连播）
+    function loadAndPlay(index, userInitiated = false) {
+        index = (index + playlist.length) % playlist.length;
+        // 如果请求的是同一首且正在播放，不做任何操作
+        if (index === currentIndex && audio && !audio.paused) {
+            return;
+        }
+
+        // 完全销毁旧的音频对象
+        if (audio) {
+            audio.removeEventListener('canplay', onCanPlay);
+            audio.removeEventListener('play', onPlay);
+            audio.removeEventListener('pause', onPause);
+            audio.removeEventListener('ended', onEnded);
+            audio.removeEventListener('error', onError);
+            audio.pause();
+            audio.src = '';
+            audio.load();
+            audio = null;
+        }
+
+        // 更新当前索引
+        currentIndex = index;
+        const newUrl = playlist[currentIndex].url;
+
+        // 创建全新的音频对象
+        audio = new Audio(newUrl);
+        audio.volume = 0.5;
+        audio.loop = false;
+
+        // 绑定事件
+        audio.addEventListener('canplay', onCanPlay);
+        audio.addEventListener('play', onPlay);
+        audio.addEventListener('pause', onPause);
+        audio.addEventListener('ended', onEnded);
+        audio.addEventListener('error', onError);
+
+        // 开始加载
+        audio.load();
+
+        // 更新UI
+        updatePlaylistActive();
+
+        // 关键：如果是用户手动切换，设置待播放标志
+        if (userInitiated) {
+            pendingPlay = true;
+        }
+        // 注意：onCanPlay 会根据 pendingPlay 或自动播放条件决定是否播放
+    }
+
+    function playNext(userInitiated = true) {
+        // 默认用户手动调用下一首（如点击按钮）为 true，自动连播传 false
+        loadAndPlay(currentIndex + 1, userInitiated);
+    }
+
+    function playPrev() {
+        // 上一首一定是用户手动触发
+        loadAndPlay(currentIndex - 1, true);
+    }
+
+    function togglePlayPause() {
+        if (!audio) return;
+        if (isPlaying) {
+            audio.pause();
+        } else {
+            // 用户点击播放按钮，属于用户手势，可以直接调用 play()
+            audio.play().catch(err => {
+                console.warn('播放失败', err);
+                showMusicTip();
+            });
+        }
+    }
+
+    // ========== 初始化 & 自动播放（等待加载屏幕消失） ==========
+    function initPlayerAndAutoPlay() {
+        renderPlaylist();
+        // 初始加载第一首，不设置 userInitiated，因为自动播放由 loader 消失后触发
+        loadAndPlay(0, false);
+    }
+
+    // 监听加载屏幕消失
+    const loader = document.querySelector('.loader');
+    if (loader) {
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.attributeName === 'class' && loader.classList.contains('hidden')) {
+                    observer.disconnect();
+                    // 加载完成后，如果音频已加载好且未播放，尝试自动播放
+                    if (audio && audio.paused && !isPlaying) {
+                        audio.play().catch(err => {
+                            console.warn('自动播放被阻止', err);
+                            showMusicTip();
+                        });
+                    }
+                }
+            });
+        });
+        observer.observe(loader, { attributes: true });
+        if (loader.classList.contains('hidden')) {
+            observer.disconnect();
+            if (audio && audio.paused && !isPlaying) {
+                audio.play().catch(err => showMusicTip());
+            }
+        }
+    } else {
+        if (audio && audio.paused && !isPlaying) {
+            audio.play().catch(err => showMusicTip());
+        }
+    }
+
+    // ========== 绑定UI事件 ==========
+    function bindEvents() {
+        if (musicToggleBtn) musicToggleBtn.addEventListener('click', togglePlayPause);
+        if (musicPrevBtn) musicPrevBtn.addEventListener('click', playPrev);
+        if (musicNextBtn) musicNextBtn.addEventListener('click', () => playNext(true));
+        if (musicPlaylistBtn && musicPlaylist) {
+            musicPlaylistBtn.addEventListener('click', () => {
+                musicPlaylist.classList.toggle('open');
+            });
+            document.addEventListener('click', (e) => {
+                if (!musicPlaylist.contains(e.target) && !musicPlaylistBtn.contains(e.target)) {
+                    musicPlaylist.classList.remove('open');
+                }
+            });
+        }
+    }
+
+    // 启动播放器
+    initPlayerAndAutoPlay();
+    bindEvents();
 }

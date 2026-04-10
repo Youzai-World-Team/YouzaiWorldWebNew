@@ -253,51 +253,6 @@
     margin-right: 4px;
 }
 
-/* 所有内部/外部链接下划线滑入增强 */
-.internal-link,
-.external-link {
-    position: relative;
-    text-decoration: none;
-}
-.internal-link::after,
-.external-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: currentColor;
-    transition: width 0.3s ease;
-}
-.internal-link:hover::after,
-.external-link:hover::after {
-    width: 100%;
-}
-/* 外链图标优化 */
-.external-link {
-    padding-right: 16px;
-}
-.external-link::before {
-    content: '↗';
-    position: absolute;
-    right: 0;
-    top: 0;
-    font-size: 0.8em;
-    opacity: 0;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-}
-.external-link:hover::before {
-    opacity: 1;
-    transform: translateX(2px);
-}
-/* 覆盖原有外链的背景图片 */
-.external-link::after {
-    background-image: none;
-    width: 0;
-    height: 2px;
-}
-
 /* 活动列表项悬停图片缩放 */
 .event-item:hover .event-image img {
     transform: scale(1.05);
