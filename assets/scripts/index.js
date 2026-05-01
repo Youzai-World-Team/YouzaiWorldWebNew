@@ -611,8 +611,8 @@ function initFloatingBees() {
 
     // 蜜蜂图片路径 (头朝左 和 头朝右)
     const beeImages = [
-        'assets/images/Bee1.webp',   // 头朝左
-        'assets/images/Bee2.webp'    // 头朝右
+        'assets/images/bee_1.webp',   // 头朝左
+        'assets/images/bee_2.webp'    // 头朝右
     ];
 
     // 预定义文字周围的雅致位置 (百分比，相对 .hero)
