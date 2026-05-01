@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     initHeroSlider();
     // 初始化音乐播放器
     initMusic();
+    // 初始化蜜蜂（在轮播背景之上漂浮）
+    initFloatingBees();
     // 世界板块交互
     initWorldsSection();
     // Swiper
@@ -331,10 +333,8 @@ function initWorldsSection() {
 function initMusic() {
     // ----- 音乐列表（请使用本地或长期有效的URL）-----
     const playlist = [
-        { name: 'A Celtic Lore', url: 'assets/medias/A_Celtic_Lore_min.m4a' },
-        { name: 'Ride', url: 'assets/medias/Ride_min.m4a' },
-        { name: 'A Celtic Tale', url: 'assets/medias/A_Celtic_Tale_min.m4a' },
-        { name: 'Ode to the Fallen', url: 'assets/medias/Ode_to_the_Fallen_min.m4a' }
+        { name: 'Minecraft', url: 'assets/medias/minecraft.m4a' },
+        { name: 'Watcher', url: 'assets/medias/watcher.m4a' }
     ];
 
     // 播放器状态
@@ -598,4 +598,74 @@ function initMusic() {
     // 启动播放器
     initPlayerAndAutoPlay();
     bindEvents();
+}
+
+/**
+ * 在主页轮播区域添加漂浮的蜜蜂
+ */
+function initFloatingBees() {
+    const hero = document.querySelector('.hero');
+    if (!hero) return;
+    // 防止重复添加
+    if (hero.querySelector('.bees-container')) return;
+
+    // 蜜蜂图片路径 (头朝左 和 头朝右)
+    const beeImages = [
+        'assets/images/bee1.webp',   // 头朝左
+        'assets/images/bee2.webp'    // 头朝右
+    ];
+
+    // 预定义文字周围的雅致位置 (百分比，相对 .hero)
+    const positions = [
+        { left: '12%', top: '28%' },    // 标题左侧
+        { left: '80%', top: '22%' },    // 标题右侧
+        { left: '20%', top: '42%' },    // 描述区域左侧
+        { left: '68%', top: '48%' },    // 描述区域右侧
+        { left: '35%', top: '70%' },    // 按钮左上方
+        { left: '62%', top: '68%' },    // 按钮右上方
+        { left: '8%', top: '75%' },     // 左下角点缀
+        { left: '88%', top: '60%' },    // 右下角漂浮
+        { left: '45%', top: '15%' },    // 标题上方高处
+        { left: '28%', top: '55%' }     // 中间偏左
+    ];
+
+    // 随机挑选 6~8 只不同的蜜蜂（避免过多）
+    const beeCount = Math.floor(Math.random() * 3) + 6; // 6 到 8 只
+    const shuffledPositions = [...positions];
+    // 打乱顺序
+    for (let i = shuffledPositions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledPositions[i], shuffledPositions[j]] = [shuffledPositions[j], shuffledPositions[i]];
+    }
+    const selectedPositions = shuffledPositions.slice(0, beeCount);
+
+    // 创建蜜蜂容器
+    const beesContainer = document.createElement('div');
+    beesContainer.className = 'bees-container';
+
+    // 生成每只蜜蜂
+    selectedPositions.forEach((pos, idx) => {
+        const bee = document.createElement('img');
+        // 随机挑选蜜蜂朝向图片（让图片看起来方向不同）
+        const randomImg = beeImages[Math.floor(Math.random() * beeImages.length)];
+        bee.src = randomImg;
+        bee.alt = '飞舞的蜜蜂';
+        bee.className = 'bee';
+        bee.style.left = pos.left;
+        bee.style.top = pos.top;
+        // 附加随机微小偏移，更显自然
+        const xOffset = (Math.random() - 0.5) * 2;   // -1% ~ 1%
+        const yOffset = (Math.random() - 0.5) * 2;
+        if (xOffset) bee.style.left = `calc(${pos.left} + ${xOffset}%)`;
+        if (yOffset) bee.style.top = `calc(${pos.top} + ${yOffset}%)`;
+        // 随机动画延迟，使飞舞错落有致
+        const animDelay = (Math.random() * 2).toFixed(2) + 's';
+        bee.style.animationDelay = animDelay;
+        // 极少部分蜜蜂稍微放大缩小，更有生机
+        const scale = 0.9 + Math.random() * 0.7
+        bee.style.transform = `scale(${scale})`;
+        beesContainer.appendChild(bee);
+    });
+
+    hero.appendChild(beesContainer);
 }
