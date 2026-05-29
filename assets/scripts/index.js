@@ -669,3 +669,99 @@ function initFloatingBees() {
 
     hero.appendChild(beesContainer);
 }
+
+/**
+ * 液态玻璃效果：鼠标跟随光斑 + 3D倾斜
+ */
+
+// 在 DOMContentLoaded 中调用
+document.addEventListener('DOMContentLoaded', function() {
+    initLiquidGlass();
+    // ... 其他初始化代码
+});
+
+/**
+ * 液态玻璃效果：鼠标跟随光斑（平滑版，无抖动）
+ */
+/**
+ * 液态玻璃效果：鼠标跟随光斑（性能优化版，避免卡顿）
+ */
+function initLiquidGlass() {
+    const card = document.getElementById('glassCard');
+    if (!card) return;
+
+    const spotlight = card.querySelector('.glass-spotlight');
+    if (!spotlight) return;
+
+    let rafId = null;           // 当前动画帧 ID
+    let targetX = 50, targetY = 50;
+    let currentX = 50, currentY = 50;
+    let animating = false;      // 是否正在动画循环中
+
+    // 停止动画循环
+    function stopAnimation() {
+        if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+        }
+        animating = false;
+    }
+
+    // 立即将光斑设置到指定位置（无动画）
+    function setSpotlight(x, y) {
+        spotlight.style.background = `radial-gradient(circle at ${x}% ${y}%, rgba(255, 255, 255, 0.6) 0%, transparent 30%)`;
+    }
+
+    // 缓动更新函数
+    function updateSpotlight() {
+        // 计算新的位置（缓动系数 0.2 加快收敛）
+        currentX += (targetX - currentX) * 0.2;
+        currentY += (targetY - currentY) * 0.2;
+
+        setSpotlight(currentX, currentY);
+
+        // 如果目标值与当前值差距很小（<0.1%），且鼠标已离开？但此处我们仅根据差距判断是否停止
+        const diffX = Math.abs(targetX - currentX);
+        const diffY = Math.abs(targetY - currentY);
+        if (diffX < 0.1 && diffY < 0.1) {
+            // 已到达目标，停止动画循环（但保留最后一次位置）
+            stopAnimation();
+        } else {
+            rafId = requestAnimationFrame(updateSpotlight);
+        }
+    }
+
+    // 启动动画（如果尚未启动）
+    function startAnimation() {
+        if (animating) return;
+        animating = true;
+        rafId = requestAnimationFrame(updateSpotlight);
+    }
+
+    // 鼠标移动事件（使用 throttle 减少触发频率，可选）
+    card.addEventListener('mousemove', function(e) {
+        const rect = this.getBoundingClientRect();
+        targetX = ((e.clientX - rect.left) / rect.width) * 100;
+        targetY = ((e.clientY - rect.top) / rect.height) * 100;
+        // 限制范围
+        targetX = Math.min(100, Math.max(0, targetX));
+        targetY = Math.min(100, Math.max(0, targetY));
+
+        if (!animating) {
+            startAnimation();
+        }
+    });
+    
+    card.addEventListener('mouseleave', function() {
+        // 鼠标离开时，停止动画并淡出光斑（可选）
+        stopAnimation();
+        // 直接设置光斑为中心并隐藏（避免残留）
+        setSpotlight(50, 50);
+        spotlight.style.opacity = '0';
+    });
+    
+    card.addEventListener('mouseenter', function() {
+        spotlight.style.opacity = '1';
+        // 进入时不自动移动光斑，等待 mousemove
+    });
+}
