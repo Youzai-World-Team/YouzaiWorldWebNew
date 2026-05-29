@@ -26,7 +26,8 @@ function initScrollAnimation() {
         .donators-table-container,
         .trends-stats,
         .trends-filter-section,
-        .download-section-block
+        .download-section-block,
+        .latest-news
     `);
 
     if (!window.IntersectionObserver) {
