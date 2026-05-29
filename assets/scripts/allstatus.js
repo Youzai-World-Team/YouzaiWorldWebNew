@@ -4,7 +4,7 @@ class ServerStatusMonitor {
         this.apiUrl = 'https://api.eqad.fun/mcsm/api/services/';
         this.nodeContainer = document.getElementById('statusNodeContainer');
         this.nodes = ['EQAD-003'];
-        this.minecraftServer = 'mc.youzaiworld.top';
+        this.minecraftServer = 'play.mcyzw.top';
         //this.minecraftServer = 'suyecity.eqad.fun';
         this.minecraftPort = 25565;
         
