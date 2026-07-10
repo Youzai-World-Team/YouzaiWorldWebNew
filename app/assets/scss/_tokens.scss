@@ -1,0 +1,38 @@
+$color-primary: #a8e6cf;
+$color-secondary: #dcedc1;
+$color-accent: #6bb39b;
+$color-dark: #345e54;
+$color-text: #333;
+$color-light: #fff;
+
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+
+@mixin below($width) {
+  @media (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin above($width) {
+  @media (min-width: ($width + 1px)) {
+    @content;
+  }
+}
+
+:root {
+  --primary-color: #{$color-primary};
+  --secondary-color: #{$color-secondary};
+  --accent-color: #{$color-accent};
+  --dark-color: #{$color-dark};
+  --text-color: #{$color-text};
+  --light-text: #{$color-light};
+  --background: linear-gradient(135deg, #f9fdfb 0%, #e8f7f1 100%);
+}
+
+@font-face {
+  font-family: 'MyFont';
+  src: url('/fonts/zkklt2016xdb.woff2') format('woff2');
+  font-display: swap;
+}

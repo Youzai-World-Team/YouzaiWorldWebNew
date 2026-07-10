@@ -1,0 +1,18 @@
+@use 'tokens';
+@use 'shared';
+@use 'animations';
+
+@use 'pages/home';
+@use 'pages/guide';
+@use 'pages/agreement';
+@use 'pages/error';
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.25s ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
