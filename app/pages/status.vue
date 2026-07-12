@@ -3,12 +3,12 @@ import {computed, onBeforeUnmount, onMounted, ref} from 'vue'
 import PageHero from '~/components/ui/PageHero.vue'
 import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
 import {
+  type AvailabilityData,
+  fetchAvailability,
   fetchMinecraftStatusDetail,
   fetchNodeServices,
-  fetchAvailability,
   type McStatus,
   type NodeData,
-  type AvailabilityData,
 } from '~/composables/useServerStatus'
 
 useHead({title: '服务器状态监控 - Youzai World'})
