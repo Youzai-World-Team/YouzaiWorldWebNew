@@ -52,6 +52,15 @@ export interface TeamMember {
   links: { title: string; icon: string; url: string }[]
 }
 
+export interface AvailabilityPoint {
+  time: number
+  status: 'online' | 'offline'
+}
+
+export interface AvailabilityData {
+  [nodeName: string]: AvailabilityPoint[]
+}
+
 export interface Donator {
   player: string
   amount: number

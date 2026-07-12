@@ -2,15 +2,26 @@
 import {computed, onBeforeUnmount, onMounted, ref} from 'vue'
 import PageHero from '~/components/ui/PageHero.vue'
 import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
-import {fetchMinecraftStatus, fetchNodeServices, type McStatus, type NodeData,} from '~/composables/useServerStatus'
+import {
+  fetchMinecraftStatusDetail,
+  fetchNodeServices,
+  fetchAvailability,
+  type McStatus,
+  type NodeData,
+  type AvailabilityData,
+} from '~/composables/useServerStatus'
 
 useHead({title: '服务器状态监控 - Youzai World'})
 
 const NODE_NAME = 'EQAD-003'
 const MC_SERVER = 'play.mcyzw.top'
-const MC_PORT = 25565
 const MIN_LOAD_MS = 2000
+const MAX_HISTORY_POINTS = 96
 
+// 分页
+const currentPage = ref(1)
+
+// 页面1：详细状态
 type Phase = 'loading' | 'loaded' | 'error'
 const phase = ref<Phase>('loading')
 const errorMsg = ref('')
@@ -24,20 +35,58 @@ const memUsage = computed(() =>
     node.value ? (node.value.system.memUsage * 100).toFixed(1) : '0',
 )
 
+// 页面2：历史状态
+type AvailabilityPhase = 'loading' | 'loaded' | 'error'
+const availPhase = ref<AvailabilityPhase>('loading')
+const availError = ref('')
+const availData = ref<AvailabilityPoint[]>([])
+
+interface AvailabilityPoint {
+  time: number
+  status: 'online' | 'offline'
+}
+
+const uptimePct = computed(() => {
+  if (availData.value.length === 0) return '0.0'
+  const online = availData.value.filter((p) => p.status === 'online').length
+  return ((online / availData.value.length) * 100).toFixed(1)
+})
+
+const pctColor = computed(() => {
+  const pct = parseFloat(uptimePct.value)
+  if (pct <= 20) return '#e74c3c'
+  if (pct < 90) return '#dfb50d'
+  return '#2ecc71'
+})
+
+const emptyPoints = computed(() =>
+    Math.max(MAX_HISTORY_POINTS - availData.value.length, 0),
+)
+
 function formatTime(timestamp?: number) {
   if (!timestamp) return '-'
   return new Date(timestamp).toLocaleString('zh-CN')
 }
 
-let timer: number | undefined
+function formatDuration(minutes: number) {
+  if (minutes < 60) return `${minutes} 分钟`
+  const hours = minutes / 60
+  if (hours < 24)
+    return `${hours % 1 === 0 ? hours : hours.toFixed(1)} 小时`
+  const days = hours / 24
+  return `${days % 1 === 0 ? days : days.toFixed(1)} 天`
+}
 
+let pageTimer: number | undefined
+
+// 页面1：加载节点和MC状态
 async function loadStatus() {
   phase.value = 'loading'
   const start = Date.now()
   try {
     const [nodeRes, mcStatus] = await Promise.all([
       fetchNodeServices(),
-      fetchMinecraftStatus(MC_SERVER, MC_PORT),
+      fetchMinecraftStatusDetail(MC_SERVER),
     ])
     const remaining = Math.max(MIN_LOAD_MS - (Date.now() - start), 0)
     window.setTimeout(() => {
@@ -60,12 +109,67 @@ async function loadStatus() {
   }
 }
 
+// 页面2：加载历史状态
+async function loadAvailability() {
+  availPhase.value = 'loading'
+  const start = Date.now()
+  try {
+    const data: AvailabilityData = await fetchAvailability()
+    const history = data[NODE_NAME]
+    const remaining = Math.max(MIN_LOAD_MS - (Date.now() - start), 0)
+    window.setTimeout(() => {
+      if (history && history.length > 0) {
+        availData.value = history
+        availPhase.value = 'loaded'
+      } else {
+        availData.value = []
+        availPhase.value = 'error'
+        availError.value = '暂无历史数据'
+      }
+    }, remaining)
+  } catch (err) {
+    const remaining = Math.max(MIN_LOAD_MS - (Date.now() - start), 0)
+    window.setTimeout(() => {
+      availPhase.value = 'error'
+      availError.value =
+          err instanceof Error ? err.message : '获取历史数据失败'
+    }, remaining)
+  }
+}
+
+function switchPage(page: number) {
+  if (page === currentPage.value) return
+  currentPage.value = page
+  if (page === 1) loadStatus()
+  else if (page === 2) loadAvailability()
+  resetAutoRefresh()
+}
+
+function startAutoRefresh() {
+  pageTimer = window.setInterval(() => {
+    if (currentPage.value === 1) loadStatus()
+    else loadAvailability()
+  }, 5 * 60 * 1000)
+}
+
+function resetAutoRefresh() {
+  if (pageTimer) window.clearInterval(pageTimer)
+  startAutoRefresh()
+}
+
+function getDelayColor(delay: number | undefined): string {
+  if (delay === undefined) return ''
+  if (delay > 200) return '#e74c3c'
+  if (delay > 100) return '#f39c12'
+  return '#2ecc71'
+}
+
 onMounted(() => {
   loadStatus()
-  timer = window.setInterval(loadStatus, 5 * 60 * 1000)
+  startAutoRefresh()
 })
 onBeforeUnmount(() => {
-  if (timer) window.clearInterval(timer)
+  if (pageTimer) window.clearInterval(pageTimer)
 })
 </script>
 
@@ -78,138 +182,237 @@ onBeforeUnmount(() => {
 
     <section id="server-status" class="server-status-page">
       <div class="container">
-        <div class="status-node-container">
-          <div v-if="phase === 'loading'" class="status-node-card loading">
-            <div class="status-node-header">
-              <h3 class="status-node-title">
-                Youzai World Sever
-                <button class="node-refresh-btn" title="刷新状态" disabled>
-                  <img src="/images/refresh.svg" alt="刷新">
-                </button>
-              </h3>
-              <div class="status-node-status status-loading">
-                <span class="status-indicator loading"/>
-                获取中...
-              </div>
-            </div>
-            <div class="status-info-grid">
-              <div class="status-info-section">
-                <div class="status-info-title">系统信息</div>
-                <div class="status-info-items">
-                  <div v-for="i in 2" :key="i" class="status-info-item">
-                    <span class="status-info-label status-loading-text"/>
-                    <span class="status-info-value status-loading-text"/>
-                  </div>
+        <!-- 分页控制 -->
+        <div class="status-pagination-ctrl">
+          <button
+              class="page-btn"
+              :class="{ active: currentPage === 1 }"
+              @click="switchPage(1)"
+          >详细状态
+          </button>
+          <button
+              class="page-btn"
+              :class="{ active: currentPage === 2 }"
+              @click="switchPage(2)"
+          >历史状态
+          </button>
+        </div>
+
+        <!-- 页面1：详细状态 -->
+        <template v-if="currentPage === 1">
+          <div class="status-node-container">
+            <div v-if="phase === 'loading'" class="status-node-card loading">
+              <div class="status-node-header">
+                <h3 class="status-node-title">
+                  Youzai World Server
+                  <button class="node-refresh-btn" title="刷新状态" disabled>
+                    <img src="/images/refresh.svg" alt="刷新">
+                  </button>
+                </h3>
+                <div class="status-node-status status-loading">
+                  <span class="status-indicator loading"/>
+                  获取中...
                 </div>
               </div>
-              <div class="status-info-section">
-                <div class="status-info-title">系统资源</div>
-                <div class="status-info-items">
-                  <div v-for="i in 2" :key="i" class="status-info-item">
-                    <span class="status-info-label status-loading-text"/>
-                    <span class="status-info-value status-loading-text"/>
-                  </div>
-                </div>
-              </div>
-              <div class="status-minecraft-section">
-                <div class="status-minecraft-title">游戏状态</div>
-                <div class="minecraft-info-grid">
-                  <div v-for="i in 2" :key="i" class="status-info-item">
-                    <span class="status-info-label status-loading-text"/>
-                    <span class="status-info-value status-loading-text"/>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div v-else-if="phase === 'error'" class="status-empty">
-            <h3>状态获取失败</h3>
-            <p>{{ errorMsg }}</p>
-            <button class="btn-primary" @click="loadStatus">重新加载</button>
-          </div>
-
-          <div v-else class="status-node-card">
-            <div class="status-node-header">
-              <h3 class="status-node-title">
-                Youzai World Sever
-                <button class="node-refresh-btn" title="刷新状态" @click="loadStatus">
-                  <img src="/images/refresh.svg" alt="刷新">
-                </button>
-              </h3>
-              <div v-if="node" class="status-node-status status-online">
-                <span class="status-indicator online"/>在线
-              </div>
-              <div v-else class="status-node-status status-offline">
-                <span class="status-indicator offline"/>离线
-              </div>
-            </div>
-
-            <div class="status-info-grid">
-              <div class="status-info-section">
-                <div class="status-info-title">系统信息</div>
-                <div class="status-info-items">
-                  <div class="status-info-item">
-                    <span class="status-info-label">系统类型</span>
-                    <span class="status-info-value">{{ node ? node.system.type : '-' }}</span>
-                  </div>
-                  <div class="status-info-item">
-                    <span class="status-info-label">更新时间</span>
-                    <span class="status-info-value">{{ node ? formatTime(node.timestamp) : '-' }}</span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="status-info-section">
-                <div class="status-info-title">系统资源</div>
-                <div class="status-info-items">
-                  <div class="status-info-item">
-                    <span class="status-info-label">CPU 使用率</span>
-                    <span class="status-info-value">{{ node ? cpuUsage + '%' : '-' }}</span>
-                    <div class="status-progress-container">
-                      <div class="status-progress-bar" :style="{ width: (node ? cpuUsage : 0) + '%' }"/>
+              <div class="status-info-grid">
+                <div class="status-info-section">
+                  <div class="status-info-title">系统信息</div>
+                  <div class="status-info-items">
+                    <div v-for="i in 2" :key="i" class="status-info-item">
+                      <span class="status-info-label status-loading-text"/>
+                      <span class="status-info-value status-loading-text"/>
                     </div>
                   </div>
-                  <div class="status-info-item">
-                    <span class="status-info-label">内存使用率</span>
-                    <span class="status-info-value">{{ node ? memUsage + '%' : '-' }}</span>
-                    <div class="status-progress-container">
-                      <div class="status-progress-bar" :style="{ width: (node ? memUsage : 0) + '%' }"/>
+                </div>
+                <div class="status-info-section">
+                  <div class="status-info-title">系统资源</div>
+                  <div class="status-info-items">
+                    <div v-for="i in 2" :key="i" class="status-info-item">
+                      <span class="status-info-label status-loading-text"/>
+                      <span class="status-info-value status-loading-text"/>
+                    </div>
+                  </div>
+                </div>
+                <div class="status-minecraft-section">
+                  <div class="status-minecraft-title">游戏状态</div>
+                  <div class="minecraft-info-grid">
+                    <div v-for="i in 2" :key="i" class="status-info-item">
+                      <span class="status-info-label status-loading-text"/>
+                      <span class="status-info-value status-loading-text"/>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div class="status-minecraft-section">
-                <div class="status-minecraft-title">游戏状态</div>
-                <div class="minecraft-info-grid">
+            <div v-else-if="phase === 'error'" class="status-empty">
+              <h3>状态获取失败</h3>
+              <p>{{ errorMsg }}</p>
+              <button class="btn-primary" @click="loadStatus">重新加载</button>
+            </div>
+
+            <div v-else class="status-node-card" style="animation: fadeInCard 0.3s ease forwards;">
+              <div class="status-node-header">
+                <h3 class="status-node-title">
+                  Youzai World Server
+                  <button class="node-refresh-btn" title="刷新状态" @click="loadStatus">
+                    <img src="/images/refresh.svg" alt="刷新">
+                  </button>
+                </h3>
+                <div v-if="node" class="status-node-status status-online">
+                  <span class="status-indicator online"/>在线
+                </div>
+                <div v-else class="status-node-status status-offline">
+                  <span class="status-indicator offline"/>离线
+                </div>
+              </div>
+
+              <div class="status-info-grid">
+                <div class="status-info-section">
+                  <div class="status-info-title">系统信息</div>
+                  <div class="status-info-items">
+                    <div class="status-info-item">
+                      <span class="status-info-label">系统类型</span>
+                      <span class="status-info-value">{{ node ? node.system.type : '-' }}</span>
+                    </div>
+                    <div class="status-info-item">
+                      <span class="status-info-label">更新时间</span>
+                      <span class="status-info-value">{{ node ? formatTime(node.timestamp) : '-' }}</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="status-info-section">
+                  <div class="status-info-title">系统资源</div>
+                  <div class="status-info-items">
+                    <div class="status-info-item">
+                      <span class="status-info-label">CPU 使用率</span>
+                      <span class="status-info-value">{{ node ? cpuUsage + '%' : '-' }}</span>
+                      <div class="status-progress-container">
+                        <div class="status-progress-bar" :style="{ width: (node ? cpuUsage : 0) + '%' }"/>
+                      </div>
+                    </div>
+                    <div class="status-info-item">
+                      <span class="status-info-label">内存使用率</span>
+                      <span class="status-info-value">{{ node ? memUsage + '%' : '-' }}</span>
+                      <div class="status-progress-container">
+                        <div class="status-progress-bar" :style="{ width: (node ? memUsage : 0) + '%' }"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="status-minecraft-section">
+                  <div class="status-minecraft-title">🎮 游戏状态</div>
                   <template v-if="mc && mc.online">
-                    <div class="minecraft-info-item">
-                      <span class="minecraft-info-label">在线玩家</span>
-                      <span class="minecraft-info-value minecraft-player-count">
-                        {{ mc.players?.online ?? 0 }}/{{ mc.players?.max ?? 0 }}
-                      </span>
-                    </div>
-                    <div class="minecraft-info-item">
-                      <span class="minecraft-info-label">游戏版本</span>
-                      <span class="minecraft-info-value minecraft-version">{{ mc.version || '未知版本' }}</span>
+                    <div class="minecraft-info-grid">
+                      <div class="minecraft-info-item">
+                        <span class="minecraft-info-label">👥 在线玩家</span>
+                        <span class="minecraft-info-value minecraft-player-count">
+                          {{ mc.players?.online ?? 0 }}/{{ mc.players?.max ?? 0 }}
+                        </span>
+                      </div>
+                      <div class="minecraft-info-item">
+                        <span class="minecraft-info-label">📌 游戏版本</span>
+                        <span class="minecraft-info-value minecraft-version">{{ mc.version || '未知版本' }}</span>
+                      </div>
+                      <div class="minecraft-info-item">
+                        <span class="minecraft-info-label">⚡ 延迟</span>
+                        <span
+                            class="minecraft-info-value"
+                            :style="{ color: getDelayColor(mc.delay), fontWeight: 600 }"
+                        >{{ mc.delay ?? '?' }} ms</span>
+                      </div>
+                      <div class="minecraft-info-item">
+                        <span class="minecraft-info-label">🔢 协议版本</span>
+                        <span class="minecraft-info-value">{{ mc.protocol ?? '?' }}</span>
+                      </div>
                     </div>
                   </template>
                   <template v-else>
-                    <div class="minecraft-info-item">
-                      <span class="minecraft-info-label">在线玩家</span>
-                      <span class="minecraft-info-value" style="color: #e74c3c;">获取失败</span>
-                    </div>
-                    <div class="minecraft-info-item">
-                      <span class="minecraft-info-label">游戏版本</span>
-                      <span class="minecraft-info-value" style="color: #e74c3c;">获取失败</span>
+                    <div class="minecraft-info-grid">
+                      <div class="minecraft-info-item">
+                        <span class="minecraft-info-label">服务器状态</span>
+                        <span class="minecraft-info-value" style="color: #e74c3c;">
+                          ❌ {{ mc?.error || '获取失败' }}
+                        </span>
+                      </div>
                     </div>
                   </template>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </template>
+
+        <!-- 页面2：历史状态 -->
+        <template v-else>
+          <div class="availability-container" style="animation: fadeInCard 0.3s ease forwards;">
+            <template v-if="availPhase === 'loading'">
+              <div class="uptime-card">
+                <div class="uptime-header">
+                  <div class="uptime-title">Youzai World Server</div>
+                  <div class="uptime-pct loading-text" style="width: 60px;"/>
+                </div>
+                <div class="uptime-bar">
+                  <div
+                      v-for="i in MAX_HISTORY_POINTS"
+                      :key="i"
+                      class="uptime-segment none"
+                      style="background:#f0f0f0;"
+                  />
+                </div>
+                <div class="uptime-footer">
+                  <span>加载中...</span>
+                  <span>最近</span>
+                  <span>现在</span>
+                </div>
+              </div>
+            </template>
+
+            <template v-else-if="availPhase === 'error'">
+              <div class="status-empty">
+                <h3>历史数据加载失败</h3>
+                <p>{{ availError }}</p>
+                <button class="btn-primary" @click="loadAvailability">重新加载</button>
+              </div>
+            </template>
+
+            <template v-else>
+              <div class="uptime-card">
+                <div class="uptime-header">
+                  <div class="uptime-title">Youzai World Server</div>
+                  <div class="uptime-pct" :style="{ color: pctColor }">{{ uptimePct }}%</div>
+                </div>
+                <div class="uptime-bar">
+                  <div
+                      v-for="i in emptyPoints"
+                      :key="'empty-' + i"
+                      class="uptime-segment none"
+                  >
+                    <span class="tooltip-text">无数据</span>
+                  </div>
+                  <div
+                      v-for="(point, i) in availData"
+                      :key="'point-' + i"
+                      class="uptime-segment"
+                      :class="{ down: point.status === 'offline' }"
+                  >
+                    <span class="tooltip-text">
+                      {{ formatTime(point.time) }}<br>
+                      状态: {{ point.status === 'online' ? '正常' : '离线' }}
+                    </span>
+                  </div>
+                </div>
+                <div class="uptime-footer">
+                  <span>{{ formatDuration(MAX_HISTORY_POINTS * 15) }}前</span>
+                  <span>最近</span>
+                  <span>现在</span>
+                </div>
+              </div>
+            </template>
+          </div>
+        </template>
       </div>
     </section>
   </div>
@@ -875,6 +1078,183 @@ onBeforeUnmount(() => {
   .minecraft-server-status {
     font-size: 0.85rem;
     padding: 6px 10px;
+  }
+}
+
+/* ========== 分页控制 ========== */
+.status-pagination-ctrl {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.page-btn {
+  padding: 8px 24px;
+  border-radius: 10px;
+  background: #e6e6e6;
+  color: #3d3d3d;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.page-btn.active {
+  background: var(--accent-color);
+  color: white;
+}
+
+.page-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(107, 179, 155, 0.3);
+}
+
+/* ========== 页面切换动画 ========== */
+@keyframes fadeInCard {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== 历史状态卡片 ========== */
+.availability-container {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+  width: 100%;
+}
+
+.uptime-card {
+  background: var(--light-text);
+  border-radius: 20px;
+  padding: 25px 30px;
+  width: 100%;
+  max-width: 1000px;
+  border: 1px solid rgba(168, 230, 207, 0.3);
+  box-shadow: 0 10px 30px rgba(52, 94, 84, 0.08);
+  transition: all 0.3s ease;
+}
+
+.uptime-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.uptime-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--dark-color);
+}
+
+.uptime-pct {
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.uptime-bar {
+  display: flex;
+  gap: 3px;
+  height: 35px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  overflow: visible !important;
+  position: relative;
+}
+
+.uptime-segment {
+  flex: 1;
+  background-color: #2ecc71;
+  border-radius: 2px;
+  transition: transform 0.2s;
+  cursor: pointer;
+  position: relative;
+  min-width: 2px;
+  min-height: 35px;
+}
+
+.uptime-segment:hover {
+  transform: translateY(-5px);
+  z-index: 2;
+}
+
+.uptime-segment.down {
+  background-color: #e74c3c;
+}
+
+.uptime-segment.none {
+  background-color: #ecf0f1;
+}
+
+.uptime-segment .tooltip-text {
+  visibility: hidden;
+  width: 160px;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 6px 10px;
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -80px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 13px;
+  pointer-events: none;
+  z-index: 9999;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+.uptime-segment:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.uptime-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #95a5a6;
+  border-top: 1px solid rgba(168, 230, 207, 0.3);
+  padding-top: 10px;
+}
+
+.uptime-pct.loading-text {
+  height: 24px;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .status-pagination-ctrl {
+    gap: 10px;
+  }
+  .page-btn {
+    padding: 6px 16px;
+    font-size: 0.9rem;
+  }
+  .uptime-card {
+    padding: 20px;
+  }
+  .uptime-bar {
+    height: 28px;
+    gap: 2px;
+  }
+  .uptime-segment .tooltip-text {
+    width: 100px;
+    margin-left: -50px;
+    font-size: 12px;
   }
 }
 </style>
