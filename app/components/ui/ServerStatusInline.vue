@@ -5,7 +5,7 @@ import {fetchMinecraftStatus, type McStatus} from '~/composables/useServerStatus
 const props = withDefaults(
     defineProps<{
       server: string
-      port?: number | string
+      port?: number
     }>(),
     {port: 25565},
 )
@@ -16,8 +16,16 @@ const data = ref<McStatus | null>(null)
 
 onMounted(async () => {
   const result = await fetchMinecraftStatus(props.server, props.port)
-  data.value = result
-  state.value = result.online ? 'online' : 'offline'
+  data.value = result ?? {
+    online: false,
+    host: undefined,
+    port: NaN,
+    players: {online: NaN, max: NaN},
+    version: NaN,
+    delay: NaN,
+    error: undefined
+  } as unknown as McStatus
+  state.value = result?.online ? 'online' : 'offline'
 })
 </script>
 

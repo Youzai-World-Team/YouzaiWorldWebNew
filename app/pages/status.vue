@@ -5,7 +5,7 @@ import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
 import {
   type AvailabilityData,
   fetchAvailability,
-  fetchMinecraftStatusDetail,
+  fetchMinecraftStatus,
   fetchNodeServices,
   type McStatus,
   type NodeData,
@@ -86,14 +86,22 @@ async function loadStatus() {
   try {
     const [nodeRes, mcStatus] = await Promise.all([
       fetchNodeServices(),
-      fetchMinecraftStatusDetail(MC_SERVER),
+      fetchMinecraftStatus(MC_SERVER),
     ])
     const remaining = Math.max(MIN_LOAD_MS - (Date.now() - start), 0)
     window.setTimeout(() => {
       if (nodeRes.status === 200 && nodeRes.data) {
         const found = nodeRes.data.find((n) => n.nickname === NODE_NAME) ?? null
         node.value = found
-        mc.value = mcStatus
+        mc.value = mcStatus ?? {
+          online: false,
+          host: undefined,
+          port: NaN,
+          players: {online: NaN, max: NaN},
+          version: NaN,
+          delay: NaN,
+          error: undefined
+        } as unknown as McStatus
         phase.value = 'loaded'
       } else {
         errorMsg.value = '无法获取服务器状态数据'
