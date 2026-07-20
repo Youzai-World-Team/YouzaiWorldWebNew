@@ -186,11 +186,11 @@ const {copiedKey, copy} = useClipboard()
             <h3>版本信息</h3>
             <div class="server-info-item">
               <span class="info-label">当前服务器版本</span>
-              <span class="info-value">Minecraft Fabric 1.21.11</span>
+              <span class="info-value">Minecraft Fabric 26.2</span>
             </div>
             <div class="server-info-item">
               <span class="info-label">需用客户端版本</span>
-              <span class="info-value">Minecraft Java 1.21.11</span>
+              <span class="info-value">Minecraft Java 26.2</span>
             </div>
             <div class="download-section">
               <img src="/images/info.svg" alt="信息" class="trend-icon">

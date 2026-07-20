@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {onBeforeUnmount, onMounted, ref} from 'vue'
 
-const NEWS_IMG = '/images/26.1.webp'
+const NEWS_IMG = '/images/26.2.webp'
 
 const cardRef = ref<HTMLElement | null>(null)
 const spotlightRef = ref<HTMLElement | null>(null)
@@ -81,8 +81,6 @@ onBeforeUnmount(() => {
 
 <template>
   <section class="latest-news liquid-glass">
-    <img src="/images/MC_Line.webp" alt="分割线" style="width: 100%;">
-
     <div ref="cardRef" class="latest-news-wrapper glass-card">
       <img class="glass-bg-img" :src="NEWS_IMG" alt="最新消息背景">
       <div class="glass-blur" :style="{ backgroundImage: `url('${NEWS_IMG}')` }"/>
@@ -94,7 +92,7 @@ onBeforeUnmount(() => {
           <span class="badge-dot"/>
           最新动态
         </div>
-        <h2 class="latest-news-title">🎉 我们已支持<br>Minecraft JAVA 26.1</h2>
+        <h2 class="latest-news-title">🎉 我们已支持<br>Minecraft JAVA 26.2</h2>
         <p class="latest-news-content">全新版本带来更流畅的游戏体验，同步最新特性，立即加入探索！</p>
         <div class="latest-news-more"/>
       </div>
