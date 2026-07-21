@@ -58,7 +58,11 @@ async fn main() -> anyhow::Result<()> {
         let api_scope = web::scope("/api")
             .route("/health", web::get().to(health_check))
             .route("/metrics", web::get().to(get_metrics))
-            .route("/deploy", web::post().to(deploy::deploy));
+            .service(
+                web::resource("/deploy")
+                    .app_data(web::PayloadConfig::new(100 * 1024 * 1024))
+                    .route(web::post().to(deploy::deploy)),
+            );
 
         let api_scope = api_scope.service(web::scope("/craftping").service(craftping::get_status));
 
