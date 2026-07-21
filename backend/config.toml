@@ -1,0 +1,6 @@
+[server]
+port = 3003
+workers = 4
+
+[deploy]
+key = ""

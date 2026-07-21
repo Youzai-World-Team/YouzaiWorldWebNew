@@ -26,3 +26,5 @@ logs
 
 
 .workbuddy
+/backend/Cargo.lock
+/backend/target/
