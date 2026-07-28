@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import {computed, onBeforeUnmount, onMounted, ref, watch} from 'vue'
+import {onBeforeUnmount, onMounted, ref, watch} from 'vue'
 import {useRoute} from 'vue-router'
 import {navItems} from '~/utils/site'
+import ClickTilt from '~/components/ClickTilt.vue'
 
 const route = useRoute()
 
@@ -9,8 +10,6 @@ const scrolled = ref(false)
 const menuOpen = ref(false)
 const openIndex = ref(-1)
 const dropdownOpenTop = ref(false)
-
-const padding = computed(() => (scrolled.value || dropdownOpenTop.value ? '15px 0' : '20px 0'))
 
 const isDesktop = () => window.innerWidth > 768
 
@@ -103,11 +102,11 @@ onBeforeUnmount(() => {
   <nav
       class="navbar"
       :class="{ scrolled, 'menu-open': menuOpen, 'dropdown-open': dropdownOpenTop }"
-      :style="{ padding }"
   >
+    <ClickTilt class="navbar-bg-wrap">
     <div class="nav-container">
-      <NuxtLink to="/" class="nav-logo" aria-label="悠哉世界 主页">
-        <img src="/images/youzaiworld.webp" alt="悠哉世界">
+        <NuxtLink to="/" class="nav-logo" aria-label="悠哉世界 主页">
+        <img src="/images/uzw-tm.png" alt="悠哉世界">
       </NuxtLink>
 
       <div class="nav-menu" :class="{ active: menuOpen }">
@@ -156,5 +155,6 @@ onBeforeUnmount(() => {
         <span class="bar"/>
       </div>
     </div>
+    </ClickTilt>
   </nav>
 </template>
