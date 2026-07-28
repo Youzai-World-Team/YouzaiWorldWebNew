@@ -309,6 +309,23 @@ details details details {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
+// 位于主页顶部时，导航栏文本显示为浅绿色
+.navbar.top-home .nav-link {
+  color: var(--primary-color);
+}
+
+.navbar.top-home .nav-logo {
+  color: var(--primary-color);
+}
+
+.navbar.top-home .dropdown-toggle::after {
+  border-top-color: var(--primary-color);
+}
+
+.navbar.top-home .bar {
+  background-color: var(--primary-color);
+}
+
 .nav-container {
   display: flex;
   align-items: center;

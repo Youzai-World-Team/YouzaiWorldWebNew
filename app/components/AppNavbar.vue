@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {onBeforeUnmount, onMounted, ref, watch} from 'vue'
+import {computed, onBeforeUnmount, onMounted, ref, watch} from 'vue'
 import {useRoute} from 'vue-router'
 import {navItems} from '~/utils/site'
 
@@ -9,6 +9,10 @@ const scrolled = ref(false)
 const menuOpen = ref(false)
 const openIndex = ref(-1)
 const dropdownOpenTop = ref(false)
+
+// 位于主页且未滚动到顶部以下时，导航栏文字显示为浅绿色
+const isHome = computed(() => route.path === '/')
+const topHome = computed(() => isHome.value && !scrolled.value)
 
 const isDesktop = () => window.innerWidth > 768
 
@@ -100,7 +104,7 @@ onBeforeUnmount(() => {
 <template>
   <nav
       class="navbar"
-      :class="{ scrolled, 'menu-open': menuOpen, 'dropdown-open': dropdownOpenTop }"
+      :class="{ scrolled, 'menu-open': menuOpen, 'dropdown-open': dropdownOpenTop, 'top-home': topHome }"
   >
     <div class="nav-container">
         <NuxtLink to="/" class="nav-logo" aria-label="悠哉世界 主页">
