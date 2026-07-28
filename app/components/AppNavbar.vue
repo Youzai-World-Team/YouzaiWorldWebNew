@@ -2,7 +2,6 @@
 import {onBeforeUnmount, onMounted, ref, watch} from 'vue'
 import {useRoute} from 'vue-router'
 import {navItems} from '~/utils/site'
-import ClickTilt from '~/components/ClickTilt.vue'
 
 const route = useRoute()
 
@@ -103,7 +102,6 @@ onBeforeUnmount(() => {
       class="navbar"
       :class="{ scrolled, 'menu-open': menuOpen, 'dropdown-open': dropdownOpenTop }"
   >
-    <ClickTilt class="navbar-bg-wrap">
     <div class="nav-container">
         <NuxtLink to="/" class="nav-logo" aria-label="悠哉世界 主页">
         <img src="/images/uzw-tm.png" alt="悠哉世界">
@@ -155,6 +153,5 @@ onBeforeUnmount(() => {
         <span class="bar"/>
       </div>
     </div>
-    </ClickTilt>
   </nav>
 </template>
