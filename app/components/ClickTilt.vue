@@ -21,6 +21,7 @@ const ry = ref(0)
 const sc = ref(1)
 const pressed = ref(false)
 const springing = ref(false)
+let springTimer: ReturnType<typeof setTimeout> | null = null
 
 const tx = computed(() => ({
   transform:
@@ -37,6 +38,11 @@ function onDown(e: MouseEvent) {
   const dx = ((e.clientX - r.left) / r.width - 0.5) * 2
   const dy = ((e.clientY - r.top) / r.height - 0.5) * 2
 
+  // Cancel pending spring reset
+  if (springTimer !== null) {
+    clearTimeout(springTimer)
+    springTimer = null
+  }
   springing.value = false
   rx.value = -dy * 8
   ry.value = dx * 8
@@ -51,6 +57,11 @@ function onUp() {
   ry.value = 0
   sc.value = 1
   pressed.value = false
+  // Reset springing after animation completes so it doesn't block other transitions
+  springTimer = setTimeout(() => {
+    springing.value = false
+    springTimer = null
+  }, 500)
 }
 </script>
 
