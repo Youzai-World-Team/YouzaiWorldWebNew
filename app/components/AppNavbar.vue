@@ -10,7 +10,9 @@ const menuOpen = ref(false)
 const openIndex = ref(-1)
 const dropdownOpenTop = ref(false)
 
-const padding = computed(() => (scrolled.value || dropdownOpenTop.value ? '15px 0' : '20px 0'))
+// 位于主页且未滚动到顶部以下时，导航栏文字显示为浅绿色
+const isHome = computed(() => route.path === '/')
+const topHome = computed(() => isHome.value && !scrolled.value)
 
 const isDesktop = () => window.innerWidth > 768
 
@@ -102,12 +104,11 @@ onBeforeUnmount(() => {
 <template>
   <nav
       class="navbar"
-      :class="{ scrolled, 'menu-open': menuOpen, 'dropdown-open': dropdownOpenTop }"
-      :style="{ padding }"
+      :class="{ scrolled, 'menu-open': menuOpen, 'dropdown-open': dropdownOpenTop, 'top-home': topHome }"
   >
     <div class="nav-container">
-      <NuxtLink to="/" class="nav-logo" aria-label="悠哉世界 主页">
-        <img src="/images/youzaiworld.webp" alt="悠哉世界">
+        <NuxtLink to="/" class="nav-logo" aria-label="悠哉世界 主页">
+        <img src="/images/uzw-tm.png" alt="悠哉世界">
       </NuxtLink>
 
       <div class="nav-menu" :class="{ active: menuOpen }">
