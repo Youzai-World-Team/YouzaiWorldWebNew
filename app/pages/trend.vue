@@ -2,7 +2,9 @@
 import {computed, onMounted, ref} from 'vue'
 import PageHero from '~/components/ui/PageHero.vue'
 import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
-import {trendFilterOptions, trends, trendTypeClasses, trendTypeLabels} from '~/utils/trends'
+import {fetchActivities} from '~/composables/useActivities'
+import {trendFilterOptions, trendTypeClasses, trendTypeLabels} from '~/utils/trends'
+import type {Trend} from '~/types'
 
 useHead({title: '服务器动态 - Youzai World'})
 
@@ -12,10 +14,12 @@ const STEP = 5
 const search = ref('')
 const typeFilter = ref('all')
 const displayCount = ref(INITIAL)
+const trends = ref<Trend[]>([])
+const loadError = ref(false)
 
 const filtered = computed(() => {
   const term = search.value.trim().toLowerCase()
-  return trends.filter((t) => {
+  return trends.value.filter((t) => {
     const matchesSearch =
         term === '' || t.text.toLowerCase().includes(term) || t.date.toLowerCase().includes(term)
     const matchesType = typeFilter.value === 'all' || t.type === typeFilter.value
@@ -41,15 +45,20 @@ function reset() {
   displayCount.value = INITIAL
 }
 
-const totalTrends = trends.length
-const latestUpdate = ref(trends[0]!.date.split(' ')[0]!)
+const totalTrends = computed(() => trends.value.length)
+const latestUpdate = ref('-')
 
-onMounted(() => {
-  const latestDate = trends[0]!.date.split(' ')[0]
-  const today = new Date().toISOString().split('T')[0]
-  const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0]
-  if (latestDate === today) latestUpdate.value = '今天'
-  else if (latestDate === yesterday) latestUpdate.value = '昨天'
+onMounted(async () => {
+  trends.value = await fetchActivities()
+  loadError.value = trends.value.length === 0
+  if (trends.value.length > 0) {
+    const latestDate = trends.value[0]!.date.split(' ')[0]
+    const today = new Date().toISOString().split('T')[0]
+    const yesterday = new Date(Date.now() - 86400000).toISOString().split('T')[0]
+    if (latestDate === today) latestUpdate.value = '今天'
+    else if (latestDate === yesterday) latestUpdate.value = '昨天'
+    else latestUpdate.value = latestDate
+  }
 })
 </script>
 
@@ -101,8 +110,12 @@ onMounted(() => {
           </select>
         </div>
 
+        <div v-if="loadError" class="trend-load-error">
+          <p>动态加载失败，请稍后刷新页面重试。</p>
+        </div>
+
         <div v-show="!isEmpty" class="trend-list">
-          <div v-for="t in visible" :key="t.date" class="trend-item" :data-type="t.type">
+          <div v-for="t in visible" :key="t.id ?? t.date" class="trend-item" :data-type="t.type">
             <img :src="`/images/${t.icon}`" :alt="trendTypeLabels[t.type]" class="trend-icon">
             <div class="trend-content">
               <span class="trend-date">{{ t.date }}</span>
@@ -286,6 +299,10 @@ onMounted(() => {
   border-left-color: #1abc9c;
 }
 
+.trend-item[data-type="error"] {
+  border-left-color: #e74c3c;
+}
+
 .trend-item[data-type="install"] {
   border-left-color: #e74c3c;
 }
@@ -330,6 +347,11 @@ onMounted(() => {
   color: #16a085;
 }
 
+.trend-type-error {
+  background-color: rgba(231, 76, 60, 0.1);
+  color: #c0392b;
+}
+
 .trend-type-install {
   background-color: rgba(231, 76, 60, 0.1);
   color: #c0392b;
@@ -351,6 +373,17 @@ onMounted(() => {
 
 .trend-empty-state.active {
   display: block;
+}
+
+.trend-load-error {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  padding: 12px 18px;
+  background-color: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  border-radius: 10px;
+  color: #c0392b;
+  text-align: center;
 }
 
 .trend-empty-state h3 {
