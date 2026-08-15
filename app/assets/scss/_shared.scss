@@ -2055,6 +2055,15 @@ details details details {
     background-color: var(--dark-color) !important;
   }
 
+  // 移动端菜单展开时，强制文字为深色，避免与浅绿背景同色
+  .navbar.menu-open .nav-link {
+    color: var(--dark-color) !important;
+  }
+
+  .navbar.menu-open .dropdown-toggle::after {
+    border-top-color: var(--dark-color) !important;
+  }
+
   .nav-toggle.active .bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }

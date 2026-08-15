@@ -7,7 +7,9 @@ import type {PenaltyRecord} from '~/types'
 
 useHead({title: '玩家处罚记录 - Youzai World'})
 
-const API = 'https://quickform.cn/api/1kwd7qm2hy/all'
+const API = 'https://api.mcyzw.top/api/bans'
+
+const LOG_PREFIX = '[youzai-web/bans]'
 
 const penaltyData = ref<PenaltyRecord[]>([])
 const loading = ref(true)
@@ -18,12 +20,21 @@ const filterType = ref('all')
 const filterStatus = ref('all')
 const filterOperator = ref('all')
 
+// 解析解封时间：permanent / 永久 / '-' / 空 → null（视为永久生效），
+// 其余按日期解析，解析失败同样视为永久生效。
+function parseUnbanDate(value: string | undefined): number | null {
+  if (!value) return null
+  const t = value.trim()
+  if (t === '永久' || t === 'permanent' || t === '-') return null
+  const d = new Date(t.includes(' ') ? t.replace(' ', 'T') : t)
+  return isNaN(d.getTime()) ? null : d.getTime()
+}
+
 function statusOf(item: PenaltyRecord): 'active' | 'expired' | string {
   if (item.type === 'warning') return item.status || 'active'
-  if (item.unbanTime === '永久') return 'active'
-  if (item.unbanTime === '-' || !item.unbanTime) return 'active'
-  const unbanDate = new Date(item.unbanTime.replace(' ', 'T') + ':00')
-  return new Date() > unbanDate ? 'expired' : 'active'
+  const unbanMs = parseUnbanDate(item.unbanTime)
+  if (unbanMs === null) return 'active'
+  return Date.now() > unbanMs ? 'expired' : 'active'
 }
 
 const typeLabels: Record<string, string> = {
@@ -35,26 +46,30 @@ const typeLabels: Record<string, string> = {
 
 async function fetchPenaltyData() {
   try {
+    console.log(`${LOG_PREFIX} 开始拉取处罚记录: ${API}`)
     const res = await fetch(API)
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
     const result = await res.json()
-    if (result.submissions && Array.isArray(result.submissions)) {
-      penaltyData.value = result.submissions.map(
+    const list = Array.isArray(result) ? result : result?.submissions
+    if (Array.isArray(list)) {
+      penaltyData.value = list.map(
           (item: Record<string, unknown>): PenaltyRecord => ({
-            player: item.player as string,
-            type: item.type as string,
-            reason: item.reason as string,
-            penaltyTime: item.penaltyTime as string,
-            unbanTime: item.unbanTime as string,
-            operator: item.operator as string,
+            player: (item.player as string) ?? '未知玩家',
+            type: (item.type as string) || 'ban',
+            reason: (item.reason as string) ?? '',
+            penaltyTime: (item.banTime as string) ?? '',
+            unbanTime: (item.unbanTime as string) || '-',
+            operator: (item.operator as string) ?? '',
             status: (item.status as string) || 'active',
           }),
       )
+      console.log(`${LOG_PREFIX} 拉取成功，共 ${penaltyData.value.length} 条`)
     } else {
       penaltyData.value = []
     }
     loadError.value = false
-  } catch {
+  } catch (err) {
+    console.error(`${LOG_PREFIX} 拉取失败:`, err)
     penaltyData.value = []
     loadError.value = true
   } finally {
@@ -221,8 +236,8 @@ onBeforeUnmount(() => {
             </td>
             <td>{{ item.reason }}</td>
             <td>{{ item.penaltyTime }}</td>
-            <td>{{ item.unbanTime }}</td>
-            <td>{{ item.operator }}</td>
+            <td>{{ item.unbanTime === 'permanent' ? '永久' : item.unbanTime }}</td>
+            <td>{{ item.operator || '—' }}</td>
             <td :class="statusOf(item) === 'active' ? 'status-active' : 'status-expired'">
               {{ statusOf(item) === 'active' ? '生效中' : '已过期' }}
             </td>

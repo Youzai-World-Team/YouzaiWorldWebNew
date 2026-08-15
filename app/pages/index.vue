@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed} from 'vue'
+import {onMounted, ref} from 'vue'
 import HeroSection from '~/components/home/HeroSection.vue'
 import LatestNews from '~/components/home/LatestNews.vue'
 import FeatureCarousel from '~/components/home/FeatureCarousel.vue'
@@ -7,14 +7,20 @@ import WorldsExplorer from '~/components/home/WorldsExplorer.vue'
 import MusicPlayer from '~/components/MusicPlayer.vue'
 import NoticeBanner from '~/components/ui/NoticeBanner.vue'
 import ServerStatusInline from '~/components/ui/ServerStatusInline.vue'
-import {trends} from '~/utils/trends'
+import {fetchActivities} from '~/composables/useActivities'
 import {strengths, team} from '~/utils/home'
 import {useClipboard} from '~/composables/useClipboard'
+import type {Trend} from '~/types'
 
 useHead({title: '主页 - Youzai World'})
 
-const previewTrends = computed(() => trends.slice(0, 3))
+const previewTrends = ref<Trend[]>([])
 const {copiedKey, copy} = useClipboard()
+
+onMounted(async () => {
+  const all = await fetchActivities()
+  previewTrends.value = all.slice(0, 3)
+})
 </script>
 
 <template>
@@ -62,7 +68,7 @@ const {copiedKey, copy} = useClipboard()
       <div class="container">
         <h2>服务器动态</h2>
         <div class="trend-list">
-          <div v-for="t in previewTrends" :key="t.date" class="trend-item">
+          <div v-for="t in previewTrends" :key="t.id ?? t.date" class="trend-item">
             <img :src="`/images/${t.icon}`" :alt="t.type" class="trend-icon">
             <div class="trend-content">
               <span class="trend-date">{{ t.date }}</span>

@@ -9,16 +9,10 @@ export interface NavItem {
   children?: NavChild[]
 }
 
-export type TrendType =
-  | 'success'
-  | 'update'
-  | 'warning'
-  | 'info'
-  | 'fix'
-  | 'install'
-  | 'uninstall'
+export type TrendType = 'success' | 'warning' | 'info' | 'error'
 
 export interface Trend {
+  id?: string
   date: string
   text: string
   type: TrendType
