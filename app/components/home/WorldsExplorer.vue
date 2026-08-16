@@ -48,13 +48,10 @@ function switchWorld(w: WorldInfo) {
             </ul>
             <div style="margin-top: 28px; text-align: right;">
               <div
-                v-if="active.link || active.applyLink"
+                v-if="active.applyLink"
                 style="display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap;"
               >
-                <NuxtLink v-if="active.link" :to="active.link" class="btn-secondary">
-                  查看世界规则及游玩协议
-                </NuxtLink>
-                <NuxtLink v-if="active.applyLink" :to="active.applyLink" class="btn-primary">
+                <NuxtLink :to="active.applyLink" class="btn-primary">
                   申请权限
                 </NuxtLink>
               </div>

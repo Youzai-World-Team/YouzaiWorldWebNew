@@ -35,20 +35,7 @@ export default defineNuxtConfig({
         prerender: {
             crawlLinks: true,
             routes: ['/'],
-            ignore: [/world_rules/, '/tools/ECRFLU'],
-        },
-    },
-
-    hooks: {
-        'pages:extend'(pages) {
-            const worlds = ['survival', 'creative', 'building']
-            for (const world of worlds) {
-                pages.push({
-                    name: `agreement-world-${world}`,
-                    path: `/read_agreements/world_rules&play_agreement/${world}`,
-                    file: '~/pages/read_agreements/world-rule.vue',
-                })
-            }
+            ignore: ['/tools/ECRFLU'],
         },
     },
 })

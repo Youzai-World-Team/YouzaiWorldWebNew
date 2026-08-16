@@ -258,35 +258,6 @@ onMounted(async () => {
       </div>
     </section>
 
-    <section id="resources" class="join">
-      <div class="container">
-        <h2>服务器协议</h2>
-        <div class="join-content">
-          <div class="join-info-wide">
-            <h4>加入服务器即表示您同意遵守以下协议：</h4>
-            <hr>
-            <h3>
-              <NuxtLink to="/read_agreements/server_play_agreement" class="internal-link">玩家游玩协议</NuxtLink>
-            </h3>
-            <h4>进入并游玩各个世界即表示您同意遵守以下协议：</h4>
-            <hr>
-            <h3>
-              <NuxtLink to="/read_agreements/world_rules&play_agreement/creative" class="internal-link">
-                创造世界规则与游玩协议
-              </NuxtLink>
-              <NuxtLink to="/read_agreements/world_rules&play_agreement/survival" class="internal-link">
-                生存世界规则与游玩协议
-              </NuxtLink>
-              <br>
-              <NuxtLink to="/read_agreements/world_rules&play_agreement/building" class="internal-link">
-                建造世界规则与游玩协议
-              </NuxtLink>
-            </h3>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <ClientOnly>
       <MusicPlayer/>
     </ClientOnly>

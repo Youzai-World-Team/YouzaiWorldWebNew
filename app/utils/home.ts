@@ -14,7 +14,6 @@ export const worlds: WorldInfo[] = [
             '✅ 遗迹增加，丰富冒险内容',
             '✅ 添加四季变换系统、丰富农夫乐事的种植体验，增强沉浸感',
         ],
-        link: '/read_agreements/world_rules&play_agreement/survival',
     },
     {
         id: 'creative',
@@ -29,7 +28,6 @@ export const worlds: WorldInfo[] = [
             '✅ 飞行权限，方便建造',
             '✅ 可申请获得 WorldEdit 模组权限，极大提升建筑效率和创造力',
         ],
-        link: '/read_agreements/world_rules&play_agreement/creative',
         applyLink: '/apply/creative',
     },
     {
@@ -45,7 +43,6 @@ export const worlds: WorldInfo[] = [
             '✅ 同样可以申请获得 WorldEdit 模组权限，极大提升建筑效率和创造力',
             '✅ 建筑比赛专区',
         ],
-        link: '/read_agreements/world_rules&play_agreement/building',
         applyLink: '/apply/creative',
     },
     {

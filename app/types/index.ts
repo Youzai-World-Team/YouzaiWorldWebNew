@@ -27,7 +27,6 @@ export interface WorldInfo {
   sideImage: string
   desc?: string
   features?: string[]
-  link?: string
   applyLink?: string
 }
 
