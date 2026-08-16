@@ -16,7 +16,7 @@ export const trendTypeClasses: Record<TrendType, string> = {
   error: 'trend-type-error',
 }
 
-// 动态类型 -> 图标文件（public/images 下）
+// 动态类型 -> 图标文件名（配合 /images/ 前缀拼接，资源由 CDN assets.mcyzw.top 提供）
 export const trendTypeIcons: Record<TrendType, string> = {
   success: 'succeed.svg',
   warning: 'warning-red.svg',

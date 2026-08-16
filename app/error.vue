@@ -34,7 +34,7 @@ function goBack() {
     <main class="error-hero">
       <div class="error-container">
         <div class="error-illustration">
-          <img src="/images/error.webp" :alt="`${code} Error Illustration`">
+          <img src="https://assets.mcyzw.top/images/error.webp" :alt="`${code} Error Illustration`">
         </div>
         <h1 class="error-code">{{ code }}</h1>
         <h2 class="error-title">{{ title }}</h2>

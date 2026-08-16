@@ -44,13 +44,13 @@ export const footerLinks = [
 export const friendLinks = [
   {
     href: 'https://eqad.fun',
-    icon: '/images/eqad.webp',
+    icon: 'https://assets.mcyzw.top/images/eqad.webp',
     title: 'EQAD',
     desc: '一个由马迷们合作开设的 Minecraft 服务器',
   },
   {
     href: 'https://dev.mscpo.org',
-    icon: '/images/mscpo.webp',
+    icon: 'https://assets.mcyzw.top/images/mscpo.webp',
     title: 'MSCPO',
     desc: 'Minecraft 服务器集体宣传组织',
   },

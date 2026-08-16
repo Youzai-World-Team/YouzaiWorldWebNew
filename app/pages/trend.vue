@@ -116,7 +116,7 @@ onMounted(async () => {
 
         <div v-show="!isEmpty" class="trend-list">
           <div v-for="t in visible" :key="t.id ?? t.date" class="trend-item" :data-type="t.type">
-            <img :src="`/images/${t.icon}`" :alt="trendTypeLabels[t.type]" class="trend-icon">
+            <img :src="`https://assets.mcyzw.top/images/${t.icon}`" :alt="trendTypeLabels[t.type]" class="trend-icon">
             <div class="trend-content">
               <span class="trend-date">{{ t.date }}</span>
               <span class="trend-type-badge" :class="trendTypeClasses[t.type]">

@@ -1,11 +1,11 @@
 import type { DownloadPlatform, DownloadCard } from '~/types'
 
 const LZ = 'https://zxabinbina.lanzoue.com/'
-const ZIP = '/images/zip.svg'
+const ZIP = 'https://assets.mcyzw.top/images/zip.svg'
 
 export const packagePlatforms: DownloadPlatform[] = [
   {
-    platformIcon: '/images/windows.svg',
+    platformIcon: 'https://assets.mcyzw.top/images/windows.svg',
     platformTitle: 'Windows 版资源包',
     cards: [
       {
@@ -47,12 +47,12 @@ export const packagePlatforms: DownloadPlatform[] = [
     ],
   },
   {
-    platformIcon: '/images/android.svg',
+    platformIcon: 'https://assets.mcyzw.top/images/android.svg',
     platformTitle: 'Android 版资源包',
     tip: '💡 不知道什么是 Mobile Glues 渲染器？',
     groups: [
       {
-        rendererIcon: '/images/MobileGlues.webp',
+        rendererIcon: 'https://assets.mcyzw.top/images/MobileGlues.webp',
         rendererTitle: 'Mobile Glues 渲染器专用版（推荐）',
         cards: [
           {
@@ -98,7 +98,7 @@ export const packagePlatforms: DownloadPlatform[] = [
         ],
       },
       {
-        rendererIcon: '/images/UniversalRenderer.webp',
+        rendererIcon: 'https://assets.mcyzw.top/images/UniversalRenderer.webp',
         rendererTitle: '通用渲染器版（建议使用 Holy GL4ES 渲染器）',
         cards: [
           {
@@ -134,21 +134,21 @@ const asLauncher = (c: Omit<DownloadCard, 'buttonText'> & { buttonText?: string 
 
 export const launcherPlatforms: DownloadPlatform[] = [
   {
-    platformIcon: '/images/windows.svg',
+    platformIcon: 'https://assets.mcyzw.top/images/windows.svg',
     platformTitle: 'Windows 启动器',
     cards: [
-      asLauncher({ icon: '/images/PCL2.webp', title: 'PCL 2', version: '由 <strong>龙腾猫跃</strong> 开发', desc: '最棒的第三方 Windows 的 Minecraft JAVA 版启动器，提供超快的下载速度、智能模组管理、简洁美观的界面，让您的体验更加出色。', href: 'https://afdian.com/p/0164034c016c11ebafcb52540025c377' }) as DownloadCard,
-      asLauncher({ icon: '/images/HMCL.webp', title: 'HMCL', version: '由 <strong>huangyuhui</strong> 开发', desc: '十二年历史的第三方启动器，具有多系统支持、全新界面，支持导入多款国外启动器下载的整合包、创建与安装游戏，个性化主题。', href: 'https://hmcl.huangyuhui.net/download' }) as DownloadCard,
-      asLauncher({ icon: '/images/BakaXL.webp', title: 'BakaXL', version: '由 <strong>TT702</strong> 开发', desc: '打破传统启动器的层级概念，使用起来更加称心如意。强大的自定义主题功能无需任何额外付费即可使用，还有视差效果和实况壁纸加持，实在是泰裤辣！', href: 'https://www.bakaxl.com/#download' }) as DownloadCard,
-      asLauncher({ icon: '/images/minecraft-launcher.webp', title: 'Minecraft Launcher', version: '由 <strong>MOJANG</strong> 开发', desc: '官方启动器，一个账号，多架构平台启动。', href: 'https://www.minecraft.net/download' }) as DownloadCard,
+      asLauncher({ icon: 'https://assets.mcyzw.top/images/PCL2.webp', title: 'PCL 2', version: '由 <strong>龙腾猫跃</strong> 开发', desc: '最棒的第三方 Windows 的 Minecraft JAVA 版启动器，提供超快的下载速度、智能模组管理、简洁美观的界面，让您的体验更加出色。', href: 'https://afdian.com/p/0164034c016c11ebafcb52540025c377' }) as DownloadCard,
+      asLauncher({ icon: 'https://assets.mcyzw.top/images/HMCL.webp', title: 'HMCL', version: '由 <strong>huangyuhui</strong> 开发', desc: '十二年历史的第三方启动器，具有多系统支持、全新界面，支持导入多款国外启动器下载的整合包、创建与安装游戏，个性化主题。', href: 'https://hmcl.huangyuhui.net/download' }) as DownloadCard,
+      asLauncher({ icon: 'https://assets.mcyzw.top/images/BakaXL.webp', title: 'BakaXL', version: '由 <strong>TT702</strong> 开发', desc: '打破传统启动器的层级概念，使用起来更加称心如意。强大的自定义主题功能无需任何额外付费即可使用，还有视差效果和实况壁纸加持，实在是泰裤辣！', href: 'https://www.bakaxl.com/#download' }) as DownloadCard,
+      asLauncher({ icon: 'https://assets.mcyzw.top/images/minecraft-launcher.webp', title: 'Minecraft Launcher', version: '由 <strong>MOJANG</strong> 开发', desc: '官方启动器，一个账号，多架构平台启动。', href: 'https://www.minecraft.net/download' }) as DownloadCard,
     ],
   },
   {
-    platformIcon: '/images/android.svg',
+    platformIcon: 'https://assets.mcyzw.top/images/android.svg',
     platformTitle: 'Android 启动器',
     cards: [
-      { icon: '/images/FCL.webp', title: 'FCL', version: '由 <strong>FCL-Team</strong> 开发', desc: '由 FCL 团队开发的 Android 平台 Minecraft: Java Edition 启动器。基于 HMCL 的核心功能，结合 PojavLauncher 后端和 Boat 后端，让您能在移动设备上畅玩 Java 版 MC ，支持模组加载与全版本运行。', href: 'https://foldcraftlauncher.cn', buttonText: '前往镜像网站下载' } as DownloadCard,
-      { icon: '/images/zl.webp', title: 'ZL 2', version: '由 <strong>ZalithLauncher</strong> 开发', desc: '在 Android 设备上运行 Minecraft Java 版，更好的界面，更多实用功能，更低的使用门槛。', href: 'https://www.zalithlauncher.cn/zl2-download.html', buttonText: '前往镜像网站下载' } as DownloadCard,
+      { icon: 'https://assets.mcyzw.top/images/FCL.webp', title: 'FCL', version: '由 <strong>FCL-Team</strong> 开发', desc: '由 FCL 团队开发的 Android 平台 Minecraft: Java Edition 启动器。基于 HMCL 的核心功能，结合 PojavLauncher 后端和 Boat 后端，让您能在移动设备上畅玩 Java 版 MC ，支持模组加载与全版本运行。', href: 'https://foldcraftlauncher.cn', buttonText: '前往镜像网站下载' } as DownloadCard,
+      { icon: 'https://assets.mcyzw.top/images/zl.webp', title: 'ZL 2', version: '由 <strong>ZalithLauncher</strong> 开发', desc: '在 Android 设备上运行 Minecraft Java 版，更好的界面，更多实用功能，更低的使用门槛。', href: 'https://www.zalithlauncher.cn/zl2-download.html', buttonText: '前往镜像网站下载' } as DownloadCard,
     ],
   },
 ]

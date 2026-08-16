@@ -108,7 +108,7 @@ onBeforeUnmount(() => {
   >
     <div class="nav-container">
         <NuxtLink to="/" class="nav-logo" aria-label="悠哉世界 主页">
-        <img src="/images/uzw-tm.png" alt="悠哉世界">
+        <img src="https://assets.mcyzw.top/images/uzw-tm.png" alt="悠哉世界">
       </NuxtLink>
 
       <div class="nav-menu" :class="{ active: menuOpen }">

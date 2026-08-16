@@ -69,7 +69,7 @@ onMounted(async () => {
         <h2>服务器动态</h2>
         <div class="trend-list">
           <div v-for="t in previewTrends" :key="t.id ?? t.date" class="trend-item">
-            <img :src="`/images/${t.icon}`" :alt="t.type" class="trend-icon">
+            <img :src="`https://assets.mcyzw.top/images/${t.icon}`" :alt="t.type" class="trend-icon">
             <div class="trend-content">
               <span class="trend-date">{{ t.date }}</span>
               <span class="trend-text">{{ t.text }}</span>
@@ -125,7 +125,7 @@ onMounted(async () => {
               </template>
               <p>{{ member.duty }}<br></p>
               <template v-if="member.bio">
-                <img class="bioqt" src="/images/qt.svg">
+                <img class="bioqt" src="https://assets.mcyzw.top/images/qt.svg">
                 <p class="bio">{{ member.bio }}</p>
               </template>
               <div class="sclinkarea">
@@ -180,7 +180,7 @@ onMounted(async () => {
               </button>
             </div>
             <div class="download-section">
-              <img src="/images/info.svg" alt="信息" class="trend-icon">
+              <img src="https://assets.mcyzw.top/images/info.svg" alt="信息" class="trend-icon">
               <p>
                 在您加入服务器之前，您还需要前往
                 <NuxtLink to="/download#download-packages" class="internal-link">此处</NuxtLink>
@@ -199,7 +199,7 @@ onMounted(async () => {
               <span class="info-value">Minecraft Java 26.2</span>
             </div>
             <div class="download-section">
-              <img src="/images/info.svg" alt="信息" class="trend-icon">
+              <img src="https://assets.mcyzw.top/images/info.svg" alt="信息" class="trend-icon">
               <p>
                 还没有 Minecraft Java 启动器？前往
                 <NuxtLink to="/download#download-laucher" class="internal-link">此处</NuxtLink>
@@ -239,7 +239,7 @@ onMounted(async () => {
               </button>
             </div>
             <div class="download-section">
-              <img src="/images/qqgroup.webp" style="max-width: 80%; max-height: 80%;" alt="qqgroup">
+              <img src="https://assets.mcyzw.top/images/qqgroup.webp" style="max-width: 80%; max-height: 80%;" alt="qqgroup">
             </div>
             <hr class="b-border">
             <h3>教程中心</h3>

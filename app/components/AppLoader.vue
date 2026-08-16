@@ -31,7 +31,7 @@ onMounted(() => {
 <template>
   <div v-if="!removed" class="loader" :class="{ hidden: hiding }">
     <div class="loader-container">
-      <img class="loader-image" src="/images/loading.webp" alt="Loading...">
+      <img class="loader-image" src="https://assets.mcyzw.top/images/loading.webp" alt="Loading...">
       <hr
           class="loader-image"
           style="color: var(--dark-color); background-color: var(--dark-color); height: 2px;"

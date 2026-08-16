@@ -73,7 +73,7 @@ const amountFilterOptions = [
           <p>使用微信扫描下方二维码进行捐赠</p>
           <div class="qr-container">
             <div class="qr-code">
-              <img src="/images/donate_qr.webp" alt="微信捐赠二维码">
+              <img src="https://assets.mcyzw.top/images/donate_qr.webp" alt="微信捐赠二维码">
             </div>
           </div>
           <div class="donate-instructions">

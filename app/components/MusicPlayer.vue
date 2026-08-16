@@ -7,8 +7,8 @@ interface Track {
 }
 
 const playlist: Track[] = [
-  {name: 'Minecraft', url: '/medias/minecraft.m4a'},
-  {name: 'Watcher', url: '/medias/Watcher.m4a'},
+  {name: 'Minecraft', url: 'https://assets.mcyzw.top/medias/minecraft.m4a'},
+  {name: 'Watcher', url: 'https://assets.mcyzw.top/medias/Watcher.m4a'},
 ]
 
 const isPlaying = ref(false)

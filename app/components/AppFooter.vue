@@ -11,12 +11,12 @@ const uptime = useUptime()
       <div class="footer-content">
         <div class="footer-section">
           <div class="nav-logo">
-            <img src="/images/youzaiworldlight.webp" alt="悠哉世界">
+            <img src="https://assets.mcyzw.top/images/youzaiworldlight.webp" alt="悠哉世界">
           </div>
           <br>
           <p>一个充满创意与冒险的 Minecraft 服务器，致力于为玩家提供最佳的游戏体验。</p>
           <br><br>
-          <img src="/images/cloudflare.svg" alt="Cloudflare">
+          <img src="https://assets.mcyzw.top/images/cloudflare.svg" alt="Cloudflare">
           <p>
             本站由
             <a class="external-link" href="https://cloudflare.com" target="_blank">Cloudflare</a>

@@ -33,7 +33,7 @@ useHead({ title: '下载中心 - Youzai World' })
           <hr>
           <br>
           点击下载按钮后来到的页面有 3 个按钮，请选择<strong style="color: red;">红色</strong>的<strong>普通下载</strong>按钮！
-          <img src="/images/download_info.webp" alt="info" loading="lazy" style="height: 100%; width: 100%;">
+          <img src="https://assets.mcyzw.top/images/download_info.webp" alt="info" loading="lazy" style="height: 100%; width: 100%;">
         </div>
         <button class="banner-close" aria-label="关闭此提示" onclick="this.parentNode.style.display='none'">
           <span aria-hidden="true">&times;</span>

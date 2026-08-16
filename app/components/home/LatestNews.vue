@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {onBeforeUnmount, onMounted, ref} from 'vue'
 
-const NEWS_IMG = '/images/26.2.webp'
+const NEWS_IMG = 'https://assets.mcyzw.top/images/26.2.webp'
 
 const cardRef = ref<HTMLElement | null>(null)
 const spotlightRef = ref<HTMLElement | null>(null)

@@ -14,7 +14,7 @@ interface Bee {
 const bees = ref<Bee[]>([])
 
 onMounted(() => {
-  const beeImages = ['/images/bee_img1.webp', '/images/bee_img2.webp']
+  const beeImages = ['https://assets.mcyzw.top/images/bee_img1.webp', 'https://assets.mcyzw.top/images/bee_img2.webp']
   const positions = [
     { left: '12%', top: '28%' },
     { left: '80%', top: '22%' },

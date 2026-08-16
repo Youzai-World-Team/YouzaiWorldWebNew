@@ -22,7 +22,7 @@ const tutorials: Tutorial[] = [
     id: 1,
     title: '快速游玩指南',
     description: '了解如何快速开始悠哉世界的冒险。',
-    image: '/images/background_9.webp',
+    image: 'https://assets.mcyzw.top/images/background_9.webp',
     category: '入门|玩法',
     date: '2025-11-23',
     link: '/tutorials/quick_play_guide',

@@ -15,12 +15,12 @@ export default defineNuxtConfig({
                 {name: 'viewport', content: 'width=device-width, initial-scale=1.0'},
             ],
             link: [
-                {rel: 'icon', href: '/images/logocircle.webp'},
+                {rel: 'icon', href: 'https://assets.mcyzw.top/images/logocircle.webp'},
                 {
                     rel: 'preload',
                     as: 'font',
                     type: 'font/woff2',
-                    href: '/fonts/zkklt2016xdb.woff2',
+                    href: 'https://assets.mcyzw.top/fonts/zkklt2016xdb.woff2',
                     crossorigin: '',
                 },
             ],

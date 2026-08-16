@@ -214,7 +214,7 @@ onBeforeUnmount(() => {
                 <h3 class="status-node-title">
                   Youzai World Server
                   <button class="node-refresh-btn" title="刷新状态" disabled>
-                    <img src="/images/refresh.svg" alt="刷新">
+                    <img src="https://assets.mcyzw.top/images/refresh.svg" alt="刷新">
                   </button>
                 </h3>
                 <div class="status-node-status status-loading">
@@ -264,7 +264,7 @@ onBeforeUnmount(() => {
                 <h3 class="status-node-title">
                   Youzai World Server
                   <button class="node-refresh-btn" title="刷新状态" @click="loadStatus">
-                    <img src="/images/refresh.svg" alt="刷新">
+                    <img src="https://assets.mcyzw.top/images/refresh.svg" alt="刷新">
                   </button>
                 </h3>
                 <div v-if="node" class="status-node-status status-online">
