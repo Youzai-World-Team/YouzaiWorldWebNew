@@ -54,11 +54,13 @@ export interface AvailabilityData {
   [nodeName: string]: AvailabilityPoint[]
 }
 
+// 对应 https://api.mcyzw.top/api/donors 返回结构
 export interface Donator {
-  player: string
+  id: string
+  name: string
+  avatar: string
+  intro: string
   amount: number
-  date: string
-  note: string
 }
 
 export interface PenaltyRecord {

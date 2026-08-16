@@ -1,17 +1,57 @@
 <script setup lang="ts">
-import {computed, ref} from 'vue'
+import {computed, onBeforeUnmount, onMounted, ref} from 'vue'
 import PageHero from '~/components/ui/PageHero.vue'
 import Breadcrumbs from '~/components/ui/Breadcrumbs.vue'
 import type {Donator} from '~/types'
 
 useHead({title: '捐赠 - Youzai World'})
 
-const donators: Donator[] = [
-  {player: 'zxabinbina', amount: 50, date: '2025-06-20', note: '服务器启动资金'},
-]
+// 捐赠者列表 API（替代原先硬编码的数据）
+const DONORS_API = 'https://api.mcyzw.top/api/donors'
+
+const LOG_PREFIX = '[youzai-web/donors]'
+
+const donators = ref<Donator[]>([])
+const loading = ref(true)
+const loadError = ref(false)
 
 const search = ref('')
 const amountFilter = ref('all')
+
+// API 返回的头像为相对路径（如 /api/uploads/xxx.gif），需拼接 API 域名；
+// 已是绝对 URL（http/https）时直接使用。
+function resolveAvatar(path: string): string {
+  if (!path) return ''
+  return path.startsWith('http') ? path : `${DONORS_API.replace(/\/api\/donors$/, '')}${path}`
+}
+
+async function fetchDonators() {
+  try {
+    console.log(`${LOG_PREFIX} 开始拉取捐赠列表: ${DONORS_API}`)
+    const res = await fetch(DONORS_API, {cache: 'no-cache'})
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    const raw = (await res.json()) as Donator[]
+    donators.value = Array.isArray(raw) ? raw : []
+    console.log(`${LOG_PREFIX} 拉取成功，共 ${donators.value.length} 条`)
+    loadError.value = false
+  } catch (err) {
+    console.error(`${LOG_PREFIX} 拉取失败:`, err)
+    donators.value = []
+    loadError.value = true
+  } finally {
+    loading.value = false
+  }
+}
+
+let timer: number | undefined
+onMounted(() => {
+  fetchDonators()
+  // 与 banlist 页保持一致：定时刷新，保证数据最新
+  timer = window.setInterval(fetchDonators, 60000)
+})
+onBeforeUnmount(() => {
+  if (timer) window.clearInterval(timer)
+})
 
 function inRange(amount: number, filter: string) {
   switch (filter) {
@@ -32,12 +72,12 @@ function inRange(amount: number, filter: string) {
 
 const filtered = computed(() => {
   const term = search.value.trim().toLowerCase()
-  return donators
+  return donators.value
       .filter((d) => {
         const matchesSearch =
             term === '' ||
-            d.player.toLowerCase().includes(term) ||
-            d.note.toLowerCase().includes(term)
+            d.name.toLowerCase().includes(term) ||
+            d.intro.toLowerCase().includes(term)
         return matchesSearch && inRange(d.amount, amountFilter.value)
       })
       .sort((a, b) => b.amount - a.amount)
@@ -45,9 +85,13 @@ const filtered = computed(() => {
 
 const isEmpty = computed(() => filtered.value.length === 0)
 
-const totalDonators = donators.length
-const totalAmount = donators.reduce((sum, d) => sum + d.amount, 0)
-const avgDonation = (totalAmount / donators.length).toFixed(2)
+const totalDonators = computed(() => donators.value.length)
+const totalAmount = computed(() => donators.value.reduce((sum, d) => sum + d.amount, 0))
+const avgDonation = computed(() => {
+  const total = totalAmount.value
+  const count = totalDonators.value
+  return count > 0 ? (total / count).toFixed(2) : '0.00'
+})
 
 const amountFilterOptions = [
   {value: 'all', label: '全部捐赠金额'},
@@ -134,28 +178,39 @@ const amountFilterOptions = [
           </select>
         </div>
 
-        <div v-show="!isEmpty" class="donators-table-container">
+        <div v-show="loadError" class="donate-empty-state" style="display: block;">
+          <h3>加载失败</h3>
+          <p>捐赠列表加载失败，请稍后重试。</p>
+        </div>
+
+        <div v-show="loading && !loadError" class="donate-empty-state" style="display: block;">
+          <h3>正在加载</h3>
+          <p>正在加载捐赠列表...</p>
+        </div>
+
+        <div v-show="!loading && !loadError && !isEmpty" class="donators-table-container">
           <table class="donators-table">
             <thead>
             <tr>
-              <th style="width: 25%;">玩家代号</th>
-              <th style="width: 15%;">捐赠金额</th>
-              <th style="width: 20%;">捐赠时间</th>
+              <th style="width: 40%;">支持者</th>
+              <th style="width: 20%;">捐赠金额</th>
               <th style="width: 40%;">留言</th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="d in filtered" :key="d.player + d.date">
-              <td class="player-name">{{ d.player }}</td>
+            <tr v-for="d in filtered" :key="d.id">
+              <td class="player-name">
+                <img v-if="d.avatar" class="donor-avatar" :src="resolveAvatar(d.avatar)" :alt="d.name">
+                {{ d.name }}
+              </td>
               <td class="donate-amount">¥{{ d.amount }}</td>
-              <td class="donate-date">{{ d.date }}</td>
-              <td class="donate-note-cell">{{ d.note }}</td>
+              <td class="donate-note-cell">{{ d.intro }}</td>
             </tr>
             </tbody>
           </table>
         </div>
 
-        <div v-show="isEmpty" class="donate-empty-state" style="display: block;">
+        <div v-show="!loading && !loadError && isEmpty" class="donate-empty-state" style="display: block;">
           <h3>暂无捐赠记录</h3>
           <p>当前没有找到符合条件的捐赠记录。</p>
         </div>
@@ -413,17 +468,24 @@ const amountFilterOptions = [
 .player-name {
   font-weight: 600;
   color: var(--dark-color);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.donor-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--accent-color);
 }
 
 .donate-amount {
   font-weight: 700;
   color: var(--accent-color);
   font-size: 1.1rem;
-}
-
-.donate-date {
-  color: var(--text-color);
-  font-size: 0.95rem;
 }
 
 .donate-note-cell {
