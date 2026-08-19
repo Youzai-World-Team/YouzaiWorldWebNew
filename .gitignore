@@ -5,6 +5,7 @@
 dist
 package-lock.json
 .codebuddy
+.pnpm-store
 
 # Dependencies
 node_modules
