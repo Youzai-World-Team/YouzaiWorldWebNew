@@ -116,6 +116,10 @@ onMounted(async () => {
     renderer.setSize(width, height, false)
     camera.aspect = width / height
     camera.updateProjectionMatrix()
+
+    const mobileScale = THREE.MathUtils.clamp(camera.aspect * 0.95, 0.5, 0.72)
+    const isMobileViewport = window.matchMedia('(max-width: 768px)').matches
+    logoGroup.scale.setScalar(isMobileViewport ? mobileScale : 1)
   }
   resizeObserver = new ResizeObserver(resize)
   resizeObserver.observe(host)

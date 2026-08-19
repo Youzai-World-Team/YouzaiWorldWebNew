@@ -4,7 +4,6 @@ import HeroSection from '~/components/home/HeroSection.vue'
 import LatestNews from '~/components/home/LatestNews.vue'
 import FeatureCarousel from '~/components/home/FeatureCarousel.vue'
 import WorldsExplorer from '~/components/home/WorldsExplorer.vue'
-import MusicPlayer from '~/components/MusicPlayer.vue'
 import NoticeBanner from '~/components/ui/NoticeBanner.vue'
 import ServerStatusInline from '~/components/ui/ServerStatusInline.vue'
 import {fetchActivities} from '~/composables/useActivities'
@@ -257,9 +256,5 @@ onMounted(async () => {
         </div>
       </div>
     </section>
-
-    <ClientOnly>
-      <MusicPlayer/>
-    </ClientOnly>
   </div>
 </template>
