@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import {onMounted, ref} from 'vue'
 import HeroSection from '~/components/home/HeroSection.vue'
-import LatestNews from '~/components/home/LatestNews.vue'
 import FeatureCarousel from '~/components/home/FeatureCarousel.vue'
 import WorldsExplorer from '~/components/home/WorldsExplorer.vue'
-import NoticeBanner from '~/components/ui/NoticeBanner.vue'
 import ServerStatusInline from '~/components/ui/ServerStatusInline.vue'
 import {fetchActivities} from '~/composables/useActivities'
 import {strengths, team} from '~/utils/home'
@@ -25,12 +23,6 @@ onMounted(async () => {
 <template>
   <div>
     <HeroSection/>
-
-    <NoticeBanner contained>
-      <strong>提示：</strong>此页面及其子页面部分内容属于前 Bedrock 版服务器的遗留内容，正在逐步更新中！
-    </NoticeBanner>
-
-    <LatestNews/>
 
     <section id="about" class="gallery">
       <div class="container">
