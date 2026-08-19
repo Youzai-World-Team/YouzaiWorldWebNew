@@ -21,7 +21,6 @@ const REVEAL_SELECTOR = [
   '.trends-stats',
   '.trends-filter-section',
   '.download-section-block',
-  '.latest-news',
 ].join(',')
 
 function initScrollReveal(observers: IntersectionObserver[]) {
