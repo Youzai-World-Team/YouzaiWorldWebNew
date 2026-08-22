@@ -57,6 +57,11 @@ function recentCount() {
   return sentAt.value.length
 }
 
+// 后台代发的消息带管理员头像，普通发言回退到按昵称生成的像素头像。
+function avatarOf(message: ChatMessage) {
+  return message.avatar || chatAvatar(message.name)
+}
+
 function formatTime(value: number) {
   const date = new Date(value)
   if (Number.isNaN(date.getTime())) return ''
@@ -190,7 +195,13 @@ onBeforeUnmount(() => {
           </p>
           <template v-else>
             <div v-for="m in messages" :key="m.id" class="chat-item">
-              <img :src="chatAvatar(m.name)" :alt="m.name" class="chat-avatar" loading="lazy">
+              <img
+                  :src="avatarOf(m)"
+                  :alt="m.name"
+                  class="chat-avatar"
+                  :class="{ 'chat-avatar--photo': !!m.avatar }"
+                  loading="lazy"
+              >
               <div class="chat-body">
                 <div class="chat-meta">
                   <span class="chat-name">{{ m.name }}</span>

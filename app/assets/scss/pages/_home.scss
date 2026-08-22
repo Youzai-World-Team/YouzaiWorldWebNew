@@ -826,6 +826,13 @@
   image-rendering: pixelated;
 }
 
+/* 后台代发消息用的是真实上传头像，不做像素化并显示为圆形 */
+.chat-avatar--photo {
+  border-radius: 50%;
+  object-fit: cover;
+  image-rendering: auto;
+}
+
 .chat-body {
   flex: 1;
   min-width: 0;

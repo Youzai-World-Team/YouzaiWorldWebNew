@@ -68,6 +68,8 @@ export interface ChatMessage {
   id: string
   name: string
   content: string
+  /** 后台代发的管理员头像路径；公开发言为空串，前端按昵称生成像素头像。 */
+  avatar: string
   location: string
   time: number
 }

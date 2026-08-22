@@ -2,6 +2,7 @@ import type { ChatMessage } from '~/types'
 
 // 首页聊天区 API（读写都在 API 服务端，官网只做展示与提交）
 const CHAT_API = 'https://api.mcyzw.top/api/chat'
+const API_ORIGIN = 'https://api.mcyzw.top'
 
 const LOG_PREFIX = '[youzai-web/chat]'
 
@@ -11,11 +12,19 @@ export interface SendChatInput {
   turnstileToken: string
 }
 
+// 后台代发消息的头像是 API 相对路径（如 /api/uploads/xxx.gif），需拼上 API 域名；
+// 已是绝对 URL 时直接使用，空串表示由前端按昵称生成像素头像。
+function resolveChatAvatar(path: string): string {
+  if (!path) return ''
+  return path.startsWith('http') ? path : `${API_ORIGIN}${path}`
+}
+
 function toChatMessage(item: Record<string, unknown>): ChatMessage {
   return {
     id: String(item.id ?? ''),
     name: String(item.name ?? '未知'),
     content: String(item.content ?? ''),
+    avatar: resolveChatAvatar(String(item.avatar ?? '')),
     location: String(item.location ?? '未知'),
     time: Number(item.time) || 0,
   }
