@@ -63,13 +63,18 @@ export interface Donator {
   amount: number
 }
 
+// 聊天区身份：访客只填昵称，玩家用游戏账户登录，管理员由后台代发
+export type ChatRole = 'guest' | 'player' | 'admin'
+
 // 对应 https://api.mcyzw.top/api/chat 返回结构（time 为毫秒时间戳）
 export interface ChatMessage {
   id: string
   name: string
   content: string
-  /** 后台代发的管理员头像路径；公开发言为空串，前端按昵称生成像素头像。 */
+  /** 后台代发的管理员头像路径；其余为空串，前端按昵称生成像素头像。 */
   avatar: string
+  /** 由服务端按凭据判定，公开发言无法伪造，用于渲染身份标记。 */
+  role: ChatRole
   location: string
   time: number
 }
