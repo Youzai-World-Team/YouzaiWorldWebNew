@@ -63,6 +63,15 @@ export interface Donator {
   amount: number
 }
 
+// 对应 https://api.mcyzw.top/api/chat 返回结构（time 为毫秒时间戳）
+export interface ChatMessage {
+  id: string
+  name: string
+  content: string
+  location: string
+  time: number
+}
+
 export interface PenaltyRecord {
   player: string
   type: 'ban' | 'mute' | 'kick' | 'warning' | string

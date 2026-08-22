@@ -5,6 +5,7 @@ export const navItems: NavItem[] = [
   {
     label: '服务器信息',
     children: [
+      { label: '聊天区', to: '/#chat' },
       { label: '动态查看', to: '/#trend' },
       { label: '活动列表', to: '/#events' },
       { label: '玩法特性一览', to: '/#features' },
@@ -31,6 +32,7 @@ export const navItems: NavItem[] = [
 
 export const footerLinks = [
   { label: '首页', to: '/' },
+  { label: '聊天区', to: '/#chat' },
   { label: '服务器动态', to: '/#trend' },
   { label: '活动列表', to: '/#events' },
   { label: '玩法特性一览', to: '/#features' },

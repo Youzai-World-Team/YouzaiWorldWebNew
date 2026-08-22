@@ -3,6 +3,7 @@ import {onMounted, ref} from 'vue'
 import HeroSection from '~/components/home/HeroSection.vue'
 import FeatureCarousel from '~/components/home/FeatureCarousel.vue'
 import WorldsExplorer from '~/components/home/WorldsExplorer.vue'
+import ChatBoard from '~/components/home/ChatBoard.vue'
 import ServerStatusInline from '~/components/ui/ServerStatusInline.vue'
 import {fetchActivities} from '~/composables/useActivities'
 import {strengths, team} from '~/utils/home'
@@ -23,6 +24,8 @@ onMounted(async () => {
 <template>
   <div>
     <HeroSection/>
+
+    <ChatBoard/>
 
     <section id="about" class="gallery">
       <div class="container">
