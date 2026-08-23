@@ -78,22 +78,6 @@ let timer: ReturnType<typeof setInterval> | null = null
 
 const isPlayer = computed(() => !!playerName.value)
 const nameValid = computed(() => NAME_RE.test(name.value.trim()))
-const contentValid = computed(() => {
-  const value = content.value.trim()
-  return value.length > 0 && value.length <= CONTENT_MAX
-})
-const canSend = computed(() =>
-    !sending.value
-    && (isPlayer.value || nameValid.value)
-    && contentValid.value
-    && !!sendToken.value,
-)
-const canLogin = computed(() =>
-    !loggingIn.value
-    && PLAYER_NAME_RE.test(loginUsername.value.trim())
-    && loginPassword.value.length > 0
-    && !!loginToken.value,
-)
 
 function recentCount() {
   const now = Date.now()
@@ -168,8 +152,22 @@ function closeLogin() {
 }
 
 async function submitLogin() {
-  if (!canLogin.value) return
+  if (loggingIn.value) return
   loginError.value = ''
+
+  if (!PLAYER_NAME_RE.test(loginUsername.value.trim())) {
+    loginError.value = '玩家代号格式不正确（1-16 位字母、数字或下划线）'
+    return
+  }
+  if (!loginPassword.value) {
+    loginError.value = '请输入密码'
+    return
+  }
+  if (!loginToken.value) {
+    loginError.value = '请先完成人机验证'
+    return
+  }
+
   loggingIn.value = true
   try {
     const session = await loginChatPlayer({
@@ -201,6 +199,7 @@ async function logout() {
 }
 
 async function submit() {
+  if (sending.value) return
   errorText.value = ''
   noticeText.value = ''
 
@@ -228,6 +227,8 @@ async function submit() {
     return
   }
   if (!sendToken.value) {
+    // 用户可能直接点了发送而没碰过输入框，此时补一次加载。
+    await startSendVerification()
     errorText.value = '请先完成人机验证'
     return
   }
@@ -382,7 +383,7 @@ onBeforeUnmount(() => {
             </p>
             <div class="chat-login-actions">
               <button type="button" class="chat-link-btn" @click="closeLogin">取消</button>
-              <button type="button" class="btn-primary chat-send" :disabled="!canLogin" @click="submitLogin">
+              <button type="button" class="btn-primary chat-send" :disabled="loggingIn" @click="submitLogin">
                 {{ loggingIn ? '登录中…' : '登录' }}
               </button>
             </div>
@@ -423,13 +424,16 @@ onBeforeUnmount(() => {
             <p v-if="sendVerifyFailed" class="chat-error">
               人机验证加载失败，请检查网络或稍后重试
             </p>
+            <p v-else-if="sendVerifyStarted" class="chat-verify-state" :class="{ 'is-ok': !!sendToken }">
+              {{ sendToken ? '✓ 已完成人机验证' : '等待人机验证完成……' }}
+            </p>
           </div>
 
           <div class="chat-actions">
             <p v-if="errorText" class="chat-error">{{ errorText }}</p>
             <p v-else-if="noticeText" class="chat-notice">{{ noticeText }}</p>
             <span v-else class="chat-spacer"/>
-            <button type="button" class="btn-primary chat-send" :disabled="!canSend" @click="submit">
+            <button type="button" class="btn-primary chat-send" :disabled="sending" @click="submit">
               {{ sending ? '发送中…' : '发送' }}
             </button>
           </div>

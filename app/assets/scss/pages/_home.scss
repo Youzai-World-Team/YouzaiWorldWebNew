@@ -1054,6 +1054,19 @@
   min-height: 65px;
 }
 
+.chat-verify-state {
+  margin: 6px 0 0;
+  color: var(--text-color);
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.chat-verify-state.is-ok {
+  color: var(--accent-color);
+  font-weight: 600;
+  opacity: 1;
+}
+
 .chat-hint {
   margin: 0;
   color: var(--text-color);

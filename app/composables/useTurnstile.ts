@@ -1,7 +1,8 @@
 import { onBeforeUnmount, ref } from 'vue'
 
 // 站点密钥由 API 服务端下发（官网是静态站，不内嵌密钥）。
-const TURNSTILE_CONFIG_API = 'https://api.mcyzw.top/api/auth/turnstile'
+// 聊天区用的是独立于后台登录的一套 widget，密钥从聊天区专用接口取。
+const TURNSTILE_CONFIG_API = 'https://api.mcyzw.top/api/chat/turnstile'
 const TURNSTILE_SCRIPT_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'
 
 const LOG_PREFIX = '[youzai-web/turnstile]'
@@ -42,6 +43,19 @@ export function useTurnstile(action: string) {
   const failed = ref(false)
   const widgetId = ref<string | number | null>(null)
 
+  // Turnstile 令牌约 5 分钟后过期。过期时 widget 往往仍显示“成功”，
+  // 但令牌已失效——如果只是清空令牌，用户会看到“验证通过了却发不出去”。
+  // 这里主动 reset 换一个新令牌，让界面状态和实际可用状态保持一致。
+  function refresh() {
+    if (widgetId.value === null) return
+    token.value = ''
+    try {
+      window.turnstile?.reset(widgetId.value)
+    } catch (err) {
+      console.error(`${LOG_PREFIX} 刷新验证失败:`, err)
+    }
+  }
+
   async function render(container: HTMLElement) {
     if (widgetId.value !== null) return
     try {
@@ -56,6 +70,7 @@ export function useTurnstile(action: string) {
         sitekey,
         action,
         size: window.innerWidth <= 360 ? 'compact' : 'flexible',
+        'refresh-expired': 'auto',
         callback: (value) => {
           token.value = value
           failed.value = false
@@ -64,9 +79,8 @@ export function useTurnstile(action: string) {
           token.value = ''
           failed.value = true
         },
-        'expired-callback': () => {
-          token.value = ''
-        },
+        'expired-callback': () => refresh(),
+        'timeout-callback': () => refresh(),
       })
       ready.value = true
       failed.value = false
