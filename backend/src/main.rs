@@ -1,7 +1,7 @@
 use actix_cors::Cors;
 use actix_files::Files;
 use actix_web::dev::Service;
-use actix_web::{middleware, web, App, HttpServer};
+use actix_web::{middleware, web, App, HttpResponse, HttpServer};
 use std::io::Write;
 use std::time::Instant;
 
@@ -12,6 +12,17 @@ mod config;
 mod craftping;
 mod deploy;
 mod monitoring;
+
+async fn not_found_handler() -> HttpResponse {
+    match std::fs::read("./static/404.html") {
+        Ok(body) => HttpResponse::NotFound()
+            .content_type("text/html; charset=utf-8")
+            .body(body),
+        Err(_) => HttpResponse::NotFound()
+            .content_type("text/plain; charset=utf-8")
+            .body("404 Not Found"),
+    }
+}
 
 #[actix_web::main]
 async fn main() -> anyhow::Result<()> {
@@ -129,7 +140,11 @@ async fn main() -> anyhow::Result<()> {
                 }
             })
             .service(api_scope)
-            .service(Files::new("/", "./static").index_file("index.html"))
+            .service(
+                Files::new("/", "./static")
+                    .index_file("index.html")
+                    .default_handler(web::to(not_found_handler)),
+            )
             .wrap(cors)
     })
     .workers(config.server.workers.unwrap_or(num_cpus::get()))
