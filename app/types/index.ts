@@ -90,36 +90,15 @@ export interface PenaltyRecord {
   calculatedStatus?: 'active' | 'expired'
 }
 
-export interface DownloadOption {
-  radioName: string
-  urlDefault: string
-  urlNone: string
-}
+export type DownloadProjectType = '整合包' | '模组'
 
-export interface DownloadCard {
-  id?: string
-  icon?: string
-  title: string
+export interface DownloadProject {
+  id: string
+  type: DownloadProjectType
+  name: string
+  url: string
   version: string
-  desc: string
-  size?: string
-  date?: string
-  note?: string
-  option?: DownloadOption
-  href?: string
-  buttonText?: string
-}
-
-export interface DownloadGroup {
-  rendererIcon?: string
-  rendererTitle?: string
-  cards: DownloadCard[]
-}
-
-export interface DownloadPlatform {
-  platformIcon: string
-  platformTitle: string
-  cards?: DownloadCard[]
-  groups?: DownloadGroup[]
-  tip?: string
+  description: string
+  createdAt?: number
+  updatedAt?: number
 }
