@@ -18,9 +18,9 @@ export const navItems: NavItem[] = [
     children: [
       { label: '服务器地址', to: '/#join-server' },
       { label: '加入 QQ 群', to: '/#join-qqqun' },
-      { label: '下载中心', to: '/download' },
     ],
   },
+  { label: '下载中心', to: '/download' },
   {
     label: '教程中心',
     children: [

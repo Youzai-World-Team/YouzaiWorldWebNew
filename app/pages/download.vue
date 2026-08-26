@@ -28,7 +28,7 @@ onMounted(async () => {
       <div v-if="loading" class="download-state">正在加载下载项目…</div>
       <template v-else>
         <div v-if="projects.length === 0" class="download-state">暂未配置整合包或模组，以下仍可下载推荐启动器。</div>
-        <section v-if="packs.length" class="download-section-block">
+        <section v-if="packs.length" id="download-packs" class="download-section-block">
           <h2 class="download-section-title">📦 整合包</h2>
           <div class="download-cards"><article v-for="item in packs" :key="item.id" class="download-card"><div class="download-card-header"><h3>{{ item.name }}</h3><span class="download-version">{{ item.version }}</span></div><p class="download-desc">{{ item.description }}</p><a class="btn-primary download-btn" :href="item.url" target="_blank" rel="noopener">立即下载</a></article></div>
         </section>
@@ -36,7 +36,7 @@ onMounted(async () => {
           <h2 class="download-section-title">🧩 模组</h2>
           <div class="download-cards"><article v-for="item in mods" :key="item.id" class="download-card"><div class="download-card-header"><h3>{{ item.name }}</h3><span class="download-version">{{ item.version }}</span></div><p class="download-desc">{{ item.description }}</p><a class="btn-primary download-btn" :href="item.url" target="_blank" rel="noopener">立即下载</a></article></div>
         </section>
-        <section class="download-section-block">
+        <section id="download-launchers" class="download-section-block">
           <h2 class="download-section-title">🚀 启动器下载</h2>
           <div class="download-cards"><article v-for="item in launcherDownloads" :key="item.id" class="download-card"><div class="download-card-header"><h3><img :src="item.icon" :alt="item.name" class="launcher-icon">{{ item.name }}</h3><span class="download-version">{{ item.developer }}</span></div><p class="download-desc">{{ item.description }}</p><a class="btn-primary download-btn" :href="item.url" target="_blank" rel="noopener">前往官方网站下载</a></article></div>
         </section>

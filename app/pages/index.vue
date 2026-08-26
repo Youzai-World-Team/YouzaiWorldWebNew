@@ -177,7 +177,7 @@ onMounted(async () => {
               <img src="https://assets.mcyzw.top/images/info.svg" alt="信息" class="trend-icon">
               <p>
                 在您加入服务器之前，您还需要前往
-                <NuxtLink to="/download#download-packages" class="internal-link">此处</NuxtLink>
+                <NuxtLink to="/download#download-packs" class="internal-link">此处</NuxtLink>
                 下载并安装服务器的整合包~
               </p>
             </div>
@@ -196,7 +196,7 @@ onMounted(async () => {
               <img src="https://assets.mcyzw.top/images/info.svg" alt="信息" class="trend-icon">
               <p>
                 还没有 Minecraft Java 启动器？前往
-                <NuxtLink to="/download#download-laucher" class="internal-link">此处</NuxtLink>
+                <NuxtLink to="/download#download-launchers" class="internal-link">此处</NuxtLink>
                 查看详情并下载启动器~
               </p>
             </div>
