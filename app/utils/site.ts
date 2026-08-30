@@ -9,7 +9,7 @@ export const navItems: NavItem[] = [
       { label: '动态查看', to: '/#trend' },
       { label: '活动列表', to: '/#events' },
       { label: '玩法特性一览', to: '/#features' },
-      { label: '服务器状态监控', to: '/status' },
+      { label: '服务器状态监控', to: 'https://status.mcyzw.top' },
       { label: '玩家处罚记录', to: '/banlist' },
     ],
   },
@@ -39,7 +39,7 @@ export const footerLinks = [
   { label: '加入服务器与服务器 QQ 群', to: '/#join' },
   { label: '教程中心', to: '/tutorial' },
   { label: '下载中心', to: '/download' },
-  { label: '服务器状态监控', to: '/status' },
+  { label: '服务器状态监控', to: 'https://status.mcyzw.top' },
   { label: '玩家处罚记录', to: '/banlist' },
 ]
 

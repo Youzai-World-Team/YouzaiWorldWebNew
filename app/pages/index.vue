@@ -205,7 +205,7 @@ onMounted(async () => {
             <div class="download-section">
               <p>在此处可以查看服务器当前在线人数~</p>
               <ServerStatusInline server="play.mcyzw.top" :port="25565"/>
-              <NuxtLink to="/status" class="internal-link">查看详细信息</NuxtLink>
+              <a href="https://status.mcyzw.top" class="internal-link">查看详细信息</a>
             </div>
           </div>
 
