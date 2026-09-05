@@ -159,9 +159,9 @@ body {
   width: 12px;
   height: 12px;
   margin-left: 4px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6'%3E%3C/path%3E%3Cpolyline points='15,3 21,3 21,9'%3E%3C/polyline%3E%3Cline x1='10' y1='14' x2='21' y2='3'%3E%3C/line%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
+  background-color: currentColor;
+  -webkit-mask: url('https://assets.mcyzw.top/images/ui/external-link.svg') center / contain no-repeat;
+  mask: url('https://assets.mcyzw.top/images/ui/external-link.svg') center / contain no-repeat;
   vertical-align: middle;
   transition: transform 0.3s ease;
 }
@@ -526,7 +526,7 @@ details details details {
 
 .hero-other {
   height: 50vh;
-  background: linear-gradient(rgba(168, 230, 207, 0.7), rgba(220, 237, 193, 0.7)), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDgwMCI+PHJlY3Qgd2lkdGg9IjEyMDAiIGhlaWdodD0iODAwIiBmaWxsPSIjZWNmNWUxIi8+PHBhdGggZD0iTTAgNDAwTDEyMDAgMFY4MDBIMFoiIGZpbGw9IiNkY2VkYzEiLz48L3N2Zz4=');
+  background: linear-gradient(rgba(168, 230, 207, 0.7), rgba(220, 237, 193, 0.7)), url('https://assets.mcyzw.top/images/backgrounds/page-hero.svg');
   background-size: cover;
   background-position: center;
   display: flex;

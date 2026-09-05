@@ -145,13 +145,18 @@ onMounted(async () => {
             </div>
             <h3>{{ s.title }}</h3>
             <p v-html="s.desc"/>
+            <a
+                v-if="s.link?.startsWith('http')"
+                :href="s.link"
+                class="internal-link"
+                style="text-decoration: none;"
+            >{{ s.linkText }}</a>
             <NuxtLink
-                v-if="s.link"
+                v-else-if="s.link"
                 :to="s.link"
                 class="internal-link"
                 style="text-decoration: none;"
-            >{{ s.linkText }}
-            </NuxtLink>
+            >{{ s.linkText }}</NuxtLink>
           </div>
         </div>
       </div>
@@ -205,7 +210,7 @@ onMounted(async () => {
             <div class="download-section">
               <p>在此处可以查看服务器当前在线人数~</p>
               <ServerStatusInline server="play.mcyzw.top" :port="25565"/>
-              <a href="https://status.mcyzw.top" class="internal-link">查看详细信息</a>
+              <NuxtLink to="/status" class="internal-link">查看详细信息</NuxtLink>
             </div>
           </div>
 

@@ -186,7 +186,7 @@ export const strengths = [
         alt: '飞起来',
         title: '快速',
         desc: 'AMD Ryzen 7 5800X 服务器<br>让你的游戏体验飞起来',
-        link: 'https://status.mcyzw.top',
+        link: '/status',
         linkText: '▷ 查看状态'
     },
     {

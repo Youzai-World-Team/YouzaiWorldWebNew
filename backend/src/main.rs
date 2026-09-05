@@ -24,6 +24,13 @@ async fn not_found_handler() -> HttpResponse {
     }
 }
 
+async fn favicon_redirect() -> HttpResponse {
+    HttpResponse::Found()
+        .append_header(("Location", "https://assets.mcyzw.top/favicon.ico"))
+        .append_header(("Cache-Control", "public, max-age=86400"))
+        .finish()
+}
+
 #[actix_web::main]
 async fn main() -> anyhow::Result<()> {
     let config = AppConfig::load()?;
@@ -140,6 +147,7 @@ async fn main() -> anyhow::Result<()> {
                 }
             })
             .service(api_scope)
+            .service(web::resource("/favicon.ico").route(web::get().to(favicon_redirect)))
             .service(
                 Files::new("/", "./static")
                     .index_file("index.html")

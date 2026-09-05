@@ -20,7 +20,7 @@
 **主要功能域**：
 
 - **门户首页**：Hero 区、像素 Logo Three.js 场景、世界/特性轮播、聊天板、动态与活动列表
-- **服务器信息**：状态监控（`https://status.mcyzw.top`，经 CraftPing 协议查询）、玩家处罚记录（`/banlist`）、可用性/在线率（`/trend`）
+- **服务器信息**：状态监控（`/status`，由状态 Worker 聚合）、玩家处罚记录（`/banlist`）、可用性/在线率（`/trend`）
 - **加入与教程**：下载中心（`/download`，聚合 PCL2 / HMCL / BakaXL 等启动器）、教程中心（`/tutorial`、`/tutorials/quick_play_guide`）
 - **其他**：赞助页（`/donate`）、Turnstile 人机校验、点击特效/滚动入场动画、页面过渡
 
@@ -65,7 +65,7 @@ YouzaiWorldWebNew/
 ├── nuxt.config.ts                # Nuxt 配置（端口 3400、SSR、预渲染、head meta、资产域名）
 ├── package.json                  # 脚本与依赖（pnpm 强制）
 ├── tsconfig.json
-├── public/                       # 极少量根级静态文件（CNAME、favicon、robots）
+├── public/                       # 极少量根级站点文件（CNAME、robots、域名验证）；图片统一由 assets.mcyzw.top 托管
 ├── backend/                      # Rust 后端（actix-web）
 │   ├── Cargo.toml / config.toml
 │   └── src/                      # main.rs、config.rs、craftping.rs、deploy.rs、monitoring.rs

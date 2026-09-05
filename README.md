@@ -12,7 +12,7 @@
 | 页面 | 路由 | 说明 |
 |------|------|------|
 | 门户首页 | `/` | Hero 区、Three.js 像素 Logo 场景、玩法特性轮播、世界一览、聊天板、服务器动态与活动列表 |
-| 服务器状态 | `https://status.mcyzw.top` | 通过状态 Worker 聚合节点、公共服务与 CraftPing 游戏状态 |
+| 服务器状态 | `/status` | 通过状态 Worker 聚合节点、公共服务与 CraftPing 游戏状态 |
 | 处罚记录 | `/banlist` | 玩家处罚（封禁）记录公示 |
 | 趋势监控 | `/trend` | 服务器可用性与在线趋势 |
 | 下载中心 | `/download` | 聚合 PCL2、HMCL、BakaXL 等主流启动器下载入口 |
@@ -34,7 +34,7 @@
 **后端（`backend/`）**
 
 - Rust + actix-web 4
-- craftping：Minecraft 服务器状态查询（支持 SRV 记录解析，状态页位于 `status.mcyzw.top`）
+- craftping：Minecraft 服务器状态查询（支持 SRV 记录解析，供状态 Worker 采集游戏状态）
 - zip + subtle：接收 zip 包的静态站点部署接口（token 校验 + 路径穿越防护）
 
 ---
@@ -88,7 +88,7 @@ YouzaiWorldWebNew/
 ├── backend/              # Rust 后端（actix-web）
 │   ├── config.toml       # 运行配置（端口、部署 key）
 │   └── src/              # main / config / craftping / deploy / monitoring
-└── public/               # 根级静态文件（CNAME、favicon、robots.txt）
+└── public/               # 根级站点文件（CNAME、robots.txt、域名验证文件；图片统一由 assets.mcyzw.top 托管）
 ```
 
 ---

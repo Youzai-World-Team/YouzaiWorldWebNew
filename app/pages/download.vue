@@ -27,27 +27,27 @@ const installSteps = computed(() => {
   return [
     {
       text: `下载整合包和 Core；如果还没有 ${launcher}，请先在上方下载启动器。`,
-      image: `https://assets.mcyzw.top/images/download_page/${imagePrefix}_setp1.webp`,
+      image: `https://assets.mcyzw.top/images/download_page/${imagePrefix}_step1.webp`,
       alt: `步骤 1：下载整合包、Core 和 ${launcher}`,
     },
     {
       text: `将下载的 ${launcher} 启动器文件存放在一个单独的文件夹内，然后运行启动器。`,
-      image: `https://assets.mcyzw.top/images/download_page/${imagePrefix}_setp2.webp`,
+      image: `https://assets.mcyzw.top/images/download_page/${imagePrefix}_step2.webp`,
       alt: `步骤 2：存放并运行 ${launcher}`,
     },
     {
       text: `将下载的整合包拖动到 ${launcher} 页面中，触发自动安装弹窗后选择“是”继续。`,
-      image: `https://assets.mcyzw.top/images/download_page/${imagePrefix}_setp3.webp`,
+      image: `https://assets.mcyzw.top/images/download_page/${imagePrefix}_step3.webp`,
       alt: `步骤 3：将整合包拖入 ${launcher} 安装`,
     },
     {
       text: `整合包安装完成后，将下载的 Core 拖动到 ${launcher} 页面中，触发自动安装弹窗后选择“是”继续。`,
-      image: `https://assets.mcyzw.top/images/download_page/${imagePrefix}_setp4.webp`,
+      image: `https://assets.mcyzw.top/images/download_page/${imagePrefix}_step4.webp`,
       alt: `步骤 4：将 Core 拖入 ${launcher} 安装`,
     },
     {
       text: `在 ${launcher} 中选择已安装的整合包并启动游戏。`,
-      image: `https://assets.mcyzw.top/images/download_page/${imagePrefix}_setp5.webp`,
+      image: `https://assets.mcyzw.top/images/download_page/${imagePrefix}_step5.webp`,
       alt: `步骤 5：通过 ${launcher} 启动游戏`,
     },
   ]

@@ -44,8 +44,9 @@ export interface NodeServicesResponse {
     data: NodeData[]
 }
 
-const MCSM_SERVICES = 'https://api.eqad.fun/mcsm/api/services/'
-const AVAILABILITY_API = 'https://api.eqad.fun/monitor'
+const STATUS_WORKER = 'https://status.mcyzw.top/api/status'
+const STATUS_HISTORY = 'https://status.mcyzw.top/api/status/history?hours=72'
+const NODE_NAME = 'EQAD-003'
 
 export interface result {
     status: number;
@@ -65,46 +66,63 @@ export async function fetchMinecraftStatus(
     port: number = 25565,
 ): Promise<McStatus> {
     try {
-        const res: Response = await fetch('/api/craftping/get_status', {
-            method: 'POST',
-            cache: 'no-cache',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({host, port})
-        })
+        const res: Response = await fetch(STATUS_WORKER, {cache: 'no-cache'})
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
-        const data: result = await res.json()
-        let isOnline = data.online;
+        const payload = await res.json() as any
+        const data = payload.minecraft as any
+        let isOnline = data?.online === true;
         return {
-            online: data.online,
+            online: isOnline,
             host,
             port,
             players: isOnline
-                ? {online: data.players.online ?? 0, max: data.players?.max ?? 0, list: data.players.list ?? []}
+                ? {online: data.playersOnline ?? 0, max: data.playersMax ?? 0, list: []}
                 : undefined,
             version: isOnline ? data.version : undefined,
             protocol: isOnline ? data.protocol : undefined,
-            delay: isOnline ? data.round_trip_latency : undefined,
-            error: isOnline ? undefined : '服务器离线',
+            delay: isOnline ? data.latencyMs : undefined,
+            error: isOnline ? undefined : data?.message || '服务器离线',
         }
     } catch (err) {
         return {
             online: false,
             host,
-            port: 25565,
+            port,
             error: err instanceof Error ? err.message : 'unknown',
         }
     }
 }
 
 export async function fetchNodeServices(): Promise<NodeServicesResponse> {
-    const res = await fetch(MCSM_SERVICES)
-    return (await res.json()) as NodeServicesResponse
+    const res = await fetch(STATUS_WORKER, {cache: 'no-cache'})
+    if (!res.ok) throw new Error(`HTTP ${res.status}`)
+    const payload = await res.json() as any
+    const node = payload.node
+    return {
+        status: node && node.status !== 'outage' && node.status !== 'unknown' ? 200 : 503,
+        data: node ? [{
+            nickname: node.name,
+            timestamp: node.timestamp || 0,
+            // Preserve the legacy composable contract: callers expect 0..1
+            // ratios even though the Worker API publishes 0..100 percentages.
+            system: {
+                type: node.systemType || '未知',
+                cpuUsage: Number(node.cpuUsage || 0) / 100,
+                memUsage: Number(node.memoryUsage || 0) / 100,
+            },
+        }] : [],
+    }
 }
 
 export async function fetchAvailability(): Promise<AvailabilityData> {
-    const res = await fetch(AVAILABILITY_API, {cache: 'no-cache'})
+    const res = await fetch(STATUS_HISTORY, {cache: 'no-cache'})
     if (!res.ok) throw new Error(`HTTP ${res.status}`)
-    return (await res.json()) as AvailabilityData
+    const payload = await res.json() as any
+    const samples = Array.isArray(payload.samples) ? payload.samples : []
+    return {
+        [NODE_NAME]: samples.map((sample: any) => ({
+            time: Number(sample.capturedAt),
+            status: sample?.node?.status === 'operational' || sample?.node?.status === 'degraded' ? 'online' : 'offline',
+        })).filter((point: AvailabilityPoint) => Number.isFinite(point.time) && point.time > 0),
+    }
 }

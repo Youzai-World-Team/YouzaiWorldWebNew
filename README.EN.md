@@ -14,7 +14,7 @@ The official website of the **Youzai World** Minecraft multiplayer server, featu
 | Page | Route | Description |
 |------|-------|-------------|
 | Home | `/` | Hero section, Three.js pixel-logo scene, feature carousel, worlds explorer, chat board, server trends & events |
-| Server Status | `https://status.mcyzw.top` | Aggregated node, public service, and CraftPing game status |
+| Server Status | `/status` | Aggregated node, public service, and CraftPing game status |
 | Ban List | `/banlist` | Public player punishment records |
 | Trends | `/trend` | Server availability & player trends |
 | Downloads | `/download` | Curated launcher downloads (PCL2, HMCL, BakaXL, and more) |
@@ -90,7 +90,7 @@ YouzaiWorldWebNew/
 ├── backend/              # Rust backend (actix-web)
 │   ├── config.toml       # Runtime config (port, deploy key)
 │   └── src/              # main / config / craftping / deploy / monitoring
-└── public/               # Root-level static files (CNAME, favicon, robots.txt)
+└── public/               # Root-level site files (CNAME, robots.txt, domain verification; images are hosted on assets.mcyzw.top)
 ```
 
 ---

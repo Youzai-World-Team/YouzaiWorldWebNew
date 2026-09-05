@@ -12,7 +12,7 @@ const suggestions = [
   {label: '网站首页', to: '/'},
   {label: '玩家处罚记录', to: '/banlist'},
   {label: '教程中心', to: '/tutorial'},
-  {label: '服务器状态监控', to: 'https://status.mcyzw.top'},
+  {label: '服务器状态监控', to: '/status'},
 ]
 
 function goHome() {

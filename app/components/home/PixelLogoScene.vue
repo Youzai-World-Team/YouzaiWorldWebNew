@@ -4,6 +4,7 @@ import * as THREE from 'three'
 
 const canvas = ref<HTMLCanvasElement | null>(null)
 const sceneReady = ref(false)
+const PIXEL_LOGO_URL = 'https://assets.mcyzw.top/images/logo.png'
 
 let renderer: THREE.WebGLRenderer | null = null
 let animationFrame = 0
@@ -20,7 +21,9 @@ onMounted(async () => {
     if (!host) return
 
     const logo = new Image()
-    logo.src = '/logo.png'
+    // Canvas 读取跨域图片像素前必须启用匿名 CORS。
+    logo.crossOrigin = 'anonymous'
+    logo.src = PIXEL_LOGO_URL
     await logo.decode()
     if (disposed) return
 
@@ -163,7 +166,8 @@ onBeforeUnmount(() => {
 <template>
   <div class="pixel-logo-scene" aria-label="悠哉世界像素 Logo 3D 展示">
     <img
-      src="/logo.png"
+      :src="PIXEL_LOGO_URL"
+      crossorigin="anonymous"
       alt=""
       class="pixel-logo-fallback"
       :class="{ 'is-hidden': sceneReady }"
